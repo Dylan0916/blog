@@ -4,28 +4,28 @@
     "baseUrl": "src",
     "jsx": "react-jsx",
     "paths": {
-      "@assets/*": [
+      "@/assets/*": [
         "assets/*"
       ],
-      "@config": [
+      "@/config": [
         "config.ts"
       ],
-      "@components/*": [
+      "@/components/*": [
         "components/*"
       ],
-      "@content/*": [
+      "@/content/*": [
         "content/*"
       ],
-      "@layouts/*": [
+      "@/layouts/*": [
         "layouts/*"
       ],
-      "@pages/*": [
+      "@/pages/*": [
         "pages/*"
       ],
-      "@styles/*": [
+      "@/styles/*": [
         "styles/*"
       ],
-      "@utils/*": [
+      "@/utils/*": [
         "utils/*"
       ]
     }
