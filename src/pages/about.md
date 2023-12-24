@@ -4,7 +4,7 @@ title: "About"
 ---
 
 <div>
-  <img src="avatar.jpg" class="sm:w-1/2 mx-auto" alt="coding dev illustration">
+  <img src="/avatar.jpg" class="sm:w-1/2 mx-auto" alt="coding dev illustration">
 </div>
 
 嗨，我是 Dylan，是個 Frontend Developer，熟悉 React、React-Native、Redux、TypeScript、Jest 與 Rxjs。
