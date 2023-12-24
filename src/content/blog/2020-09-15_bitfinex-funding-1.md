@@ -43,7 +43,9 @@ RESTful 與 websocket 都各有分為 public 與 authenticate 的，會需要身
 
 因需在 nodejs 中使用 websocket，故先將 [ws](https://www.npmjs.com/package/ws) 裝起來:
 
+```bash
 $ yarn add ws
+```
 
 一開始我們先做取得某某貨幣當前放貸利率，因要一直監聽最新利率，故使用 socket 的方式，而這種不需要身份，所以他被歸為 [public](https://docs.bitfinex.com/docs/ws-public)。
 
@@ -63,20 +65,20 @@ Bitfinex 的 pub socket 頻道為「wss://api-pub.bitfinex.com/ws/2」，故上�
 Bitfinex 麻煩的地方在這，他會將資料全部丟進 array 中，然後文件內再來說明索引值多少的內容為什麼，個人認為挺麻煩的...  
 上圖這樣的格式太難看懂了，我們改一下程式碼，將 message callback 中的 msg 用 JSON.parse 解析一下:
 
+```javascript
 w.on("message", (msg) => {
-
  const parse = JSON.parse(msg);
 
  console.log(parse);
-
 });
+```
 
 再次執行:
 
 ![](/fromMediumImg/1__nTm36fAilb__9HQHy1pVELQ.png)
 
-前兩項 object 先忽略，重點在第三項的 array，我們鎖定在 \[ 173621141, 1600182091685, 53.94, 0.00032789, 2 \] 這筆交易，翻譯成人話為:  
-\[ channel ID, 交易 ID, 出價與提供量, 日利率 (數字需再乘上 100), 借貸天數 \]
+前兩項 object 先忽略，重點在第三項的 array，我們鎖定在 `[ 173621141, 1600182091685, 53.94, 0.00032789, 2]` 這筆交易，翻譯成人話為:  
+`[ channel ID, 交易 ID, 出價與提供量, 日利率 (數字需再乘上 100), 借貸天數]`
 
 再來若我們想知道不只 USD 一個幣種的放貸利率的話，需對 socket 多 send 一段信息，code 大概是這樣:
 

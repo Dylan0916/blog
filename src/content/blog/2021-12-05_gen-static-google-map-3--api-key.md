@@ -64,6 +64,7 @@ description: '這篇是地圖系列的第三篇，若你還沒看過前兩篇的
 
 Code 大概這樣:
 
+```javascript
 const https = require("https");
 
 function fetchData(url) {  
@@ -92,6 +93,7 @@ function fetchData(url) {
       .on("error", reject);  
   });  
 }
+```
 
 此時可以測試看看，若 `x-api-key` 沒帶或帶錯是否會得到 403，若為 403 則代表設定成功了。
 
@@ -101,9 +103,10 @@ function fetchData(url) {
 
 採取方式是檢查 request headers 中是否有指定的鑰匙，這裡姑且叫 `x-dylan` 好了，值先設 `test`，然後在 EdgeLambda 檢查該鑰匙是否存在，不存在則直接回傳 403 狀態碼，code 如下:
 
-const { request, response } = event.Records\[0\].cf;  
+```javascript
+const { request, response } = event.Records[0].cf;  
 const { headers } = request;  
-const xDylan = headers?.\['x-dylan'\]\[0\].value;
+const xDylan = headers?.['x-dylan'][0].value;
 
 if (xDylan !== "test") {  
   response.body = JSON.stringify({ msg: "403" });  
@@ -111,6 +114,7 @@ if (xDylan !== "test") {
 
   return response;  
 }
+```
 
 這樣沒帶鑰匙的人，在程式中滿上面就被判定完了，也不會走到產生地圖的地方。
 
@@ -164,7 +168,8 @@ preflight request 沒有 HTTP status code? 這裡意思是即使剛剛添加允�
 所以我們得回到 EdgeLambda，去對 `OPTIONS` 的 method 做處理。  
 將以下 code 放到最優先判斷位置:
 
-const { request, response } = event.Records\[0\].cf;  
+```javascript
+const { request, response } = event.Records[0].cf;  
 const { method } = request;
 
 if (/OPTIONS/i.test(method)) {  
@@ -172,6 +177,7 @@ if (/OPTIONS/i.test(method)) {
 
   return response;  
 }
+```
 
 目前先判斷只要是 `OPTIONS` 則一律回 200，可根據自己需求做調整，提升嚴謹性。
 

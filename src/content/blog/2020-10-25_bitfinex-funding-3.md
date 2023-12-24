@@ -32,7 +32,9 @@ description: 最近真的太多事了，沒想到第三篇拖了一個月才寫�
 
 一樣先到 Bitfinex 的 [Api docs](https://docs.bitfinex.com/docs/rest-auth)，這篇要用的是他的 REST Api，直接將範例程式碼複製並貼到檔案上，將 apiKey 與 apiSecret 改成[第二篇](/posts/2020-09-20_bitfinex-funding-2)介紹時，所申請的 API key，這邊官方範例用的 api request 工具為「request」故需額外裝起來，若讀者習慣用 axios 或其他的也是沒問題的。
 
+```bash
 $ yarn add request
+```
 
 安裝好後直接執行，依官方的範例 code，可以看到你的錢包資訊:
 
@@ -43,21 +45,16 @@ $ yarn add request
 參考[官方 Submit Funding Offer 文件](https://docs.bitfinex.com/reference#rest-auth-submit-funding-offer)，可以看到需要將 apiPath 改為 「v2/auth/w/funding/offer/submit」，並且還要帶入應有 request body，  
 下方以文件給的 request body 來說明:
 
+```
 body: {
-
   type: 'LIMIT',
-
   symbol: 'fUSD',
-
   amount: '123.45',
-
   rate: '0.001',
-
   period: 2,
-
   flags: 0
-
 }
+```
 
 官方這邊有個滿雷的地方，在「type: ‘LIMIT’ 」這邊，官方的 LIMIT 前有個空白，那邊得刪掉，不然執行下去會得到 500 status code。
 

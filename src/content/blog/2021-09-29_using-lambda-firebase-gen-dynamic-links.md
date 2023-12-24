@@ -93,46 +93,34 @@ https://firebasedynamiclinks.googleapis.com/v1/shortLinks?key=api\_key
 
 若只是單純要產生短網址，則 data (payload) 可以這樣帶:
 
+```json
 {
-
   "dynamicLinkInfo": {
-
     "domainUriPrefix": "https://xxx.page.link",
-
     "link": "https://www.google.com/"
-
   }
-
 }
+```
 
 `domainUriPrefix` 為你剛剛在 Firebase 後台產生的短網址前綴。  
 `link` 為此短網址要去的地方。
 
 若有 App，並且想在有安裝 App 時，以 deep link 方式開啟的話，可以這樣帶:
 
+```json
 {
-
   "dynamicLinkInfo": {
-
     "domainUriPrefix": "https://xxx.page.link",
-
     "link": "https://www.google.com/"
-
   },
-
   "androidInfo": {
-
     "androidPackageName": "package name"
-
   },
-
   "iosInfo": {
-
     "iosBundleId": "bundle ID"
-
   }
-
 }
+```
 
 JSON 更詳細內容可以到他的[文件](https://firebase.google.com/docs/reference/dynamic-links/link-shortener)查看。
 
@@ -208,11 +196,11 @@ Firebase dynamic links 有每個 IP 每秒 5 個請求，以及每天 200,000 �
 
 存在 S3 的資料內容，格式是個 object，key 為 query string 的 link，value 為短網址，大概這樣:
 
+```json
 {
-
   "origin link": "short link"
-
 }
+```
 
 故我們先建立一個空 object 的檔案，並上傳
 

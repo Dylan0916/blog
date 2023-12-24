@@ -24,20 +24,20 @@ description: >-
 
 這邊參閱 [Apple 官方文件](https://developer.apple.com/documentation/sign_in_with_apple/sign_in_with_apple_js/configuring_your_webpage_for_sign_in_with_apple)，可以看到首先引入 script source:
 
-<script type="text/javascript" src="https://appleid.cdn-apple.com/appleauth/static/jsapi/appleid/1/en\_US/appleid.auth.js"></script>
+<script type="text/javascript" src="https://appleid.cdn-apple.com/appleauth/static/jsapi/appleid/1/en_US/appleid.auth.js"></script>
 
-再來往下看到可以使用 meta 方式，而筆者是用再往下的 init() 方式，較自由。
+再來往下看到可以使用 meta 方式，而筆者是用再往下的 `init()` 方式，較自由。
 
 ![](/fromMediumImg/1__d2lfimd__5ZlN8wYpX4zazg.png)
 
 這邊是基本配置:  
-clientId (string): 產品 identifier，非常重要，Apple 識別產品用的，稍後會帶著去申請。  
-scope (string): 在用戶授權後，開發者能拿到的資料。一般都填「name email」，注意 name 與 email 須有一個空白。  
-redirectURI (string): 用戶登入完後會回到的頁面網址，這邊是不能隨意填的，稍後在申請 clientId 時會需填入此資料。  
-state (string): 給開發者隨意填入的值，用戶登入完後回傳的資料內，會原封不動地回傳一樣的值，可以用在驗證送出與回傳是否相等，避免一些攻擊。  
-usePopup (boolean): 是否只用 popup 方式開啟，若為 false，則會將原本頁面導至登入目的頁，反之則開啟一個 popup，這邊筆者填入 true。
+- `clientId` (string): 產品 identifier，非常重要，Apple 識別產品用的，稍後會帶著去申請。  
+- `scope` (string): 在用戶授權後，開發者能拿到的資料。一般都填「name email」，注意 name 與 email 須有一個空白。  
+- `redirectURI` (string): 用戶登入完後會回到的頁面網址，這邊是不能隨意填的，稍後在申請 clientId 時會需填入此資料。  
+- `state` (string): 給開發者隨意填入的值，用戶登入完後回傳的資料內，會原封不動地回傳一樣的值，可以用在驗證送出與回傳是否相等，避免一些攻擊。  
+- `usePopup` (boolean): 是否只用 popup 方式開啟，若為 false，則會將原本頁面導至登入目的頁，反之則開啟一個 popup，這邊筆者填入 true。
 
-接下來就是去申請 clientId 與填寫 redirectURI 了。
+接下來就是去申請 `clientId` 與填寫 `redirectURI` 了。
 
 #### 註冊 ngrok
 
@@ -95,7 +95,7 @@ Certificates, Identifiers 的部分就先到這裡，接下來回到 code 中。
 拿到回應的「token」與「code」後就可以向後端發 api，做產品的登入或註冊了。  
 這邊比較需要注意的是 name 的部分，若用戶使用的 Apple 帳號是第一次在你的產品進行 Apple Sign in，那回應的資料就會有「user」，可以看到上方 code 中的 type，它為 optional，故只有在第一次才會拿到，其次就沒這欄位了。
 
-error 的部分，目前只知道「popup\_closed\_by\_user」、「user\_cancelled\_authorize」、「user\_trigger\_new\_signin\_flow」這三種，意思就跟字面上一樣。  
+error 的部分，目前只知道「`popup_closed_by_user`」、「`user_cancelled_authorize`」、「`user_trigger_new_signin_flow`」這三種，意思就跟字面上一樣。  
 若有人知道還有什麼樣的錯誤信息，麻煩不吝告知一下。
 
 #### 總結

@@ -63,20 +63,24 @@ iOS 的 pod install 部份就不多贅述了。
 
 引入以下三段 code:
 
+```typescript
 import remoteConfig from '@react-native-firebase/remote-config';
 
 export const fetchConfig = () => remoteConfig().fetchAndActivate();
 
 export const getRemoteValue = (key: string) => remoteConfig().getValue(key);
+```
 
-我們透過 `fetchAndActivate` 來拉到 Firebase 上的資料，透過 `getValue` 來取得值。  
+我們透過 `fetchAndActivate` 來拉到 Firebase 上的資料，透過 `getValue` 來取得值。
 這邊要注意的是 `getValue` 拿到的並不是個可以直接拿來使用或判斷的值，還需要再使用別的 method 來取得真正的值，詳細參考: [https://github.com/invertase/react-native-firebase/blob/master/packages/remote-config/lib/index.d.ts#L180](https://github.com/invertase/react-native-firebase/blob/master/packages/remote-config/lib/index.d.ts#L180)
 
 接下來就可以使用下段 code 來取得在 remote config 上的值了:
 
+```javascript
 fetchConfig().then(() => {  
-  const value = getRemoteValue("experimentTest").asString(); // "0" or "1"  
+  const value = getRemoteValue("experimentTest").asString(); // "0" or "1"
 });
+```
 
 若上述步驟都做正確，基本上你會拿到 0 或者 1 的字串值。
 
@@ -106,6 +110,7 @@ App 的部分就先到這裡，接下來我們來看 Web 的實作:
 
 以我的實驗來說，code 是長這樣:
 
+```javascript
 function implementExperimentA(value) {  
   if (value ===  '0') {  
     // Provide code for visitors in the original.  
@@ -115,9 +120,10 @@ function implementExperimentA(value) {
 }
 
 gtag("event", "optimize.callback", {  
-  name: "hfL\_bpEAR2mDEqbAyyOPcw",  
+  name: "hfL_bpEAR2mDEqbAyyOPcw",  
   callback: implementExperimentA,  
 });
+```
 
 `name` 就是填剛剛記錄的實驗 ID，你也可以不填，不過到時若有多個實驗，這個 callback 就會都觸發，是建議填一下比較好。  
 `implementExperimentA` 吃三個參數，分別為: 組別、實驗 ID、容器 ID。  
@@ -132,28 +138,31 @@ Web 方面相對簡單很多，接下來會介紹如何封裝兩邊的 code，�
 
 以上述，code 大概會長這樣:
 
+```typescript
 export enum ExperimentGroup {  
   CONTROL,  
   VARIANT,  
 }
 
-let \_abTestingResolve: (group: ExperimentGroup | PromiseLike<ExperimentGroup>) => void;  
-let \_abTestingPromise = new Promise<ExperimentGroup>(resolve => {  
-  \_abTestingResolve = resolve;  
+let _abTestingResolve: (group: ExperimentGroup | PromiseLike<ExperimentGroup>) => void;  
+let _abTestingPromise = new Promise<ExperimentGroup>(resolve => {  
+  _abTestingResolve = resolve;  
 });
+```
 
 `_abTestingResolve` 為等等將 promise 從 pending 轉為 fulfilled 的手段。
 
 接下來再將剛剛的 remote config 與 optimize 的 code 整在一起:
 
+```typescript
 function handleSetExperimentGroup(value: string) {  
   switch (value) {  
     case "1": {  
-      return \_abTestingResolve(ExperimentGroup.VARIANT);  
+      return _abTestingResolve(ExperimentGroup.VARIANT);  
     }  
     case "0":  
     default: {  
-      return \_abTestingResolve(ExperimentGroup.CONTROL);  
+      return _abTestingResolve(ExperimentGroup.CONTROL);  
     }  
   }  
 }
@@ -161,7 +170,7 @@ function handleSetExperimentGroup(value: string) {
 export function abTestingSetup() {  
   if (Platform.OS === 'web') {  
     window.gtag("event", "optimize.callback", {  
-      name: "hfL\_bpEAR2mDEqbAyyOPcw",  
+      name: "hfL_bpEAR2mDEqbAyyOPcw",  
       callback: handleSetExperimentGroup,  
     });  
   } else {  
@@ -172,10 +181,11 @@ export function abTestingSetup() {
         handleSetExperimentGroup(group);  
       })  
       .catch(() => {  
-        \_abTestingResolve(ExperimentGroup.CONTROL);  
+        _abTestingResolve(ExperimentGroup.CONTROL);  
       });  
   }  
 }
+```
 
 這邊需將 `abTestingSetup` export 出去，在需要的地方執行他，可能在 App 啟動的地方之類的。
 
@@ -184,6 +194,7 @@ export function abTestingSetup() {
 到這邊基本上都弄好了，不過還有個致命的問題，就是若 promise 一直處於 pending 狀態或者等太久怎辦? 例如使用者安裝 adblock 或者其他原因造成拿不到 remote config value 或 optimize 無法執行。  
 故我們需寫另一個 promise，在執行時去倒數 N 秒，N 秒過後強制分組。
 
+```typescript
 function handleException() {  
   return new Promise<ExperimentGroup>(resolve => {  
     setTimeout(() => {  
@@ -191,15 +202,19 @@ function handleException() {
     }, N);  
   });  
 }
+```
 
 此時我們有兩個 promise 了，以我們要達成的目的，邏輯為: 取得組別，或者 N 秒後強制分組，這邊我們使用 `Promise.race` 來完成需求
 
+```javascript
 export function getABTestingGroup() {  
-  return Promise.race(\[\_abTestingPromise, handleException()\]);  
+  return Promise.race([_abTestingPromise, handleException()]);  
 }
+```
 
 `getAbTestingGroup` 就是我們在使用時所呼叫的 function 了。
 
+```typescript
 getAbTestingGroup().then((group: ExperimentGroup) => {  
   if (group === ExperimentGroup.CONTROL) {  
     // ...  
@@ -207,6 +222,7 @@ getAbTestingGroup().then((group: ExperimentGroup) => {
     // ...  
   }  
 });
+```
 
 以上便是如何在 RN 與 RN-Web 上做到 A/B testing 的介紹了。
 

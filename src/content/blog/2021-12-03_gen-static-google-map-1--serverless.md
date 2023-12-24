@@ -88,15 +88,17 @@ API Gateway 的地方新增一個 REST API，接到剛剛建立的 Lambda functi
 
 到這邊已經拿到產生的圖片內容了，剩下在 response 中加入適當的內容就可以回傳給 Cloudfront 了，差不多這樣:
 
+```javascript
 response.body = {圖片內容};  
-response.headers\["content-type"\] = \[  
+response.headers["content-type"] = [  
   {  
     key: "Content-Type",  
     value: "image/png",  
   },  
-\];  
+];  
 response.bodyEncoding = "base64";  
 response.status = "200";
+```
 
 因產生圖片的 Lambda 傳回來的圖為 base64 字串，故 `bodyEncoding` 需告知編碼方式 -> base64。
 

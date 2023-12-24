@@ -56,7 +56,7 @@ description: 本篇主要是給我自己做個紀錄的，方便以後回頭查�
 
 ![](/fromMediumImg/1__gx5JileqNEYcVtHiTirk9g.png)
 
-*   **opacity: 0** -> 同 display: none。
+*   **opacity: 0** -> 同 `display: none`。
 
 ### Transition
 
@@ -69,9 +69,9 @@ description: 本篇主要是給我自己做個紀錄的，方便以後回頭查�
 
 ### 結
 
-以上分別講解了 display: none / visibility: hidden / opacity: 0 這三種屬性的DOM 結構、事件監聽、效能、樣式繼承、與 transition，
+以上分別講解了 `display: none` / `visibility: hidden` / `opacity: 0` 這三種屬性的DOM 結構、事件監聽、效能、樣式繼承、與 transition，
 
-當初看到 visibility 的「樣式繼承」與 「transition」 最為驚訝，沒想到子元素設置 visibility: visible 就可以顯示出來了，平時沒這樣寫過，還真不知道。
+當初看到 visibility 的「樣式繼承」與 「transition」 最為驚訝，沒想到子元素設置 `visibility: visible` 就可以顯示出來了，平時沒這樣寫過，還真不知道。
 
 在講到效能的 opacity 那邊時，與前兩屬性一樣想要截圖，但發現 performance 竟然出現 Layout 與 Paint，有點傻眼，不知道哪邊弄錯了，故打算更看得懂時再回來補圖 😓
 
