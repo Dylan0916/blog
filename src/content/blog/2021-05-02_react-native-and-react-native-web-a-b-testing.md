@@ -12,6 +12,7 @@ tags:
 description: >-
   近期工作上接到需做 A/B testing 的需求，而專案上是三平台共同開發的，也就是使用 RN 與 RN-Web，從未在 App 上做 A/B
   testing 的我來說，此需求是項滿有挑戰性的。
+ogImage: /fromMediumImg/1__taogIHtqzQ7EYtQZEZBchw.png
 ---
 
 ![](/fromMediumImg/1__taogIHtqzQ7EYtQZEZBchw.png)

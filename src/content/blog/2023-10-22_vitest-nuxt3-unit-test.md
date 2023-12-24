@@ -10,6 +10,7 @@ tags:
   - Vue
   - Unit Testing
 description: 最近工作開始接觸 Nuxt3，在寫完需求的 code 後，總是希望有單元測試來保護我們的程式，而當前的專案還沒有引入單元測試，所以打算自己建起來。
+ogImage: /fromMediumImg/1__jFRwb4qlDi44TiTFeH1Xpw.png
 ---
 
 ![](/fromMediumImg/1__jFRwb4qlDi44TiTFeH1Xpw.png)

@@ -10,6 +10,7 @@ tags:
   - Display
   - Visibility
 description: 本篇主要是給我自己做個紀錄的，方便以後回頭查詢。
+ogImage: /fromMediumImg/1__5nvvoF__U3zTbmhb0pVOhxg.jpeg
 ---
 
 ![](/fromMediumImg/1__5nvvoF__U3zTbmhb0pVOhxg.jpeg)

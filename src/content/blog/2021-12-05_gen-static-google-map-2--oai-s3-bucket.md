@@ -10,6 +10,7 @@ tags:
   - Aws Oai
   - Origin Access Identity
 description: '若你還沒看過第一篇的，可透過下方連結抵達:'
+ogImage: /fromMediumImg/0__8TMW9P1HCspWgiFq.jpg
 ---
 
 ![](/fromMediumImg/0__8TMW9P1HCspWgiFq.jpg)

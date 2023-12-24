@@ -12,6 +12,7 @@ tags:
 description: >-
   近期工作有個需求要在商品頁上放個按鈕，按下按鈕後，若有安裝 App 則觸發 deep link 到達該頁，若沒安裝則開啟 App store /
   Google play。
+ogImage: /fromMediumImg/1__S__pXIJIdzORFYgfVX__UN8Q.png
 ---
 
 ![](/fromMediumImg/1__S__pXIJIdzORFYgfVX__UN8Q.png)

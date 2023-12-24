@@ -9,6 +9,7 @@ tags:
 description: >-
   前幾天完成了如何在 web 上完成 Apple Sign in 的介紹，想說一開始在做這個功能時，是從 App 先完成的，要不也把 RN
   的也介紹一下好了，但 RN 實在比 Web 上的簡單太多倍的… 畢竟已有別人做好的輪子，直接 import…
+ogImage: /fromMediumImg/1__xMd__2sq8tMSIy__bNcrS9Uw.png
 ---
 
 ![Verybuy app](/fromMediumImg/1__xMd__2sq8tMSIy__bNcrS9Uw.png)

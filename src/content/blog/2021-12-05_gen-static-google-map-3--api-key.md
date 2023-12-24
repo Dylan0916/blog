@@ -10,6 +10,7 @@ tags:
   - Fetch
   - Api Key
 description: '這篇是地圖系列的第三篇，若你還沒看過前兩篇的，可透過下方連結抵達:'
+ogImage: /fromMediumImg/1__ceb__FiEkHePAqH1k0PZicA.png
 ---
 
 ![](/fromMediumImg/1__ceb__FiEkHePAqH1k0PZicA.png)

@@ -9,6 +9,7 @@ tags:
   - Nodejs
   - Blockchain
 description: '系列中的第二篇，第一篇放在下方:'
+ogImage: /fromMediumImg/1__tjHdURlqCYjYJS__QWODqug.png
 ---
 
 ![](/fromMediumImg/1__tjHdURlqCYjYJS__QWODqug.png)

@@ -5,17 +5,17 @@ import postOgImage from "./og-templates/post";
 import siteOgImage from "./og-templates/site";
 
 const fetchFonts = async () => {
-  // Regular Font
-  const fontFileRegular = await fetch(
-    "https://www.1001fonts.com/download/font/ibm-plex-mono.regular.ttf"
-  );
-  const fontRegular: ArrayBuffer = await fontFileRegular.arrayBuffer();
+  const regularFontUrl =
+    "https://www.1001fonts.com/download/font/ibm-plex-mono.regular.ttf";
+  const boldFrontUrl =
+    "https://www.1001fonts.com/download/font/ibm-plex-mono.bold.ttf";
 
-  // Bold Font
-  const fontFileBold = await fetch(
-    "https://www.1001fonts.com/download/font/ibm-plex-mono.bold.ttf"
+  const fontFiles = await Promise.all(
+    [regularFontUrl, boldFrontUrl].map(url => fetch(url))
   );
-  const fontBold: ArrayBuffer = await fontFileBold.arrayBuffer();
+  const [fontRegular, fontBold] = await Promise.all(
+    fontFiles.map(file => file.arrayBuffer())
+  );
 
   return { fontRegular, fontBold };
 };

@@ -9,6 +9,7 @@ tags:
 description: >-
   因 Apple 限制上架商品只要有第三方登入就一定要有 Apple Sign in 功能，而在完成 App 的 Apple Sign in 後，也得在
   web 上實作，不然可能會發生昨日客戶在 App 上使用 Apple 做登入，隔天改跳到 web…
+ogImage: /fromMediumImg/1__fFS6Sm4__h0CkMFM5CPGWCg.jpeg
 ---
 
 ![](/fromMediumImg/1__fFS6Sm4__h0CkMFM5CPGWCg.jpeg)

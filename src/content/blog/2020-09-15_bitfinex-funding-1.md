@@ -9,6 +9,7 @@ tags:
   - Websocket
   - Sockets
 description: 前言
+ogImage: /fromMediumImg/1__JZi__bnHGmG79f__MSNghBIw.jpeg
 ---
 
 ![](/fromMediumImg/1__JZi__bnHGmG79f__MSNghBIw.jpeg)

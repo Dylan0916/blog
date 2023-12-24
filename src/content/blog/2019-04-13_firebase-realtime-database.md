@@ -9,6 +9,7 @@ tags:
 description: >-
   之前寫了一篇 Cloud Firestore 的紀錄，現在來寫另一個我覺得更強大的「Realtime Database」，至於什麼是 Realtime
   Database，這邊就不多說明了。
+ogImage: /fromMediumImg/1__B0Av__NnFrCKsyC7gN94ytg.png
 ---
 
 ![](/fromMediumImg/1__B0Av__NnFrCKsyC7gN94ytg.png)
