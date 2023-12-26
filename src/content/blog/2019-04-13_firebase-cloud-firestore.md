@@ -1,6 +1,6 @@
 ---
 author: Dylan
-pubDatetime: '2019-04-13T12:54:37.607Z'
+pubDatetime: 2019-04-13T12:54:37.607Z
 title: Firebase — Cloud Firestore 紀錄
 postSlug: 2019-04-13_firebase-cloud-firestore
 tags:

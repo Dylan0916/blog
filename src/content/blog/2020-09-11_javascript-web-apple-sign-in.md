@@ -1,6 +1,6 @@
 ---
 author: Dylan
-pubDatetime: '2020-09-11T15:47:33.269Z'
+pubDatetime: 2020-09-11T15:47:33.269Z
 title: 利用 JavaScript 在 Web 上完成 Apple Sign in
 postSlug: 2020-09-11_javaScript-web-apple-sign-in
 tags:
@@ -31,11 +31,12 @@ ogImage: /fromMediumImg/1__fFS6Sm4__h0CkMFM5CPGWCg.jpeg
 
 ![](/fromMediumImg/1__d2lfimd__5ZlN8wYpX4zazg.png)
 
-這邊是基本配置:  
-- `clientId` (string): 產品 identifier，非常重要，Apple 識別產品用的，稍後會帶著去申請。  
-- `scope` (string): 在用戶授權後，開發者能拿到的資料。一般都填「name email」，注意 name 與 email 須有一個空白。  
-- `redirectURI` (string): 用戶登入完後會回到的頁面網址，這邊是不能隨意填的，稍後在申請 clientId 時會需填入此資料。  
-- `state` (string): 給開發者隨意填入的值，用戶登入完後回傳的資料內，會原封不動地回傳一樣的值，可以用在驗證送出與回傳是否相等，避免一些攻擊。  
+這邊是基本配置:
+
+- `clientId` (string): 產品 identifier，非常重要，Apple 識別產品用的，稍後會帶著去申請。
+- `scope` (string): 在用戶授權後，開發者能拿到的資料。一般都填「name email」，注意 name 與 email 須有一個空白。
+- `redirectURI` (string): 用戶登入完後會回到的頁面網址，這邊是不能隨意填的，稍後在申請 clientId 時會需填入此資料。
+- `state` (string): 給開發者隨意填入的值，用戶登入完後回傳的資料內，會原封不動地回傳一樣的值，可以用在驗證送出與回傳是否相等，避免一些攻擊。
 - `usePopup` (boolean): 是否只用 popup 方式開啟，若為 false，則會將原本頁面導至登入目的頁，反之則開啟一個 popup，這邊筆者填入 true。
 
 接下來就是去申請 `clientId` 與填寫 `redirectURI` 了。

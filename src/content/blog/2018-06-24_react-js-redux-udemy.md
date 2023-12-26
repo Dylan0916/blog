@@ -1,6 +1,6 @@
 ---
 author: Dylan
-pubDatetime: '2018-06-24T12:58:01.432Z'
+pubDatetime: 2018-06-24T12:58:01.432Z
 title: 快速學習 React.js 和 Redux 的基礎到實踐 (Udemy) — 觀後心得
 postSlug: 2018-06-24_React-js-Redux-Udemy
 tags:
@@ -14,7 +14,7 @@ description: 人生第一次寫教學觀後心得，有寫不好的地方還請�
 
 人生第一次寫教學觀後心得，有寫不好的地方還請看官多多包容 QQ
 
-還有先說，這是心得文，不是技術分享o\_o
+還有先說，這是心得文，不是技術分享o_o
 
 ![](/fromMediumImg/1__VNHM__3a5UnDDWMJtEiebXA.jpeg)
 

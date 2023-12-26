@@ -1,6 +1,6 @@
 ---
 author: Dylan
-pubDatetime: '2021-09-29T16:48:49.772Z'
+pubDatetime: 2021-09-29T16:48:49.772Z
 title: 使用 lambda + firebase dynamic links 打造自己的動態連結產生器
 postSlug: 2021-09-29_using-lambda-firebase-gen-dynamic-links
 tags:
@@ -31,9 +31,9 @@ ogImage: /fromMediumImg/1__S__pXIJIdzORFYgfVX__UN8Q.png
 
 此篇接下來會介紹:
 
-*   如何在 firebase 上建立第一個 dynamic link。
-*   如何透過一隻 REST API 來產生一個 dynamic link。
-*   如何將已產生的 link 存起來，再次呼叫時拿到一樣的 link。
+- 如何在 firebase 上建立第一個 dynamic link。
+- 如何透過一隻 REST API 來產生一個 dynamic link。
+- 如何將已產生的 link 存起來，再次呼叫時拿到一樣的 link。
 
 ### 在 firebase 上建立 dynamic links
 

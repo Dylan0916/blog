@@ -1,6 +1,6 @@
 ---
 author: Dylan
-pubDatetime: '2020-09-15T16:03:09.076Z'
+pubDatetime: 2020-09-15T16:03:09.076Z
 title: 打造自己的 Bitfinex 放貸機器人 (1)
 postSlug: 2020-09-15_bitfinex-funding-1
 tags:
@@ -67,10 +67,10 @@ Bitfinex 麻煩的地方在這，他會將資料全部丟進 array 中，然後�
 上圖這樣的格式太難看懂了，我們改一下程式碼，將 message callback 中的 msg 用 JSON.parse 解析一下:
 
 ```javascript
-w.on("message", (msg) => {
- const parse = JSON.parse(msg);
+w.on("message", msg => {
+  const parse = JSON.parse(msg);
 
- console.log(parse);
+  console.log(parse);
 });
 ```
 

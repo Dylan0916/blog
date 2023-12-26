@@ -1,6 +1,6 @@
 ---
 author: Dylan
-pubDatetime: '2021-05-24T12:46:54.093Z'
+pubDatetime: 2021-05-24T12:46:54.093Z
 title: 在 VeryBuy 的三年 | FrontEnd
 postSlug: 2021-05-24_verybuy-working-experience
 tags:

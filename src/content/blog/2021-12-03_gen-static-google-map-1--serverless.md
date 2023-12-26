@@ -1,6 +1,6 @@
 ---
 author: Dylan
-pubDatetime: '2021-12-03T09:49:47.537Z'
+pubDatetime: 2021-12-03T09:49:47.537Z
 title: 來做個靜態地圖產生器吧 (一) | Serverless
 postSlug: 2021-12-03_gen-static-google-map-1--serverless
 tags:
@@ -90,14 +90,14 @@ API Gateway 的地方新增一個 REST API，接到剛剛建立的 Lambda functi
 到這邊已經拿到產生的圖片內容了，剩下在 response 中加入適當的內容就可以回傳給 Cloudfront 了，差不多這樣:
 
 ```javascript
-response.body = {圖片內容};  
-response.headers["content-type"] = [  
-  {  
-    key: "Content-Type",  
-    value: "image/png",  
-  },  
-];  
-response.bodyEncoding = "base64";  
+response.body = { 圖片內容 };
+response.headers["content-type"] = [
+  {
+    key: "Content-Type",
+    value: "image/png",
+  },
+];
+response.bodyEncoding = "base64";
 response.status = "200";
 ```
 

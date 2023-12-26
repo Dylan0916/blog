@@ -1,6 +1,6 @@
 ---
 author: Dylan
-pubDatetime: '2023-10-22T12:31:02.164Z'
+pubDatetime: 2023-10-22T12:31:02.164Z
 title: 使用 Vitest 測試 Nuxt3 的程式
 postSlug: 2023-10-22_vitest-nuxt3-unit-test
 tags:
@@ -32,16 +32,14 @@ ogImage: /fromMediumImg/1__jFRwb4qlDi44TiTFeH1Xpw.png
 然後新增 `vitest.config.ts` 檔案，添加基礎的配置：
 
 ```javascript
-import { defineConfig } from 'vitest/config';
-import vue from '@vitejs/plugin-vue';
+import { defineConfig } from "vitest/config";
+import vue from "@vitejs/plugin-vue";
 
 export default defineConfig({
-  plugins: [
-    vue(),
-  ],
+  plugins: [vue()],
   test: {
     globals: true,
-    environment: 'jsdom',
+    environment: "jsdom",
   },
 });
 ```
@@ -58,10 +56,10 @@ export default defineConfig({
 在專案下新增一個 `test.spec.ts`，並在裡面新增非常簡單的測試，並執行它：
 
 ```javascript
-describe('my describe', () => {  
-  it('test', () => {  
-    expect(1).toBe(1);  
-  });  
+describe("my describe", () => {
+  it("test", () => {
+    expect(1).toBe(1);
+  });
 });
 ```
 
@@ -74,16 +72,16 @@ describe('my describe', () => {
 在 `components` folder 下新增一個 component 檔案：`Test.vue`，內容如下：
 
 ```vue
-<template>  
-  <p>{{ msg }}</p>  
-</template>  
-  
-<script setup lang="ts">  
-const msg = ref('123');  
-  
-function changeMsg() {  
-  msg.value += '!';  
-}  
+<template>
+  <p>{{ msg }}</p>
+</template>
+
+<script setup lang="ts">
+const msg = ref("123");
+
+function changeMsg() {
+  msg.value += "!";
+}
 </script>
 ```
 
@@ -92,16 +90,16 @@ function changeMsg() {
 接下來我們新增這隻 component 的測試，內容如下：
 
 ```javascript
-import { mount } from '@vue/test-utils';  
-  
-import Test from './Test.vue';  
-  
-describe('my describe', () => {  
-  it('test', () => {  
-    const wrapper = mount(Test);  
-  
-    console.log(wrapper.html());  
-  });  
+import { mount } from "@vue/test-utils";
+
+import Test from "./Test.vue";
+
+describe("my describe", () => {
+  it("test", () => {
+    const wrapper = mount(Test);
+
+    console.log(wrapper.html());
+  });
 });
 ```
 
@@ -110,17 +108,17 @@ describe('my describe', () => {
 解決這個辦法是安裝 [unplugin-auto-import](https://www.npmjs.com/package/unplugin-auto-import)，並在 `vitest.config.ts` 中的 `plugins` 添加它：
 
 ```javascript
-import AutoImport from 'unplugin-auto-import/vite';  
-  
-export default defineConfig({  
-  // ...  
-  plugins: [  
-    // ...  
-    AutoImport({  
-      imports: ['vue'],  
-    }),  
-  ],  
-  // ...  
+import AutoImport from "unplugin-auto-import/vite";
+
+export default defineConfig({
+  // ...
+  plugins: [
+    // ...
+    AutoImport({
+      imports: ["vue"],
+    }),
+  ],
+  // ...
 });
 ```
 
@@ -131,25 +129,25 @@ export default defineConfig({
 接下來我們依然在 `components` 下新增一個檔案：`MyButton.vue`：
 
 ```vue
-<template>  
-  <button>Button</button>  
+<template>
+  <button>Button</button>
 </template>
 ```
 
 並且在剛剛新增的 `Test.vue` 使用它：
 
 ```diff
-<template>  
-  <p>{{ msg }}</p>  
-+ <MyButton />  
-</template>  
-  
-<script setup lang="ts">  
-const msg = ref('123');  
-  
-function changeMsg() {  
-  msg.value += '!';  
-}  
+<template>
+  <p>{{ msg }}</p>
++ <MyButton />
+</template>
+
+<script setup lang="ts">
+const msg = ref('123');
+
+function changeMsg() {
+  msg.value += '!';
+}
 </script>
 ```
 
@@ -160,17 +158,17 @@ function changeMsg() {
 解決辦法是安裝 [unplugin-vue-components](https://www.npmjs.com/package/unplugin-vue-components)，並在 `vitest.config.ts` 中的 `plugins` 添加它：
 
 ```javascript
-import Components from 'unplugin-vue-components/vite';  
-  
-export default defineConfig({  
-  // ...  
-  plugins: [  
-    // ...  
-    Components({  
-      dirs: ['./components'],  
-    }),  
-  ],  
-  // ...  
+import Components from "unplugin-vue-components/vite";
+
+export default defineConfig({
+  // ...
+  plugins: [
+    // ...
+    Components({
+      dirs: ["./components"],
+    }),
+  ],
+  // ...
 });
 ```
 
@@ -181,26 +179,26 @@ export default defineConfig({
 接下來我們依然在 `Test.vue` 中新增如下程式碼：
 
 ```diff
-<template>  
-  <p>{{ msg }}</p>  
-  <MyButton />  
-</template>  
-  
-<script setup lang="ts">  
-const msg = ref('123');  
-  
-function changeMsg() {  
-  msg.value += '!';  
-}  
-  
-+ definePageMeta({  
-+   layout: 'main',  
-+ });  
-  
-+ useSeoMeta({  
-+   title: 'Test Page',  
-+   description: 'this is desc',  
-+ });  
+<template>
+  <p>{{ msg }}</p>
+  <MyButton />
+</template>
+
+<script setup lang="ts">
+const msg = ref('123');
+
+function changeMsg() {
+  msg.value += '!';
+}
+
++ definePageMeta({
++   layout: 'main',
++ });
+
++ useSeoMeta({
++   title: 'Test Page',
++   description: 'this is desc',
++ });
 </script>
 ```
 
@@ -211,8 +209,8 @@ Nuxt 提供了一些 function 來讓我們直接使用，這些也不需要額�
 我目前的解決辦法是使用 `vi.stubGlobal` 對 `function` 去賦值，不確定有沒有更好的辦法。
 
 ```javascript
-vi.stubGlobal('definePageMeta', vi.fn());  
-vi.stubGlobal('useSeoMeta', vi.fn());
+vi.stubGlobal("definePageMeta", vi.fn());
+vi.stubGlobal("useSeoMeta", vi.fn());
 ```
 
 這個 `vi.stubGloal` 你可以寫在測試的開頭，也可以在 `vitest.config.ts` 中去定義 `setupFiles`，這樣就不用每新增一個測試都要寫一遍。

@@ -1,6 +1,6 @@
 ---
 author: Dylan
-pubDatetime: '2023-08-22T11:43:01.075Z'
+pubDatetime: 2023-08-22T11:43:01.075Z
 title: 淺談 HTTPS 的 TLS 四次握手
 postSlug: 2023-08-22_https-tls-handshake
 tags:

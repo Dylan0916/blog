@@ -1,6 +1,6 @@
 ---
 author: Dylan
-pubDatetime: '2020-09-13T15:22:11.631Z'
+pubDatetime: 2020-09-13T15:22:11.631Z
 title: 在 React Native 上實作 Apple Sign in
 postSlug: 2020-09-13_react-native-apple-sign-in
 tags:

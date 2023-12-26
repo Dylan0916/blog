@@ -1,6 +1,6 @@
 ---
 author: Dylan
-pubDatetime: '2020-10-25T13:12:11.391Z'
+pubDatetime: 2020-10-25T13:12:11.391Z
 title: 打造自己的 Bitfinex 放貸機器人 (3)
 postSlug: 2020-10-25_bitfinex-funding-3
 tags:

@@ -1,6 +1,6 @@
 ---
 author: Dylan
-pubDatetime: '2021-03-16T15:28:13.844Z'
+pubDatetime: 2021-03-16T15:28:13.844Z
 title: 使用 index 來當 React list 的 key 會發生意外的結果
 postSlug: 2021-03-16_react-list-index-key
 tags:

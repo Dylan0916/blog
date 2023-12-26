@@ -1,6 +1,6 @@
 ---
 author: Dylan
-pubDatetime: '2021-05-02T13:22:54.719Z'
+pubDatetime: 2021-05-02T13:22:54.719Z
 title: 如何在 react-native 與 react-native-web 上做 A/B testing
 postSlug: 2021-05-02_react-native-and-react-native-web-a-b-testing
 tags:
@@ -65,7 +65,7 @@ iOS 的 pod install 部份就不多贅述了。
 引入以下三段 code:
 
 ```typescript
-import remoteConfig from '@react-native-firebase/remote-config';
+import remoteConfig from "@react-native-firebase/remote-config";
 
 export const fetchConfig = () => remoteConfig().fetchAndActivate();
 
@@ -78,7 +78,7 @@ export const getRemoteValue = (key: string) => remoteConfig().getValue(key);
 接下來就可以使用下段 code 來取得在 remote config 上的值了:
 
 ```javascript
-fetchConfig().then(() => {  
+fetchConfig().then(() => {
   const value = getRemoteValue("experimentTest").asString(); // "0" or "1"
 });
 ```
@@ -112,17 +112,17 @@ App 的部分就先到這裡，接下來我們來看 Web 的實作:
 以我的實驗來說，code 是長這樣:
 
 ```javascript
-function implementExperimentA(value) {  
-  if (value ===  '0') {  
-    // Provide code for visitors in the original.  
-  } else if (value === '1') {  
-    // Provide code for visitors in first variant.  
-  }  
+function implementExperimentA(value) {
+  if (value === "0") {
+    // Provide code for visitors in the original.
+  } else if (value === "1") {
+    // Provide code for visitors in first variant.
+  }
 }
 
-gtag("event", "optimize.callback", {  
-  name: "hfL_bpEAR2mDEqbAyyOPcw",  
-  callback: implementExperimentA,  
+gtag("event", "optimize.callback", {
+  name: "hfL_bpEAR2mDEqbAyyOPcw",
+  callback: implementExperimentA,
 });
 ```
 
@@ -140,14 +140,16 @@ Web 方面相對簡單很多，接下來會介紹如何封裝兩邊的 code，�
 以上述，code 大概會長這樣:
 
 ```typescript
-export enum ExperimentGroup {  
-  CONTROL,  
-  VARIANT,  
+export enum ExperimentGroup {
+  CONTROL,
+  VARIANT,
 }
 
-let _abTestingResolve: (group: ExperimentGroup | PromiseLike<ExperimentGroup>) => void;  
-let _abTestingPromise = new Promise<ExperimentGroup>(resolve => {  
-  _abTestingResolve = resolve;  
+let _abTestingResolve: (
+  group: ExperimentGroup | PromiseLike<ExperimentGroup>
+) => void;
+let _abTestingPromise = new Promise<ExperimentGroup>(resolve => {
+  _abTestingResolve = resolve;
 });
 ```
 
@@ -156,35 +158,35 @@ let _abTestingPromise = new Promise<ExperimentGroup>(resolve => {
 接下來再將剛剛的 remote config 與 optimize 的 code 整在一起:
 
 ```typescript
-function handleSetExperimentGroup(value: string) {  
-  switch (value) {  
-    case "1": {  
-      return _abTestingResolve(ExperimentGroup.VARIANT);  
-    }  
-    case "0":  
-    default: {  
-      return _abTestingResolve(ExperimentGroup.CONTROL);  
-    }  
-  }  
+function handleSetExperimentGroup(value: string) {
+  switch (value) {
+    case "1": {
+      return _abTestingResolve(ExperimentGroup.VARIANT);
+    }
+    case "0":
+    default: {
+      return _abTestingResolve(ExperimentGroup.CONTROL);
+    }
+  }
 }
 
-export function abTestingSetup() {  
-  if (Platform.OS === 'web') {  
-    window.gtag("event", "optimize.callback", {  
-      name: "hfL_bpEAR2mDEqbAyyOPcw",  
-      callback: handleSetExperimentGroup,  
-    });  
-  } else {  
-    fetchConfig()  
-      .then(() => {  
+export function abTestingSetup() {
+  if (Platform.OS === "web") {
+    window.gtag("event", "optimize.callback", {
+      name: "hfL_bpEAR2mDEqbAyyOPcw",
+      callback: handleSetExperimentGroup,
+    });
+  } else {
+    fetchConfig()
+      .then(() => {
         const group = getRemoteValue("experimentTest").asString();
 
-        handleSetExperimentGroup(group);  
-      })  
-      .catch(() => {  
-        _abTestingResolve(ExperimentGroup.CONTROL);  
-      });  
-  }  
+        handleSetExperimentGroup(group);
+      })
+      .catch(() => {
+        _abTestingResolve(ExperimentGroup.CONTROL);
+      });
+  }
 }
 ```
 
@@ -196,32 +198,32 @@ export function abTestingSetup() {
 故我們需寫另一個 promise，在執行時去倒數 N 秒，N 秒過後強制分組。
 
 ```typescript
-function handleException() {  
-  return new Promise<ExperimentGroup>(resolve => {  
-    setTimeout(() => {  
-      resolve(ExperimentGroup.CONTROL);  
-    }, N);  
-  });  
+function handleException() {
+  return new Promise<ExperimentGroup>(resolve => {
+    setTimeout(() => {
+      resolve(ExperimentGroup.CONTROL);
+    }, N);
+  });
 }
 ```
 
 此時我們有兩個 promise 了，以我們要達成的目的，邏輯為: 取得組別，或者 N 秒後強制分組，這邊我們使用 `Promise.race` 來完成需求
 
 ```javascript
-export function getABTestingGroup() {  
-  return Promise.race([_abTestingPromise, handleException()]);  
+export function getABTestingGroup() {
+  return Promise.race([_abTestingPromise, handleException()]);
 }
 ```
 
 `getAbTestingGroup` 就是我們在使用時所呼叫的 function 了。
 
 ```typescript
-getAbTestingGroup().then((group: ExperimentGroup) => {  
-  if (group === ExperimentGroup.CONTROL) {  
-    // ...  
-  } else {  
-    // ...  
-  }  
+getAbTestingGroup().then((group: ExperimentGroup) => {
+  if (group === ExperimentGroup.CONTROL) {
+    // ...
+  } else {
+    // ...
+  }
 });
 ```
 

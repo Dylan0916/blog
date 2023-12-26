@@ -1,11 +1,11 @@
 ---
 author: Dylan
-pubDatetime: '2021-03-09T14:57:14.608Z'
+pubDatetime: 2021-03-09T14:57:14.608Z
 title: TypeScript | Function Overloading
 postSlug: 2021-03-09_typescript-function-overloading
 tags:
   - Typescript
-description: '一般在寫函式時，可能會有接收不同參數而回傳不同內容的情境，例如這樣:'
+description: "一般在寫函式時，可能會有接收不同參數而回傳不同內容的情境，例如這樣:"
 ---
 
 一般在寫函式時，可能會有接收不同參數而回傳不同內容的情境，例如這樣:

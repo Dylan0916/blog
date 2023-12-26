@@ -1,6 +1,6 @@
 ---
 author: Dylan
-pubDatetime: '2021-12-05T06:09:09.727Z'
+pubDatetime: 2021-12-05T06:09:09.727Z
 title: 來做個靜態地圖產生器吧 (三) | API 加上金鑰吧
 postSlug: 2021-12-05_gen-static-google-map-3--api-key
 tags:
@@ -9,7 +9,7 @@ tags:
   - Axios
   - Fetch
   - Api Key
-description: '這篇是地圖系列的第三篇，若你還沒看過前兩篇的，可透過下方連結抵達:'
+description: "這篇是地圖系列的第三篇，若你還沒看過前兩篇的，可透過下方連結抵達:"
 ogImage: /fromMediumImg/1__ceb__FiEkHePAqH1k0PZicA.png
 ---
 
@@ -68,31 +68,31 @@ Code 大概這樣:
 ```javascript
 const https = require("https");
 
-function fetchData(url) {  
-  const parsedUrl = new URL(url);  
-  const options = {  
-    host: parsedUrl.host,  
-    path: parsedUrl.pathname + parsedUrl.search,  
-    headers: {  
-      "x-api-key": "your key",  
-    },  
+function fetchData(url) {
+  const parsedUrl = new URL(url);
+  const options = {
+    host: parsedUrl.host,
+    path: parsedUrl.pathname + parsedUrl.search,
+    headers: {
+      "x-api-key": "your key",
+    },
   };
 
-  return new Promise((resolve, reject) => {  
-    https  
-      .get(options, (res) => {  
+  return new Promise((resolve, reject) => {
+    https
+      .get(options, res => {
         let body = "";
 
-        res.on("data", (chunk) => {  
-          body += chunk.toString();  
+        res.on("data", chunk => {
+          body += chunk.toString();
         });
 
-        res.on("end", () => {  
-          resolve(body);  
-        });  
-      })  
-      .on("error", reject);  
-  });  
+        res.on("end", () => {
+          resolve(body);
+        });
+      })
+      .on("error", reject);
+  });
 }
 ```
 
@@ -105,15 +105,15 @@ function fetchData(url) {
 採取方式是檢查 request headers 中是否有指定的鑰匙，這裡姑且叫 `x-dylan` 好了，值先設 `test`，然後在 EdgeLambda 檢查該鑰匙是否存在，不存在則直接回傳 403 狀態碼，code 如下:
 
 ```javascript
-const { request, response } = event.Records[0].cf;  
-const { headers } = request;  
-const xDylan = headers?.['x-dylan'][0].value;
+const { request, response } = event.Records[0].cf;
+const { headers } = request;
+const xDylan = headers?.["x-dylan"][0].value;
 
-if (xDylan !== "test") {  
-  response.body = JSON.stringify({ msg: "403" });  
+if (xDylan !== "test") {
+  response.body = JSON.stringify({ msg: "403" });
   response.status = "403";
 
-  return response;  
+  return response;
 }
 ```
 
@@ -121,8 +121,8 @@ if (xDylan !== "test") {
 
 現在回到 client 的程式，因要在 request headers 中帶上值，故原本直接在 `<img />` tag 的 src 上放 URL 方式得換掉，改用 XHR 方式，使用 blob ，再轉成 DOMString 來顯示圖片。
 
-*   若使用 JS 原生的 `fetch`，拿到 response 後，使用 `response.blob()`。
-*   若使用 `axios`，則 config 需添加 `responseType: "blob"`。
+- 若使用 JS 原生的 `fetch`，拿到 response 後，使用 `response.blob()`。
+- 若使用 `axios`，則 config 需添加 `responseType: "blob"`。
 
 headers 帶上鑰匙後，試著發 request 看看，會發現 console 出現一個錯誤信息:
 
@@ -130,9 +130,9 @@ headers 帶上鑰匙後，試著發 request 看看，會發現 console 出現一
 
 主要是跟 CORS 有關，且也有 preflight request，為何會有這問題呢? 原因是只要 request 符合下列之一，即會有 preflight request:
 
-*   method 非 `GET`, `POST`, `HEAD`。
-*   包含自訂的 headers。
-*   `Content-Type`非 `application/x-www-form-urlencoded`, `multipart/form-data`, `text/plain`。
+- method 非 `GET`, `POST`, `HEAD`。
+- 包含自訂的 headers。
+- `Content-Type`非 `application/x-www-form-urlencoded`, `multipart/form-data`, `text/plain`。
 
 且發現 server 那的 response header 中並未添加 `Access-Control-Allow-Origin`，才會被阻擋，詳細可看 Huli 大的 [CORS 系列文](https://blog.huli.tw/2021/02/19/cors-guide-1/)。
 
@@ -170,13 +170,13 @@ preflight request 沒有 HTTP status code? 這裡意思是即使剛剛添加允�
 將以下 code 放到最優先判斷位置:
 
 ```javascript
-const { request, response } = event.Records[0].cf;  
+const { request, response } = event.Records[0].cf;
 const { method } = request;
 
-if (/OPTIONS/i.test(method)) {  
+if (/OPTIONS/i.test(method)) {
   response.status = "200";
 
-  return response;  
+  return response;
 }
 ```
 

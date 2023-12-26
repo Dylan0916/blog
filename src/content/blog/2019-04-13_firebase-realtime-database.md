@@ -1,6 +1,6 @@
 ---
 author: Dylan
-pubDatetime: '2019-04-13T13:32:38.879Z'
+pubDatetime: 2019-04-13T13:32:38.879Z
 title: Firebase — Realtime Database 紀錄
 postSlug: 2019-04-13_firebase-realtime-database
 tags:

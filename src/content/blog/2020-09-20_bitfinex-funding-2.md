@@ -1,6 +1,6 @@
 ---
 author: Dylan
-pubDatetime: '2020-09-20T14:44:07.185Z'
+pubDatetime: 2020-09-20T14:44:07.185Z
 title: 打造自己的 Bitfinex 放貸機器人 (2)
 postSlug: 2020-09-20_bitfinex-funding-2
 tags:
@@ -8,7 +8,7 @@ tags:
   - Bitfinex
   - Nodejs
   - Blockchain
-description: '系列中的第二篇，第一篇放在下方:'
+description: "系列中的第二篇，第一篇放在下方:"
 ogImage: /fromMediumImg/1__tjHdURlqCYjYJS__QWODqug.png
 ---
 

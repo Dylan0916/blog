@@ -1,6 +1,6 @@
 ---
 author: Dylan
-pubDatetime: '2021-12-05T04:38:54.712Z'
+pubDatetime: 2021-12-05T04:38:54.712Z
 title: 來做個靜態地圖產生器吧 (二) | 使用 OAI 訪問 S3 bucket
 postSlug: 2021-12-05_gen-static-google-map-2--oai-s3-bucket
 tags:
@@ -9,7 +9,7 @@ tags:
   - Aws Policies
   - Aws Oai
   - Origin Access Identity
-description: '若你還沒看過第一篇的，可透過下方連結抵達:'
+description: "若你還沒看過第一篇的，可透過下方連結抵達:"
 ogImage: /fromMediumImg/0__8TMW9P1HCspWgiFq.jpg
 ---
 
