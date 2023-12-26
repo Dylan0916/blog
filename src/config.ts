@@ -6,6 +6,7 @@ export const SITE: Site = {
   desc: "一個簡單的部落格，大多數是記錄自己在前端工作上遇到的問題、或是一些比較零散的技術問題。",
   title: "Dylan's Blog",
   ogImage: "og-img.png",
+  ogType: "website",
   lightAndDarkMode: true,
   postPerPage: 10,
   recentPostNum: 5,

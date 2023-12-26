@@ -12,6 +12,7 @@ export interface Props {
   author?: string;
   description?: string;
   ogImage?: string;
+  ogType?: string;
   canonicalURL?: string;
 }
 
@@ -20,6 +21,7 @@ const {
   author = SITE.author,
   description = SITE.desc,
   ogImage = SITE.ogImage,
+  ogType = SITE.ogType,
   canonicalURL = new URL(Astro.url.pathname, Astro.site).href,
 } = Astro.props;
 
@@ -49,6 +51,7 @@ const socialImageURL = new URL(
     <meta property="og:title" content={title} />
     <meta property="og:description" content={description} />
     <meta property="og:url" content={canonicalURL} />
+    <meta property="og:type" content={ogType} />
     <meta property="og:image" content={socialImageURL} />
 
     <!-- Twitter -->
