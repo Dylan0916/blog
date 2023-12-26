@@ -46,7 +46,7 @@ export default defineConfig({
 
 這邊需要注意要在 `plugins` 特別加上 `vue`，否則在執行 `component` 的測試時會噴錯。
 
-> 在使用 `_Vite_` 時，可以在 `_vitest.config.ts_`中使用 `_mergerConfig_` 來將 `_vite.config.ts_` 的配置合併起來，所以不需要額外再 import vue plugin。  
+> 在使用 `Vite` 時，可以在 `vitest.config.ts`中使用 `mergerConfig` 來將 `vite.config.ts` 的配置合併起來，所以不需要額外再 import vue plugin。
 > 但在 nuxt 中，我沒找到相似的辦法，所以只好直接 import 它。
 
 在 `globals` 中，將值設為 `true`，來避免每次使用 `describe、it` 時都需要額外 import。
