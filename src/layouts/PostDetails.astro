@@ -6,6 +6,7 @@ import Tag from "@/components/Tag.astro";
 import Datetime from "@/components/Datetime";
 import type { CollectionEntry } from "astro:content";
 import { slugifyStr } from "@/utils/slugify";
+import { getPostJsonLd } from "@/utils/jsonLd";
 
 export interface Props {
   post: CollectionEntry<"blog">;
@@ -24,6 +25,7 @@ const ogUrl = new URL(
   Astro.url.origin
 ).href;
 const ogType = 'article'
+const jsonLd = getPostJsonLd(post)
 ---
 
 <Layout
@@ -33,6 +35,7 @@ const ogType = 'article'
   ogImage={ogUrl}
   ogType={ogType}
   canonicalURL={canonicalURL}
+  jsonLd={jsonLd}
 >
   <Header />
   <div class="mx-auto flex w-full max-w-3xl justify-start px-2">

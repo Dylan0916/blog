@@ -8,7 +8,7 @@ const blog = defineCollection({
       author: z.string().default(SITE.author),
       pubDatetime: z.date(),
       title: z.string(),
-      postSlug: z.string().optional(),
+      postSlug: z.string(),
       featured: z.boolean().optional(),
       draft: z.boolean().optional(),
       tags: z.array(z.string()).default(["others"]),
