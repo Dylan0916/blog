@@ -2,7 +2,6 @@ import type { CollectionEntry } from "astro:content";
 
 import { SITE } from "@/config";
 import { slugifyStr } from "./slugify";
-import { formatDate } from "./timeHelpers";
 
 const JSON_LD_CONTEXT = "https://schema.org" as const;
 
@@ -13,6 +12,14 @@ export const getWebsiteJsonLd = () => {
     name: SITE.title,
     author: SITE.author,
     url: SITE.website,
+    potentialAction: {
+      "@type": "SearchAction",
+      target: {
+        "@type": "EntryPoint",
+        urlTemplate: `${SITE.website}search/?q={keyword}`,
+      },
+      "query-input": "required name=keyword",
+    },
   };
 };
 
@@ -32,7 +39,7 @@ export const getPostJsonLd = (post: CollectionEntry<"blog">) => {
   const personImgUrl = `${SITE.website}avatar.jpg`;
   const postImgUrl = SITE.website + ogImage;
   const keywords = tags.map(tag => slugifyStr(tag));
-  const publishedDate = formatDate(pubDatetime);
+  const publishedDate = `${pubDatetime}`;
 
   return {
     "@context": JSON_LD_CONTEXT,
