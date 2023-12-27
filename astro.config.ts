@@ -14,7 +14,9 @@ export default defineConfig({
       applyBaseStyles: false,
     }),
     react(),
-    sitemap(),
+    sitemap({
+      lastmod: new Date("2023-12-25"),
+    }),
   ],
   markdown: {
     remarkPlugins: [
