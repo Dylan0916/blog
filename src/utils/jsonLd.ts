@@ -13,9 +13,9 @@ export const getWebsiteJsonLd = () => {
     author: SITE.author,
     url: SITE.website,
     potentialAction: {
-      "@type": "SearchAction",
+      "@type": "SearchAction" as const,
       target: {
-        "@type": "EntryPoint",
+        "@type": "EntryPoint" as const,
         urlTemplate: `${SITE.website}search/?q={keyword}`,
       },
       "query-input": "required name=keyword",
