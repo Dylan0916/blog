@@ -18,7 +18,7 @@ ogImage: /blogs/beyond-coding-in-software-development/cover.jpeg
 
 這場主要是講者去訪談一些大型公司的工程師，詢問他們的技術文化，得出一些結果。
 
-![company logos](/blogs/beyond-coding-in-software-development/01.png)
+![company logos](/blogs/beyond-coding-in-software-development/company-logos.png)
 
 ## 摘要
 
@@ -55,14 +55,14 @@ ogImage: /blogs/beyond-coding-in-software-development/cover.jpeg
 
 ### 靜態工具 - Style Guide
 
-![Google style guide](/blogs/beyond-coding-in-software-development/02.png)
+![Google style guide](/blogs/beyond-coding-in-software-development/google-style-guides.png)
 
-這是在 Google 裡面實際的一個靜態工具的範例，這是在非常大的公司會有的原則，例如 Amazon、Tiktok。
+這是在 Google 裡面實際的一個靜態工具的範例，這是在非常大的公司會有的原則，例如 Amazon、TikTok。
 而在中小型公司則是依靠自動化或 lint。
 
 ### 靜態工具 - Sonarqube
 
-![Google style guide](/blogs/beyond-coding-in-software-development/03.webp)
+![Google style guide](/blogs/beyond-coding-in-software-development/sonarqube.webp)
 
 這是一個開源的工具，但也提供需付費的 SASS 服務，能自動檢查程式碼的工具，包含但不限於：
 
@@ -124,3 +124,69 @@ ogImage: /blogs/beyond-coding-in-software-development/cover.jpeg
 使用 [conventional commit](https://www.conventionalcommits.org/en/v1.0.0/) 來陳述變更類別。
 
 - reviewers
+
+假設一個 PR 有 20 個 reviewer，但第一個 reviewer 可能有 80% 的貢獻，第二個 5%，第三個剩下 2% 3%，因他們大概率 context 都是差不多的、都是同個 team 的，思考點都差不多。故 reviewer 不是越多越好。
+講者說他公司是兩個 reviewer，除非是大型變更。
+
+- 盡可能自動化
+
+搭配剛剛提到的 Sonarqube，搭配一些 CI。
+
+### CR - code owner
+
+![code owner 01](/blogs/beyond-coding-in-software-development/codeowners-01.png)
+
+![code owner 02](/blogs/beyond-coding-in-software-development/codeowners-01.png)
+
+可以使用 Github 本身擁有的 code owner，可以設定哪些檔案是哪些團隊擁有的，當有這些檔案變更時，會明確指示誰該去 review。
+
+### 文件的核心價值
+
+- 針對 feature design 寫文件
+
+除了 API 要寫文件外，也要針對 feature 去寫文件，強迫設計者去清楚了解規格，如果設計者無法文字化來表達他要怎麼設計，通常代表他想的不夠清楚，所以可以強迫開法者釐清自己思維。
+
+- 交給新人
+
+將文件交給新人，就可以不用手把手帶新人，如果要規模化的話可以做一個文件庫。
+
+- 手動流程更容易遵守
+
+例如像是 SOP，當發生問題時，support engineer 該 follow 什麼流程，可能哪天自己的文件會幫助到自己。
+
+- 能回答出為什麼要做這個決策？
+
+例如現在在選資料庫，要 MySQL 還是 PostgreSQL，若你的文件只有介紹用了 MySQL 怎樣怎樣的，但是沒有寫當初為什麼選擇 MySQL，在未來可能會一直被問，例如：「為什麼明明這個語言的生態系最常搭配 PostgreSQL，為什麼這裡要 MySQL？」
+
+### 文件的難處
+
+![block diagram](/blogs/beyond-coding-in-software-development/block-diagram.webp)
+
+第一個難處是文字與事實不符
+
+假設要開始一個功能，然後大家叫你去看文件，結果發現文件與事實完全不匹配。
+所以文件也有版本問題，所以不是所有東西都要記成文件，不然很容易發生這個問題，盡量針對重要、長期有價值的來記錄。
+
+也要持續培養自己寫作的能力，持續優化寫文件的技巧。
+
+![documentation everywhere](/blogs/beyond-coding-in-software-development/documentation-everywhere.jpeg)
+
+第二個難處是到處都是文件
+
+什麼地方都有文件，google drive 有文件，他的電腦桌面有文件，他的抽屜也有文件，到底文件都放在哪？
+所以要盡可能的把文件都集中在幾個地方。
+
+演講者的公司有自己的 AI gpt，可以在裡面搜尋問題，因為統一化了，所以可以 training。
+
+### 哪時候要寫文件？
+
+- on call SOP
+
+前面提到的操作手冊。
+
+- 系統架構
+
+例如系統有 20 30 幾個服務，他們怎麼交互運作的。
+或是這個 E2E 流程超長，該怎麼設計之類的。
+
+-
