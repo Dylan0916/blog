@@ -7,10 +7,10 @@ tags:
   - HWDC
   - 心得文
 description: ---
-ogImage: /blog/beyond-coding-in-software-development/cover.jpeg
+ogImage: /blogs/beyond-coding-in-software-development/cover.jpeg
 ---
 
-![cover](/blog/beyond-coding-in-software-development/cover.jpeg)
+![cover](/blogs/beyond-coding-in-software-development/cover.jpeg)
 
 前幾天參加了 [HWDC](https://hwdc.ithome.com.tw/2024)，裡面有不少厲害的講者，其中最讓我印象深刻的就是「[走一遭『寫程式』以外的軟體開發 - 大型軟體公司的工作日誌 | HWDC 心得文](https://hwdc.ithome.com.tw/2024/session-page/3202)」，講者用詞簡單明瞭、內容清晰好理解、語調不會讓人覺得想睡，讓我覺得這是一場很棒的分享，故我決定寫成一篇文記錄一下其中內容。
 
@@ -18,7 +18,7 @@ ogImage: /blog/beyond-coding-in-software-development/cover.jpeg
 
 這場主要是講者去訪談一些大型公司的工程師，詢問他們的技術文化，得出一些結果。
 
-![company logos](/blog/beyond-coding-in-software-development/01.png)
+![company logos](/blogs/beyond-coding-in-software-development/01.png)
 
 ## 摘要
 
@@ -55,14 +55,14 @@ ogImage: /blog/beyond-coding-in-software-development/cover.jpeg
 
 ### 靜態工具 - Style Guide
 
-![Google style guide](/blog/beyond-coding-in-software-development/02.png)
+![Google style guide](/blogs/beyond-coding-in-software-development/02.png)
 
 這是在 Google 裡面實際的一個靜態工具的範例，這是在非常大的公司會有的原則，例如 Amazon、Tiktok。
 而在中小型公司則是依靠自動化或 lint。
 
 ### 靜態工具 - Sonarqube
 
-![Google style guide](/blog/beyond-coding-in-software-development/03.webp)
+![Google style guide](/blogs/beyond-coding-in-software-development/03.webp)
 
 這是一個開源的工具，但也提供需付費的 SASS 服務，能自動檢查程式碼的工具，包含但不限於：
 
