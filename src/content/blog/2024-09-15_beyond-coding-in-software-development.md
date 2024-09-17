@@ -1,6 +1,6 @@
 ---
 author: Dylan
-pubDatetime: 2024-09-15T13:48:46.285Z
+pubDatetime: 2024-09-17T14:29:48.076Z
 title: 走一遭『寫程式』以外的軟體開發 - 大型軟體公司的工作日誌 | HWDC 紀錄
 postSlug: 2024-09-15_beyond-coding-in-software-development
 tags:
