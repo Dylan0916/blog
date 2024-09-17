@@ -1,18 +1,19 @@
 ---
 author: Dylan
 pubDatetime: 2024-09-15T13:48:46.285Z
-title: 走一遭『寫程式』以外的軟體開發 - 大型軟體公司的工作日誌 | HWDC 心得文
+title: 走一遭『寫程式』以外的軟體開發 - 大型軟體公司的工作日誌 | HWDC 紀錄
 postSlug: 2024-09-15_beyond-coding-in-software-development
 tags:
   - HWDC
   - 心得文
-description: ---
+  - 紀錄文
+description: 前幾天參加了 HWDC，裡面有不少厲害的講者，其中最讓我印象深刻的就是「走一遭『寫程式』以外的軟體開發 - 大型軟體公司的工作日誌」
 ogImage: /blogs/beyond-coding-in-software-development/cover.jpeg
 ---
 
 ![cover](/blogs/beyond-coding-in-software-development/cover.jpeg)
 
-前幾天參加了 [HWDC](https://hwdc.ithome.com.tw/2024)，裡面有不少厲害的講者，其中最讓我印象深刻的就是「[走一遭『寫程式』以外的軟體開發 - 大型軟體公司的工作日誌 | HWDC 心得文](https://hwdc.ithome.com.tw/2024/session-page/3202)」，講者用詞簡單明瞭、內容清晰好理解、語調不會讓人覺得想睡，讓我覺得這是一場很棒的分享，故我決定寫成一篇文記錄一下其中內容。
+前幾天參加了 [HWDC](https://hwdc.ithome.com.tw/2024)，裡面有不少厲害的講者，其中最讓我印象深刻的就是「[走一遭『寫程式』以外的軟體開發 - 大型軟體公司的工作日誌](https://hwdc.ithome.com.tw/2024/session-page/3202)」，講者用詞簡單明瞭、內容清晰好理解、語調不會讓人覺得想睡，讓我覺得這是一場很棒的分享，故我決定寫成一篇文記錄一下其中內容。
 
 > 這是講者的 Medium: https://medium.com/@johnliutw
 
@@ -37,7 +38,7 @@ ogImage: /blogs/beyond-coding-in-software-development/cover.jpeg
 
 - 要發揮作用
 
-這意思是像是有些公司在你剛入職時會叫你讀一些文件，有超多的規則，然後要你遵守這些之類的，可能你讀完就想離職了，沒辦法運作。
+這意思是像是有些公司在你剛入職時會叫你讀一些文件，有超多的規則，然後要你遵守這些之類的，可能你讀完就想離職了，沒辦法運作。\
 故我們要簡化這些流程，切中要點。
 
 - 以讀者角度來撰寫
@@ -57,7 +58,7 @@ ogImage: /blogs/beyond-coding-in-software-development/cover.jpeg
 
 ![Google style guide](/blogs/beyond-coding-in-software-development/google-style-guides.png)
 
-這是在 Google 裡面實際的一個靜態工具的範例，這是在非常大的公司會有的原則，例如 Amazon、TikTok。
+這是在 Google 裡面實際的一個靜態工具的範例，這是在非常大的公司會有的原則，例如 Amazon、TikTok。\
 而在中小型公司則是依靠自動化或 lint。
 
 ### 靜態工具 - Sonarqube
@@ -90,7 +91,7 @@ ogImage: /blogs/beyond-coding-in-software-development/cover.jpeg
 
 - 強固性
 
-看看這個程式碼是否很容易出錯、是否很敏感，例如一個程式碼接受一個參數，型態是數字 (int)，然後你帶了一個字串 (string)，這個程式碼就會出錯，你可能會想設計上就是要數字，帶字串進來本來就會錯，不過如果它夠強固的話，能替它想到各種情境、做各種轉換，就能提升程式碼的強固性。
+看看這個程式碼是否很容易出錯、是否很敏感，例如一個程式碼接受一個參數，型態是數字 (int)，然後你帶了一個字串 (string)，這個程式碼就會出錯，你可能會想設計上就是要數字，帶字串進來本來就會錯，不過如果它夠強固的話，能替它想到各種情境、做各種轉換，就能提升程式碼的強固性。\
 因為在大型公司，你永遠不知道你的程式碼會給什麼人使用，例如你可能在維護一個 N 年前的程式碼，你根本不知道當初那個人在哪了。
 
 - 可讀性
@@ -116,7 +117,7 @@ ogImage: /blogs/beyond-coding-in-software-development/cover.jpeg
 
 - 盡可能縮小 PR 範疇
 
-可以以 200 行為參考基準 (自己決定就好)，小的 PR 能加速被通過的機率。
+可以以 200 行為參考基準 (自己決定就好)，小的 PR 能加速被通過的機率。\
 若真的太複雜，可以開一個 PR review 會議，讓開發者介紹他的架構、怎麼運作之類的，但嫌開會太麻煩，那就把 PR 拆小，就不會有這些事出現了。
 
 - commit message
@@ -125,7 +126,7 @@ ogImage: /blogs/beyond-coding-in-software-development/cover.jpeg
 
 - reviewers
 
-假設一個 PR 有 20 個 reviewer，但第一個 reviewer 可能有 80% 的貢獻，第二個 5%，第三個剩下 2% 3%，因他們大概率 context 都是差不多的、都是同個 team 的，思考點都差不多。故 reviewer 不是越多越好。
+假設一個 PR 有 20 個 reviewer，但第一個 reviewer 可能有 80% 的貢獻，第二個 5%，第三個剩下 2% 3%，因他們大概率 context 都是差不多的、都是同個 team 的，思考點都差不多。故 reviewer 不是越多越好。\
 講者說他公司是兩個 reviewer，除非是大型變更。
 
 - 盡可能自動化
@@ -136,7 +137,7 @@ ogImage: /blogs/beyond-coding-in-software-development/cover.jpeg
 
 ![code owner 01](/blogs/beyond-coding-in-software-development/codeowners-01.png)
 
-![code owner 02](/blogs/beyond-coding-in-software-development/codeowners-01.png)
+![code owner 02](/blogs/beyond-coding-in-software-development/codeowners-02.png)
 
 可以使用 Github 本身擁有的 code owner，可以設定哪些檔案是哪些團隊擁有的，當有這些檔案變更時，會明確指示誰該去 review。
 
@@ -160,20 +161,20 @@ ogImage: /blogs/beyond-coding-in-software-development/cover.jpeg
 
 ### 文件的難處
 
+**第一個難處是文字與事實不符**
+
 ![block diagram](/blogs/beyond-coding-in-software-development/block-diagram.webp)
 
-第一個難處是文字與事實不符
-
-假設要開始一個功能，然後大家叫你去看文件，結果發現文件與事實完全不匹配。
+假設要開始一個功能，然後大家叫你去看文件，結果發現文件與事實完全不匹配。\
 所以文件也有版本問題，所以不是所有東西都要記成文件，不然很容易發生這個問題，盡量針對重要、長期有價值的來記錄。
 
 也要持續培養自己寫作的能力，持續優化寫文件的技巧。
 
+**第二個難處是到處都是文件**
+
 ![documentation everywhere](/blogs/beyond-coding-in-software-development/documentation-everywhere.jpeg)
 
-第二個難處是到處都是文件
-
-什麼地方都有文件，google drive 有文件，他的電腦桌面有文件，他的抽屜也有文件，到底文件都放在哪？
+什麼地方都有文件，google drive 有文件，他的電腦桌面有文件，他的抽屜也有文件，到底文件都放在哪？\
 所以要盡可能的把文件都集中在幾個地方。
 
 演講者的公司有自己的 AI gpt，可以在裡面搜尋問題，因為統一化了，所以可以 training。
@@ -186,7 +187,171 @@ ogImage: /blogs/beyond-coding-in-software-development/cover.jpeg
 
 - 系統架構
 
-例如系統有 20 30 幾個服務，他們怎麼交互運作的。
+例如系統有 20 30 幾個服務，他們怎麼交互運作的。\
 或是這個 E2E 流程超長，該怎麼設計之類的。
 
--
+- onboarding guild
+
+新人入職手冊。
+
+- 功能的整體設計
+
+在滿多公司中都會規定在啟動一個 feature 前都要寫 feature design，這裡指的不是 API，而是例如：需要設定文件 reviewer、UI 你會用到哪些 shared component、你會跟哪些 API 互動、你的 case 是什麼？\
+如果有資料的 migration，你的 schema 設計、migration plan 是什麼？\
+關於測試，你的 QA 有沒有提供測試計畫、他如果要測你的功能，你有沒有什麼特別的 context 要先設計？
+
+所以有非常多的環節要設計，所以寫程式只是非常短的一個環節，大部分時間都在文件討論。\
+在越複雜的功能上越需要這麼做。
+
+- 對外的 API
+
+對外開出來的 API 也需要文件，像是 Amazon 有文件委員會，要送到美國總部給 principle engineer 等級以上的人查看，看看狀態如何、有沒有符合規範等等。
+
+講者分享之前的一個慘痛經驗：曾經發生了一個 incident，在修的過程發現一個字拼錯，例如 apple 拼成 appla，而這個 API 也早已開出去給客戶，且已開出去好幾年了，根本不能改，只好繼續這樣不舒服的看著，也造成閱讀上的困擾，所以這種對外的 API 要非常非常嚴格的對待。
+
+## 品質和自動化
+
+### 測試的好處
+
+測試的好處有幾點，例如增加基本品質、增加信心，並且可規模化的，你的單元測試可以給很多人跑。
+
+另外單元測試可以督促更嚴格的設計，迫使開發者去思考可測試性。
+
+講者分享公司曾發生一個 P0 的 incident，它是之前發生了一個改變，但這個改變並沒有程式碼 level 的測試，如果有的話就能在很早的階段被 catch 住。後來詢問為何沒有測試，得到的答案是這個不太好加測試。
+
+### 測試的維度
+
+測試有不同的維度，最小的像是單元測試，中間的像是手動測試，大的像是 E2E 測試。
+
+**不理想的測試環境：**
+
+![testing ice cream cone](/blogs/beyond-coding-in-software-development/testing-ice-cream-cone.png)
+
+不少公司的測試組成都如上圖那樣，手動測試佔最大量，其次是自動化，再來是整合測試，最後才是單元測試。\
+理想上應該要反過來。
+
+### 單元測試的生態系
+
+- 新人入職訓練的一環
+
+因為我們已經做了自動化了，所以要 merge code 就一定要過測試涵蓋率，迫使人去做這件事。
+
+- 透過儀表板查看測試狀況
+
+例如一個 channel 每週傳送一個報告，顯示各個團隊測試涵蓋率是多少，促使彼此競爭。
+
+- 廁所測試
+
+Google 有一個[廁所測試](https://testing.googleblog.com/2007/01/introducing-testing-on-toilet.html)，會在上廁所這種這麼短的時間內告訴你怎麼寫好測試。
+
+- 部分仍需要手動測試
+
+雖然自動化測試很好，但仍然有些東西無法自動化，例如影片品質、搜尋結果、或複雜的安全漏洞，依然得仰賴人工測試，所以在自動化測試中可以使用 82 法則，80% 的案例使用自動化測試，把精力放在剩餘的 20% 上，這種特別負責、特別需要人類去判斷的測試上。
+
+Agoda 曾分享他們會對單元測試的一些條件做抽換，看看是否一定的安全性。
+
+### 大型測試
+
+大型測試，例如 E2E testing，因單元測試有許多的 mock，所以可能有模擬度不足的問題。\
+以及 configuration，在不同環境，你的 config 是否正確。
+
+再來是特殊情境，例如效能和壓力。\
+看看有沒有什麼非預期的行為或 side effects，因單元測試是取決於開發者對這個功能的理解透不透徹。
+
+最後是真空效應，指的是單元測試或自動化測試都是在嚴格的環境內，但 user 都是很有想像力的，所以還是需要大型測試去 cover 這種亂七八糟的世界。
+
+### 大型測試類別
+
+- 探索性測試
+
+例如聘請團隊來測試你的產品，他們不會針對你的測試案例做測試，他會像是探險一樣，對你的產品點點看、打打看之類的。
+
+- Binary 檔案
+
+假設你的產品是非 web 服務的產品，例如 desktop 的 application，會有 binary 檔案。
+
+- 故障與混沌
+
+例如 monkey testing，找一隻猴子來亂點你的產品，看看有沒有什麼意外發生，類似探索性，但更非理性一點。
+
+- User Evaluation - 內部員工測試
+
+在 release 前或第一天，讓大家一起來測最新的版本，各自看看有沒有什麼問題，或許可以提早發現一些 bug。
+
+### 測試 - CI
+
+- 測試左移
+
+讓開發者透過自動化測試，盡可能少的 effect 來完成這件事，搭配 lint 或安全性的確認。
+
+有些公司會透過 build，實際跑起來看看。
+
+### 測試 - CI 的失敗案例
+
+Google 有一個案例叫「Google Takeout」，他們為了做到這個測試，會把所有的 server 串在一起，因所有服務都串在一起，所以 log 會非常多、非常難以追蹤，等於一個小小工程師發了一個 PR 就要測試整個 Google。
+
+### 測試 - CD
+
+自動部署強調是敏捷、小、並且快，以及要自動化、隔離性、模組化、且可靠\n
+假設一個部屬的 script，執行五次有三次會失敗，就不會有人想用了。
+
+再來是 feature toggle，很多大型公司都會使用，因為即使功能經過測試，但可能還是有 edge case 沒 cover 到，造成客戶困擾，故會仰賴 feature toggle 的保護。
+
+### 測試 - Release Train
+
+- 沒有完美的 release
+
+不應該為了一些小小的問題而停下，不可能修復完每個 bug，即使有些 feature 仍有 bug，我們還是可以移到下個階段。
+
+- 嚴格執行 deadline
+
+deadline 是固定的，不應該在 deadline 後仍有東西被合併，若有東西要修改，需要高階主管的 approval。
+
+## 系統迭代
+
+### 依賴的自評清單
+
+- 該依賴是否有自動化測試？
+- 誰提供的？是否是大的組織？或夠有信賴的組織？
+- 相容性如何，是否能向前相容？
+- 會使用多久？
+- 多久會有大的異動？若每個禮拜都有大的異動會直接哭死
+- 我們實現這個依賴的成本多少？
+- 確保這些依賴有持續被更新
+
+### 為什麼棄用很難？
+
+有一個 Hyrum’s 的定律：**使⽤者時常以意外或不可預⾒的⽅式使⽤系統，尤其是使⽤者越多且越古⽼的系統**
+
+想像一個系統已經 10 年了，誰知道誰已經用了什麼方式在使用它，只要是寫在程式碼中的邏輯，都非常非常有可能被某個重要的客戶給依賴。
+
+### 大規模的變更，需要特別講
+
+- 因為會有技術限制，以及合併的衝突。
+- 一些大規模變更會因為 CI 的整合會有很多的複雜性。
+- 難以測試。
+- 大型變更會有數萬行，所以 CR 困難。
+
+## 團隊文化
+
+### 工程效率
+
+來到最後一個環節，工程效率，分為三點：
+
+- 個人層面
+
+主要是個人技術能力、寫程式的能力。
+
+紀錄自己過去一年參與的專案，當做到很重要的 ticket、解了很有價值的 bug 時把它記錄下來，在考核時可以拿出來參考，不要考核時想不起來自己過去一年中做了什麼。
+
+- 團隊層面
+
+怎麼溝通、怎麼跟其他人合作。
+
+- 組織層面
+
+你做的東西做出了什麼貢獻
+
+---
+
+以上就是這次「走一遭『寫程式』以外的軟體開發 - 大型軟體公司的工作日誌」分享的東西，我覺得很多層面都是過去工作中都遇過的事，但一個不注意就會被你忘記的。所以時常去複習這些事，讓自己成為更好的工程師！
