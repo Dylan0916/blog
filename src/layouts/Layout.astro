@@ -40,8 +40,7 @@ const socialImageURL = new URL(
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width" />
-    <link rel="icon" type="image/png" href="/favicon.png" />
-    <link rel="alternate" type="application/rss+xml" title="RSS" href="/rss.xml" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.png" />
     <link rel="canonical" href={canonicalURL} />
     <meta name="generator" content={Astro.generator} />
 
@@ -69,8 +68,7 @@ const socialImageURL = new URL(
 
     <GoogleFonts />
 
-    <meta name="theme-color" media="(prefers-color-scheme: light)" content="#006CAC" />
-    <meta name="theme-color" media="(prefers-color-scheme: dark)" content="#FF6B01" />
+    <meta name="theme-color" content="" />
 
     {
       // If PUBLIC_GOOGLE_SITE_VERIFICATION is set in the environment variable,
@@ -84,12 +82,7 @@ const socialImageURL = new URL(
       )
     }
 
-    <meta property="og:image:alt" content={title} />
-    <meta name="twitter:image:alt" content={title} />
-
     <ViewTransitions />
-
-    <slot name="head" />
 
     <script is:inline src="/toggle-theme.js"></script>
 
