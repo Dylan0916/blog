@@ -22,6 +22,17 @@ const next = pageNum < totalPages ? "" : "disabled";
 ---
 
 <Layout title={`Posts | ${SITE.title}`}>
+  <fragment slot="head">
+    {
+      pageNum > 1 && (
+        <link
+          rel="prev"
+          href={`/posts${pageNum - 1 !== 1 ? "/" + (pageNum - 1) : ""}`}
+        />
+      )
+    }
+    {pageNum < totalPages && <link rel="next" href={`/posts/${pageNum + 1}`} />}
+  </fragment>
   <Header activeNav="posts" />
   <Main pageTitle="Posts" pageDesc="All the articles I've posted.">
     <ul>

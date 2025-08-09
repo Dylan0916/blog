@@ -41,7 +41,12 @@ const socialImageURL = new URL(
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width" />
     <link rel="icon" type="image/png" href="/favicon.png" />
-    <link rel="alternate" type="application/rss+xml" title="RSS" href="/rss.xml" />
+    <link
+      rel="alternate"
+      type="application/rss+xml"
+      title="RSS"
+      href="/rss.xml"
+    />
     <link rel="canonical" href={canonicalURL} />
     <meta name="generator" content={Astro.generator} />
 
@@ -69,6 +74,29 @@ const socialImageURL = new URL(
 
     <GoogleFonts />
 
+    <!-- Inline minimal critical CSS to mitigate FOUC during ViewTransitions -->
+    <style is:inline>
+      :root,
+      html[data-theme="light"] {
+        --color-fill: 251, 254, 251;
+        --color-text-base: 40, 39, 40;
+        --color-accent: 0, 108, 172;
+      }
+      html[data-theme="dark"] {
+        --color-fill: 33, 39, 55;
+        --color-text-base: 234, 237, 243;
+        --color-accent: 255, 107, 1;
+      }
+      body {
+        background-color: rgb(var(--color-fill));
+        color: rgb(var(--color-text-base));
+        min-height: 100svh;
+        font-family:
+          "IBM Plex Mono", ui-monospace, SFMono-Regular, Menlo, Monaco,
+          Consolas, "Liberation Mono", "Courier New", monospace;
+      }
+    </style>
+
     <meta name="theme-color" content="" />
 
     {
@@ -85,6 +113,8 @@ const socialImageURL = new URL(
 
     <meta property="og:image:alt" content={title} />
     <meta name="twitter:image:alt" content={title} />
+
+    <slot name="head" />
 
     <ClientRouter />
 
