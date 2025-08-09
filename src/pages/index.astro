@@ -16,32 +16,34 @@ const posts = await getCollection("blog");
 const sortedPosts = getSortedPosts(posts);
 
 const socialCount = SOCIALS.filter(social => social.active).length;
-const showRss = false
+const showRss = false;
 ---
 
 <Layout>
   <Header />
   <main id="main-content">
     <section id="hero">
-      {showRss && <a
-        target="_blank"
-        href="/rss.xml"
-        class="rss-link"
-        aria-label="rss feed"
-        title="RSS Feed"
-      >
-        <svg xmlns="http://www.w3.org/2000/svg" class="rss-icon"
-          ><path
-            d="M19 20.001C19 11.729 12.271 5 4 5v2c7.168 0 13 5.832 13 13.001h2z"
-          ></path><path
-            d="M12 20.001h2C14 14.486 9.514 10 4 10v2c4.411 0 8 3.589 8 8.001z"
-          ></path><circle cx="6" cy="18" r="2"></circle>
-        </svg>
-      </a>}
+      {
+        showRss && (
+          <a
+            target="_blank"
+            href="/rss.xml"
+            class="rss-link"
+            aria-label="rss feed"
+            title="RSS Feed"
+          >
+            <svg xmlns="http://www.w3.org/2000/svg" class="rss-icon">
+              <>
+                <path d="M19 20.001C19 11.729 12.271 5 4 5v2c7.168 0 13 5.832 13 13.001h2z" />
+                <path d="M12 20.001h2C14 14.486 9.514 10 4 10v2c4.411 0 8 3.589 8 8.001z" />
+                <circle cx="6" cy="18" r="2" />
+              </>
+            </svg>
+          </a>
+        )
+      }
 
-      <p>
-        一名前端工程師，隨便記錄一下自己覺得有趣的事情，方便自己回顧。
-      </p>
+      <p>一名前端工程師，隨便記錄一下自己覺得有趣的事情，方便自己回顧。</p>
       {
         // only display if at least one social link is enabled
         socialCount > 0 && (
@@ -62,14 +64,13 @@ const showRss = false
           sortedPosts
             .filter((_, index: number) => index < SITE.recentPostNum)
             .filter(({ data }) => !data.featured)
-            .map(
-              ({ data }) =>
-                <Card
-                  href={`/posts/${slugify(data)}`}
-                  frontmatter={data}
-                  secHeading={false}
-                />
-            )
+            .map(({ data }) => (
+              <Card
+                href={`/posts/${slugify(data)}`}
+                frontmatter={data}
+                secHeading={false}
+              />
+            ))
         }
       </ul>
       <div class="all-posts-btn-wrapper">
