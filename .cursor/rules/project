@@ -1,0 +1,43 @@
+---
+description: Use pnpm instead of npm, yarn, or bun.
+globs: "*"
+alwaysApply: false
+---
+
+rules:
+  - id: prefer-pnpm
+    description: Always use pnpm for installs, updates, scripts
+    patterns:
+      - /\b(npm|yarn)\s+(install|i|add|update|up|run)\b/
+    suggest: Use pnpm instead (e.g., pnpm install / pnpm add / pnpm update / pnpm run)
+
+  - id: ban-any
+    description: Do not use the any type in TypeScript code
+    patterns:
+      - /:\s*any\b/
+      - /<any>/
+    suggest: Use strict, specific types or unknown with proper narrowing
+
+  - id: conventional-commits
+    description: Enforce Conventional Commits for commit messages (English only)
+    patterns:
+      - /.*/
+    suggest: |
+      Use Conventional Commits: feat|fix|docs|chore|refactor|perf|test|build|ci|style(scope?): message
+      Examples:
+        - feat(ui): add dark mode toggle
+        - fix(posts): correct slugify for unicode titles
+        - chore(deps): update astro to v5.12.9
+
+  - id: lockfile-pnpm
+    description: This repo uses pnpm (pnpm-lock.yaml present)
+    patterns:
+      - /pnpm-lock\.yaml/
+    suggest: Ensure commands and scripts are run with pnpm
+
+  - id: astro-build
+    description: Use `pnpm run astro` or `pnpm run build` for build tasks
+    patterns:
+      - /\bastro\s+(build|dev|check)\b/
+    suggest: Use scripts from package.json (pnpm run dev/build/check)
+
