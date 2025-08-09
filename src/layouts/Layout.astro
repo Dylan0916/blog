@@ -2,7 +2,7 @@
 import { LOCALE, SITE } from "@/config";
 import "@/styles/base.css";
 import { Schema } from "astro-seo-schema";
-import { ViewTransitions } from "astro:transitions";
+import { ClientRouter } from "astro:transitions";
 
 import GoogleFonts from "@/components/GoogleFonts.astro";
 import { getWebsiteJsonLd } from "@/utils/jsonLd";
@@ -87,7 +87,7 @@ const socialImageURL = new URL(
     <meta property="og:image:alt" content={title} />
     <meta name="twitter:image:alt" content={title} />
 
-    <ViewTransitions />
+    <ClientRouter />
 
     <slot name="head" />
 
