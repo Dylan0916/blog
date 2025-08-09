@@ -12,6 +12,7 @@ export const getWebsiteJsonLd = () => {
     name: SITE.title,
     author: SITE.author,
     url: SITE.website,
+    sameAs: [...([] as string[])],
     potentialAction: {
       "@type": "SearchAction" as const,
       target: {

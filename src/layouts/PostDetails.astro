@@ -37,6 +37,12 @@ const jsonLd = getPostJsonLd(post);
   canonicalURL={canonicalURL}
   jsonLd={jsonLd}
 >
+  <fragment slot="head">
+    <meta property="article:published_time" content={new Date(pubDatetime).toISOString()} />
+    {tags && tags.map(tag => (
+      <meta property="article:tag" content={tag} />
+    ))}
+  </fragment>
   <Header />
   <div class="mx-auto flex w-full max-w-3xl justify-start px-2">
     <button
