@@ -2,7 +2,7 @@
 author: Dylan
 pubDatetime: 2022-02-13T12:20:23.302Z
 title: 淺談 HTTP/1、HTTP/1.1、HTTP/2、HTTP/3 協議
-postSlug: 2022-02-13_http-1-http-1.1-http-2-http-3
+postSlug: 2022-02-13_http-1-http-1-1-http-2-http-3
 tags:
   - HTTP1
   - HTTP2
