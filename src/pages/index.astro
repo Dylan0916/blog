@@ -66,7 +66,7 @@ const showRss = false;
             .filter(({ data }) => !data.featured)
             .map(({ data }) => (
               <Card
-                href={`/posts/${slugify(data)}`}
+                href={`/posts/${slugify(data)}/`}
                 frontmatter={data}
                 secHeading={false}
               />
