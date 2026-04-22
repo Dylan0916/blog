@@ -41,10 +41,10 @@ Title and description (excerpt) are important for search engine optimization (SE
 
 `slug` is the unique identifier of the url. Thus, `slug` must be unique and different from other posts. The whitespace of `slug` needs to be separated with `-` or `_` but `-` is recommended. However, even if you don't write the correct slug, AstroPaper will automatically slugify your incorrect slug. If slug is not specified, the slugified title of the post will be used as slug.
 
-If you omit `tags` in a blog post (in other words, if no tag is specified), the default tag `others` will be used as a tag for that post. You can set the default tag in the `/src/content/config.ts` file.
+If you omit `tags` in a blog post (in other words, if no tag is specified), the default tag `others` will be used as a tag for that post. You can set the default tag in the `/src/content.config.ts` file.
 
 ```ts
-// src/content/config.ts
+// src/content.config.ts
 export const blogSchema = z.object({
   // ---
   draft: z.boolean().optional(),

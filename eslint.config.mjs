@@ -3,7 +3,15 @@ import eslintPluginAstro from "eslint-plugin-astro";
 export default [
   ...eslintPluginAstro.configs.recommended,
   {
-    ignores: [".husky,", ".vscode", "public", "dist", ".yarn", "node_modules/**", "dist/**"],
+    ignores: [
+      ".husky",
+      ".vscode",
+      "public",
+      "dist",
+      ".yarn",
+      "node_modules/**",
+      "dist/**",
+    ],
   },
   {
     languageOptions: {
@@ -23,15 +31,10 @@ export default [
   {
     files: ["**/*.astro"],
     languageOptions: {
-      // parser: eslintPluginAstro.parsers.astro,
       parserOptions: {
         parser: "@typescript-eslint/parser",
         extraFileExtensions: [".astro"],
       },
-    },
-    plugins: {
-    },
-    rules: {
     },
   },
 ];
