@@ -17,8 +17,11 @@ export interface Props {
 
 const { pageNum, totalPages, posts } = Astro.props;
 
-const prev = pageNum > 1 ? "" : "disabled";
-const next = pageNum < totalPages ? "" : "disabled";
+const isPrevDisabled = pageNum <= 1;
+const isNextDisabled = pageNum >= totalPages;
+const disabledButtonClass =
+  "pointer-events-none select-none opacity-50 hover:text-skin-base group-hover:fill-skin-base";
+const disabledSvgClass = "group-hover:fill-skin-base!";
 ---
 
 <Layout title={`Posts | ${SITE.title}`}>
@@ -35,26 +38,35 @@ const next = pageNum < totalPages ? "" : "disabled";
 
   {
     totalPages > 1 && (
-      <nav class="pagination-wrapper" aria-label="Pagination">
+      <nav
+        class="mt-auto mb-8 flex justify-center"
+        aria-label="Pagination"
+      >
         <LinkButton
-          disabled={prev === "disabled"}
+          disabled={isPrevDisabled}
           href={`/posts${pageNum - 1 !== 1 ? "/" + (pageNum - 1) : ""}`}
-          className={`mr-4 select-none ${prev}`}
+          className={`mr-4 select-none ${isPrevDisabled ? disabledButtonClass : ""}`}
           ariaLabel="Previous"
         >
-          <svg xmlns="http://www.w3.org/2000/svg" class={`${prev}-svg`}>
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            class={isPrevDisabled ? disabledSvgClass : ""}
+          >
             <path d="M12.707 17.293 8.414 13H18v-2H8.414l4.293-4.293-1.414-1.414L4.586 12l6.707 6.707z" />
           </svg>
           Prev
         </LinkButton>
         <LinkButton
-          disabled={next === "disabled"}
+          disabled={isNextDisabled}
           href={`/posts/${pageNum + 1}`}
-          className={`ml-4 select-none ${next}`}
+          className={`ml-4 select-none ${isNextDisabled ? disabledButtonClass : ""}`}
           ariaLabel="Next"
         >
           Next
-          <svg xmlns="http://www.w3.org/2000/svg" class={`${next}-svg`}>
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            class={isNextDisabled ? disabledSvgClass : ""}
+          >
             <path d="m11.293 17.293 1.414 1.414L19.414 12l-6.707-6.707-1.414 1.414L15.586 11H6v2h9.586z" />
           </svg>
         </LinkButton>
@@ -63,17 +75,3 @@ const next = pageNum < totalPages ? "" : "disabled";
   }
   <Footer noMarginTop={totalPages > 1} />
 </Layout>
-
-<style>
-  @reference "../styles/base.css";
-
-  .pagination-wrapper {
-    @apply mb-8 mt-auto flex justify-center;
-  }
-  .disabled {
-    @apply pointer-events-none select-none opacity-50 hover:text-skin-base group-hover:fill-skin-base;
-  }
-  .disabled-svg {
-    @apply group-hover:!fill-skin-base;
-  }
-</style>
