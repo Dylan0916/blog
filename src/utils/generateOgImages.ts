@@ -7,11 +7,11 @@ import siteOgImage from "./og-templates/site";
 const fetchFonts = async () => {
   const regularFontUrl =
     "https://www.1001fonts.com/download/font/ibm-plex-mono.regular.ttf";
-  const boldFrontUrl =
+  const boldFontUrl =
     "https://www.1001fonts.com/download/font/ibm-plex-mono.bold.ttf";
 
   const fontFiles = await Promise.all(
-    [regularFontUrl, boldFrontUrl].map(url => fetch(url))
+    [regularFontUrl, boldFontUrl].map(url => fetch(url))
   );
   const [fontRegular, fontBold] = await Promise.all(
     fontFiles.map(file => file.arrayBuffer())
