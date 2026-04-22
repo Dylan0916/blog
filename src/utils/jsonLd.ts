@@ -75,7 +75,7 @@ export const getPostJsonLd = (post: CollectionEntry<"blog">) => {
       "@type": "Blog" as const,
       name: SITE.title,
     },
-    wordCount: body.length,
+    wordCount: body?.length ?? 0,
     keywords,
   };
 };
