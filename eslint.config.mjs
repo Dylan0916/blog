@@ -27,6 +27,9 @@ export default [
     linterOptions: {
       reportUnusedDisableDirectives: true,
     },
+    rules: {
+      "prefer-const": "error",
+    },
   },
   {
     files: ["**/*.astro"],

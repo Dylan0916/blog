@@ -50,7 +50,11 @@ export default function SearchBar({ searchList }: Props) {
 
     // put focus cursor at the end of the string
     setTimeout(function () {
-      inputRef.current!.selectionStart = inputRef.current!.selectionEnd =
+      if (!inputRef.current) {
+        return;
+      }
+
+      inputRef.current.selectionStart = inputRef.current.selectionEnd =
         searchStr?.length || 0;
     }, 50);
   }, []);
@@ -58,7 +62,7 @@ export default function SearchBar({ searchList }: Props) {
   useEffect(() => {
     // Add search result only if
     // input value is more than one character
-    let inputResult = inputVal.length > 1 ? fuse.search(inputVal) : [];
+    const inputResult = inputVal.length > 1 ? fuse.search(inputVal) : [];
     setSearchResults(inputResult);
 
     // Update search string in URL
