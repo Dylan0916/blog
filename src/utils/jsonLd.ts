@@ -32,6 +32,7 @@ export const getPostJsonLd = (post: CollectionEntry<"blog">) => {
       description,
       postSlug,
       pubDatetime,
+      modDatetime,
       ogImage,
       tags,
     },
@@ -40,7 +41,10 @@ export const getPostJsonLd = (post: CollectionEntry<"blog">) => {
   const personImgUrl = `${SITE.website}avatar.jpg`;
   const postImgUrl = SITE.website + ogImage;
   const keywords = tags.map(tag => slugifyStr(tag));
-  const publishedDate = `${pubDatetime}`;
+  const datePublished = new Date(pubDatetime).toISOString();
+  const dateModified = modDatetime
+    ? new Date(modDatetime).toISOString()
+    : datePublished;
 
   return {
     "@context": JSON_LD_CONTEXT,
@@ -49,8 +53,8 @@ export const getPostJsonLd = (post: CollectionEntry<"blog">) => {
     headline: postTitle,
     name: postTitle,
     description,
-    datePublished: publishedDate,
-    dateModified: publishedDate,
+    datePublished,
+    dateModified,
     author: {
       "@type": "Person" as const,
       name: SITE.author,
