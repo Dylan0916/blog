@@ -1,4 +1,4 @@
-import { defineConfig } from "astro/config";
+import { defineConfig, svgoOptimizer } from "astro/config";
 import tailwindcss from "@tailwindcss/vite";
 import react from "@astrojs/react";
 import remarkToc from "remark-toc";
@@ -32,4 +32,7 @@ export default defineConfig({
     },
   },
   scopedStyleStrategy: "where",
+  experimental: {
+    svgOptimizer: svgoOptimizer(),
+  },
 });
