@@ -88,7 +88,27 @@ const socialImageURL = new URL(
 
     <ClientRouter />
 
-    <script is:inline src="/toggle-theme.js"></script>
+    <!--
+      Inline FOUC-prevention script: sets data-theme on <html> before the
+      browser paints. Runs synchronously, no defer/async. Exposes the
+      resolved value on window.__theme so the deferred theme module can
+      skip re-detection.
+    -->
+    <script is:inline>
+      (function () {
+        const stored = localStorage.getItem("theme");
+        const prefersDark = window.matchMedia(
+          "(prefers-color-scheme: dark)"
+        ).matches;
+        const theme = stored ?? (prefersDark ? "dark" : "light");
+        document.firstElementChild?.setAttribute("data-theme", theme);
+        window.__theme = { value: theme };
+      })();
+    </script>
+
+    <script>
+      import "@/scripts/theme";
+    </script>
 
     <!-- Google Tag Manager -->
     <script is:inline>
