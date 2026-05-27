@@ -89,6 +89,9 @@ const socialImageURL = new URL(
     <meta property="og:image:alt" content={title} />
     <meta name="twitter:image:alt" content={title} />
 
+    <!-- Slot for page-level head injections (article meta, JSON-LD overrides, etc.) -->
+    <slot name="head" />
+
     <ClientRouter />
 
     <!--
