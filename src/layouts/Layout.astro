@@ -3,8 +3,8 @@ import { LOCALE, SITE } from "@/config";
 import "@/styles/base.css";
 import { Schema } from "astro-seo-schema";
 import { ClientRouter } from "astro:transitions";
+import { Font } from "astro:assets";
 
-import GoogleFonts from "@/components/GoogleFonts.astro";
 import { getWebsiteJsonLd } from "@/utils/jsonLd";
 
 const googleSiteVerification = import.meta.env.PUBLIC_GOOGLE_SITE_VERIFICATION;
@@ -67,7 +67,10 @@ const socialImageURL = new URL(
     <meta property="twitter:description" content={description} />
     <meta property="twitter:image" content={socialImageURL} />
 
-    <GoogleFonts />
+    <Font
+      cssVariable="--font-ibm-plex-mono"
+      preload={[{ subset: "latin", weight: 400, style: "normal" }]}
+    />
 
     <meta name="theme-color" content="" />
 
