@@ -14,8 +14,6 @@ ogImage: /fromMediumImg/1__UdUbyxGPX8i4vh__5Ye1Qcw.png
 
 ![](/fromMediumImg/1__UdUbyxGPX8i4vh__5Ye1Qcw.png)
 
-話說至今已快三年半了，這個時候才在決定打這篇，主要是 HR 向我要久任稿，想說就順便記錄到自己的 Medium 好了…
-
 接下來，將以 VB 簡稱 VeryBuy。
 
 ### 社會新鮮人

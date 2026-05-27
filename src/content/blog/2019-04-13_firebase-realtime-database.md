@@ -14,7 +14,7 @@ ogImage: /fromMediumImg/1__B0Av__NnFrCKsyC7gN94ytg.png
 
 ![](/fromMediumImg/1__B0Av__NnFrCKsyC7gN94ytg.png)
 
-之前寫了一篇 [Cloud Firestore 的紀錄](/posts/2019-04-13_firebase-cloud-firestore)，現在來寫另一個我覺得更強大的「**Realtime Database**」，至於什麼是 Realtime Database，這邊就不多說明了。
+之前寫過一篇 [Cloud Firestore 紀錄](/posts/2019-04-13_firebase-cloud-firestore)，這篇換來看 Firebase 的另一個 database — Realtime Database。
 
 ### First
 
@@ -27,8 +27,6 @@ ogImage: /fromMediumImg/1__B0Av__NnFrCKsyC7gN94ytg.png
 然後點選「規則」進入編輯，將 `.read` 與 `.write` 設為 `true`，按下「發布」，這樣你就可以讀取與設定資料到資料庫裡了。
 
 ### Coding
-
-進入寫 code 時間啦，
 
 在你的編輯器插入以下程式碼：
 
@@ -60,6 +58,6 @@ realtime database 神奇的地方在於即時更新，我們回到 firebase，�
 
 > 真是太神奇了～
 
-### End
+### 結
 
-ok，這篇一樣只講 get 與 set，需要其他功能的讀者得去找別的文章來學習了 😅
+set / get 都很單純，Realtime Database 真正強大的地方就是這個即時更新行為，做聊天室、即時通知這類功能滿適合的。

@@ -17,8 +17,6 @@ ogImage: /fromMediumImg/1__taogIHtqzQ7EYtQZEZBchw.png
 
 ![](/fromMediumImg/1__taogIHtqzQ7EYtQZEZBchw.png)
 
-近期工作上接到需做 A/B testing 的需求，而專案上是三平台共同開發的，也就是使用 RN 與 RN-Web，從未在 App 上做 A/B testing 的我來說，此需求是項滿有挑戰性的。
-
 在一番研究後，在 App 上可以使用 Google 提供的 [Firebase](https://firebase.google.com/)，Web 上可以使用一樣由 Google 提供的 [Optimize](https://optimize.google.com/)，兩項工具在當前需求上是可以免試使用的。  
 而要如何讓 App 與 Web 吃同一套邏輯的 code 呢? 後面會詳細說明。
 
@@ -231,15 +229,8 @@ getAbTestingGroup().then((group: ExperimentGroup) => {
 
 ### 結
 
-一開始在 Survey 階段時，是透過這篇來發現 Firebase 有提供 A/B testing 的解決辦法: [A/B Testing in React Native Has Never Been So Easy: Firebase Is Here](https://levelup.gitconnected.com/a-b-testing-in-react-native-has-never-so-easy-firebase-is-here-67836a35e0d3)，那時還挺興奮的想說 web 也可以靠此方法來實現了!!  
-殊不知 web 雖有支援 remote config，但不支援 A/B testing…
+一開始 Survey 時是透過這篇發現 Firebase 有提供 A/B testing 解決辦法: [A/B Testing in React Native Has Never Been So Easy: Firebase Is Here](https://levelup.gitconnected.com/a-b-testing-in-react-native-has-never-so-easy-firebase-is-here-67836a35e0d3)，當時還挺興奮以為 web 也能靠此方法實現，殊不知 web 雖支援 remote config，但不支援 A/B testing。
 
-在那悲劇的當下，主管提供 optimize 的方案參考，當時卡在要如何在 optimize call 到我的 source code，或者我要如何知道它的分組結果?  
-後來就找到 callback 那篇解決辦法，一切都往好的方向發展。
+後來主管提供 optimize 的方案，原本卡在要如何在 optimize call 到 source code、要如何知道分組結果，找到 callback 那篇解決辦法後一切就順了。
 
-在判斷 adblock 的地方，我們是用 [just-detect-adblock](https://www.npmjs.com/package/just-detect-adblock) 這套，用起來滿簡單的。
-
-寫下此篇，是希望哪天有人也在寫一套能支援 App 與 Web 的系統，也碰上 A/B testing 的問題時，能有個解決方案看~  
-也順便對自己的記錄。
-
-若以上有哪裡寫錯，或有問題的，麻煩不吝提出，感謝!
+判斷 adblock 的部分用的是 [just-detect-adblock](https://www.npmjs.com/package/just-detect-adblock)，用起來滿簡單的。

@@ -17,9 +17,7 @@ ogImage: /fromMediumImg/1__S__pXIJIdzORFYgfVX__UN8Q.png
 
 ![](/fromMediumImg/1__S__pXIJIdzORFYgfVX__UN8Q.png)
 
-近期工作有個需求要在商品頁上放個按鈕，按下按鈕後，若有安裝 App 則觸發 deep link 到達該頁，若沒安裝則開啟 App store / Google play。
-
-翻了一下網上資料，大都是先開啟 scheme URL，數秒後再到 App store / Google play。  
+為了實作這需求，翻了一下網上資料，大都是先開啟 scheme URL，數秒後再到 App store / Google play。
 以 momo 為例，在點擊指定的按鈕時會先打開 scheme URL，若我有安裝 App 到還好，會直接開啟 App，但若沒，瀏覽器則無法處理這連結:
 
 ![](/fromMediumImg/1__mh9FMBNbH12c__JCzl3pL2A.jpeg)
@@ -235,11 +233,8 @@ Firebase dynamic links 有每個 IP 每秒 5 個請求，以及每天 200,000 �
 
 ### 結
 
-這是我第一次在 API Gateway 上連到 lambda function 來產生 API，覺得挺有趣的，故 API Gateway 那有講錯還不吝指教。
+這是筆者第一次在 API Gateway 上連到 lambda function 來產生 API，過程挺有趣的。
 
-整體 demo code 算是很精簡了，部份與安全性有關的都沒設定好，例如以文章開頭所提到的需求，不會希望任何 link 都要產生短網址，故還需判斷 request 的 link 是否是白名單內的；以及 CORS 的 allow-origin 與 allow-headers 也得嚴謹點。  
-lambda 那邊的 code 也不算完整，async-await 的 catch 也沒處理，讀者可自己 handle 下。
+整體 demo code 算是很精簡，部份與安全性有關的都沒設定好。以文章開頭的需求為例，不會希望任何 link 都能產生短網址，故還需判斷 request 的 link 是否在白名單內；CORS 的 allow-origin 與 allow-headers 也得嚴謹點。lambda 那邊的 code 也不算完整，async-await 的 catch 沒處理，讀者可自行 handle。
 
-在保留已產生過的 link 那，可以將 S3 換成 redis，速度會快很多，但相對需花點費用，筆者只是選擇相對便宜 / 免費的方案。
-
-感謝您的觀看。
+保留已產生過的 link 的部分，可以將 S3 換成 redis，速度會快很多但需花點費用，筆者只是選擇相對便宜 / 免費的方案。

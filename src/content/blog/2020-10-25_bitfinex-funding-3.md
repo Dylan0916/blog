@@ -15,8 +15,6 @@ ogImage: /fromMediumImg/1__zoZASHGYl2PLyZhv0EWqHQ.jpeg
 
 ![](/fromMediumImg/1__zoZASHGYl2PLyZhv0EWqHQ.jpeg)
 
-最近真的太多事了，沒想到第三篇拖了一個月才寫…
-
 這篇是系列中的第三篇，一樣在開頭處附上這系列要講的順序，已寫的就附上超連結:
 
 1.  [取得當前 XXX 幣的放貸利率。](/posts/2020-09-15_bitfinex-funding-1)

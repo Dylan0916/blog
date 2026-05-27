@@ -84,5 +84,3 @@ ogImage: /fromMediumImg/1__tjHdURlqCYjYJS__QWODqug.png
 今天介紹了 Bitfinex 的 authenticate websocket，因是 auth 的關係，所以需要申請一組 API key，申請成功後就能做一些比較私有的操作，利用此來獲取自己的錢包資訊。
 
 筆者拿到這些資訊的處理與前一篇一樣，存進一個變數中，一段時間發送到前端去，讓前端顯示在畫面上。
-
-感謝看到此的各位，下篇見。

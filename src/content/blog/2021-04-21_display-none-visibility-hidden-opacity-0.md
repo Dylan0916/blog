@@ -15,8 +15,6 @@ ogImage: /fromMediumImg/1__5nvvoF__U3zTbmhb0pVOhxg.jpeg
 
 ![](/fromMediumImg/1__5nvvoF__U3zTbmhb0pVOhxg.jpeg)
 
-本篇主要是給我自己做個紀錄的，方便以後回頭查詢。
-
 主要會講解這三個屬性的:
 
 - DOM 結構
@@ -70,10 +68,6 @@ ogImage: /fromMediumImg/1__5nvvoF__U3zTbmhb0pVOhxg.jpeg
 
 ### 結
 
-以上分別講解了 `display: none` / `visibility: hidden` / `opacity: 0` 這三種屬性的DOM 結構、事件監聽、效能、樣式繼承、與 transition，
+當初最驚訝的是 visibility 的「樣式繼承」與「transition」，沒想到子元素設置 `visibility: visible` 就可以顯示出來，平時沒這樣寫過，還真不知道。
 
-當初看到 visibility 的「樣式繼承」與 「transition」 最為驚訝，沒想到子元素設置 `visibility: visible` 就可以顯示出來了，平時沒這樣寫過，還真不知道。
-
-在講到效能的 opacity 那邊時，與前兩屬性一樣想要截圖，但發現 performance 竟然出現 Layout 與 Paint，有點傻眼，不知道哪邊弄錯了，故打算更看得懂時再回來補圖 😓
-
-以上若哪裡寫的與你認知有出入，麻煩不吝賜教，感激不盡~
+而效能的 opacity 那邊，原本想跟前兩屬性一樣截圖，但 performance 竟然出現 Layout 與 Paint，有點傻眼，先放著等更看得懂時再回來補圖 😓

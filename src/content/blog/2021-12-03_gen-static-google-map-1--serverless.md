@@ -26,8 +26,6 @@ ogImage: /fromMediumImg/1__6ufHr4gA8clnVPe2EKhNoA.png
 文章內不會詳細記錄 code 怎麼寫的，只會說明邏輯的走法，主要是細節有點雜，且 Medium 的 markdown 實在有點鳥…  
 在 AWS 上將會使用到 API Gateway、Cloudfront、EdgeLambda、Lambda 與 S3。
 
-那就開始吧!
-
 ### Google Static Map API
 
 可以在[官方文件](https://developers.google.com/maps/documentation/maps-static/overview)看到地圖的 API，其中 key 的部分需填上自己的，若還沒有 key 則可以照著官方介紹去申請。  

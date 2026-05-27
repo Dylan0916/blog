@@ -12,10 +12,6 @@ tags:
 description: 人生第一次寫教學觀後心得，有寫不好的地方還請看官多多包容 QQ
 ---
 
-人生第一次寫教學觀後心得，有寫不好的地方還請看官多多包容 QQ
-
-還有先說，這是心得文，不是技術分享o_o
-
 ![](/fromMediumImg/1__VNHM__3a5UnDDWMJtEiebXA.jpeg)
 
 在朋友的介紹下，購買了 Udemy 的這門 React 課程 — [快速學習 React.js 和 Redux 的基礎到實踐](https://www.udemy.com/reactjs-redux/)
@@ -68,8 +64,6 @@ description: 人生第一次寫教學觀後心得，有寫不好的地方還請�
 
 #### **結**
 
-到這裡先感謝看到此段的你，感謝你看了我打這麼多的廢話XD 若有哪裡講錯的，還請不吝指教!!
+筆者還沒到很熟悉 react，很多東西講不太上來，但這門課真的還不錯，物超所值。
 
-說真的，我還沒到很熟悉 react，所以很多東西講不太上來，但這門課真的還不錯啦，物超所值，希望老師還會再出更多的教學ＸＤ
-
-#### 最後再附上這門課的連結 - [傳送門](https://www.udemy.com/reactjs-redux/)
+課程連結 - [傳送門](https://www.udemy.com/reactjs-redux/)

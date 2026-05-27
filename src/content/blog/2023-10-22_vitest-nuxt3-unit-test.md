@@ -15,7 +15,7 @@ ogImage: /fromMediumImg/1__jFRwb4qlDi44TiTFeH1Xpw.png
 
 ![](/fromMediumImg/1__jFRwb4qlDi44TiTFeH1Xpw.png)
 
-最近工作開始接觸 Nuxt3，在寫完需求的 code 後，總是希望有單元測試來保護我們的程式，而當前的專案還沒有引入單元測試，所以打算自己建起來。
+最近專案接到 Nuxt3，順手把單元測試補起來。
 
 在使用 Vite 時，官方推薦使用 Vitest，所以在使用 Nuxt 時，也優先採用這套。  
 在 google `nuxt + vitest` 後，發現有一個現成的工具：[nuxt-vitest](https://github.com/danielroe/nuxt-vitest)，但它仍在非常初期的開發階段，使用起來很多問題，且它是完全依照 nuxt 執行方式去啟動程式，所以 middlewares 那些全都會執行，跑起來有點花時間，所以只好放棄它，改由自己配置 vitest。
@@ -217,6 +217,6 @@ vi.stubGlobal("useSeoMeta", vi.fn());
 
 ### 結
 
-這篇主要是記錄如何在 Nuxt3 中使用 Vitest 來寫單元測試，讓我自己在未來若再次遇到時，可以有個參考的地方。
+這篇主要是記錄如何在 Nuxt3 中使用 Vitest 來寫單元測試，讓未來再次遇到時有個參考。
 
-其中介紹了如何配置 config、如何解決 Vitest 遇到 Nuxt 中自動 import vue methods 與 components 的問題，最後介紹如何解決若有使用 Nuxt function 時，在 Vitest 遇到的問題，雖然這個解法我不是很滿意，但在找到更好的解決辦法之前，此方法能讓測試繼續進行。
+最後 Nuxt function 的解法不太滿意，但在找到更好的辦法之前，此方法能讓測試繼續進行。

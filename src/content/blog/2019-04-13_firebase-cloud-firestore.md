@@ -12,8 +12,6 @@ ogImage: /fromMediumImg/1__B0Av__NnFrCKsyC7gN94ytg.png
 
 ![](/fromMediumImg/1__B0Av__NnFrCKsyC7gN94ytg.png)
 
-因一些因緣際會下，跑來玩 firebase，玩下來覺得滿強大的一個東西，想說來寫個紀錄文好了🤨
-
 _此篇為 Cloud Firestore 的紀錄，筆者有寫另一篇 Realtime Database 的，_[_傳送門在此_](/posts/2019-04-13_firebase-realtime-database)_。_
 
 ### First
@@ -32,8 +30,6 @@ _此篇為 Cloud Firestore 的紀錄，筆者有寫另一篇 Realtime Database �
 現在可以看到下方會顯示 集合/文件，這邊不贅述這個是什麼東西，我們就從 code，以及結果畫面來理解吧～
 
 ### Coding
-
-終於進入我們寫 code 時間了，
 
 因是使用 **firestore**，故需引入一段 script
 
@@ -57,6 +53,6 @@ set 的部份就講到這，現在我們來講如何 get 資料：
 
 ![](/fromMediumImg/1__p6p__r4FQopefoFE7tPpC5Q.png)
 
-### **End**
+### 結
 
-ok，因我只想記錄如何取得與設置資料，所以就只講這兩個，雖然講的哩哩辣辣的，當然還有除了 get/set 外還有很多功能，但讀者就需要上別處去查詢如何使用了😅
+以上是 Firestore set / get 的基本用法紀錄，當作未來回頭查的參考。Firebase 另一個 database — Realtime Database 的用法則記在[這篇](/posts/2019-04-13_firebase-realtime-database)。

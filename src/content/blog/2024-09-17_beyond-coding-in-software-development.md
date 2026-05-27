@@ -13,7 +13,7 @@ ogImage: /blogs/beyond-coding-in-software-development/cover.jpeg
 
 ![cover](/blogs/beyond-coding-in-software-development/cover.jpeg)
 
-前幾天參加了 [HWDC](https://hwdc.ithome.com.tw/2024)，裡面有不少厲害的講者，其中最讓我印象深刻的就是「[走一遭『寫程式』以外的軟體開發 - 大型軟體公司的工作日誌](https://hwdc.ithome.com.tw/2024/session-page/3202)」，講者用詞簡單明瞭、內容清晰好理解、語調不會讓人覺得想睡，讓我覺得這是一場很棒的分享，故我決定寫成一篇文記錄一下其中內容。
+講者 [這場 HWDC 議題](https://hwdc.ithome.com.tw/2024/session-page/3202)用詞簡單明瞭、內容清晰好理解、語調不會讓人覺得想睡，是一場很棒的分享，故決定寫成一篇文記錄一下其中內容。
 
 > 這是講者的 Medium: https://medium.com/@johnliutw
 
@@ -354,4 +354,4 @@ deadline 是固定的，不應該在 deadline 後仍有東西被合併，若有�
 
 ---
 
-以上就是這次「走一遭『寫程式』以外的軟體開發 - 大型軟體公司的工作日誌」分享的東西，我覺得很多層面都是過去工作中都遇過的事，但一個不注意就會被你忘記的。所以時常去複習這些事，讓自己成為更好的工程師！
+以上就是這次分享的內容，很多層面都是過去工作中遇過的事，但一不注意就會忘記，值得時常回頭複習。

@@ -14,10 +14,7 @@ ogImage: /fromMediumImg/1__fFS6Sm4__h0CkMFM5CPGWCg.jpeg
 
 ![](/fromMediumImg/1__fFS6Sm4__h0CkMFM5CPGWCg.jpeg)
 
-前些日子完成自家 App 的 Apple Sign in，因 Apple 限制上架商品只要有第三方登入就一定要有 Apple Sign in 功能，  
-而在完成 App 的後，也得在 web 上實作，不然可能會發生昨日客戶在 App 上使用 Apple 做登入，隔天改跳到 web 上，卻發現沒有他的登入方式，可能會造成流失，故就得研究如何在 web 上接上 Apple Sign in。
-
-而 Apple 的開發文件寫得真的很散，想找個資料得跳來跳去的，故在完成此功能後，決定寫份心得文記錄一下。
+Apple 的開發文件寫得真的很散，想找個資料得跳來跳去的，故在完成此功能後，決定寫份心得文記錄一下。
 
 > 先在前面說明一下，因筆者是前端工程師，故文內不會有如何在 Apple developer 申請 ID、以及 JWT 與後端有關係的處理說明。
 
@@ -102,8 +99,7 @@ error 的部分，目前只知道「`popup_closed_by_user`」、「`user_cancell
 
 #### 總結
 
-在 web 上實現 Apple Sign in 大概就是這樣，其實挺單純挺簡單的，麻煩的是在翻文件的部分。  
-而上面提到使用者在登入 / 註冊完成後回應的資料內，還有個欄位是「email」，他會在使用者選擇 share email 或 hide email 而呈現不同的樣子，而這部份就得看自己的專案需要這資料做什麼樣的操作了。
+回應資料中還有個「email」欄位，會依使用者選擇 share email 或 hide email 而不同，實際處理方式得看專案需求。
 
 之後會再找個時間寫如何在 RN 上實作 Apple Sign in，在 RN 上就更簡單了，因相關 method 都有人幫忙包成一個工具了。
 

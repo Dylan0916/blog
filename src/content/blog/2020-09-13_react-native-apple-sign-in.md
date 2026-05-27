@@ -14,8 +14,6 @@ ogImage: /fromMediumImg/1__xMd__2sq8tMSIy__bNcrS9Uw.png
 
 ![Verybuy app](/fromMediumImg/1__xMd__2sq8tMSIy__bNcrS9Uw.png)
 
-前幾天完成了如何在 web 上完成 Apple Sign in 的介紹，想說一開始在做這個功能時，是從 App 先完成的，要不也把 RN 的也介紹一下好了，但 RN 實在比 Web 上的簡單太多倍的… 畢竟已有別人做好的輪子，直接 import 就差不多了，所以這篇篇幅應該挺短的…
-
 [**利用 JavaScript 在 Web 上完成 Apple Sign in**](/posts/2020-09-11_javaScript-web-apple-sign-in)
 
 > 首圖是自家 App 上的登入畫面，也是完成 Apple Sign in 後的樣子
@@ -48,5 +46,4 @@ email 的部分也是一樣，若用戶選擇隱藏 email，那麼拿到的就�
 
 #### 總結
 
-RN 的部分真的挺簡單的，不過也是我挺懶的… react-native-apple-authentication 裡面有一堆功能我都沒說到，也就只有用到 performRequest() 一個而已…  
-不過他的 README 寫的挺詳細的，要什麼答案翻一下就能找到了。
+react-native-apple-authentication 還有不少功能本篇沒涵蓋，只用到 performRequest() 一個。需要其他功能可直接翻 README，寫得挺詳細的。

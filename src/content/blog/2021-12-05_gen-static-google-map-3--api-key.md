@@ -212,5 +212,4 @@ if (/OPTIONS/i.test(method)) {
 
 在 response headers policy 那，也可以針對 Origin 做設定，僅支援你的網站來的 request，但這僅能防止從 browser 來的。
 
-這系列文僅這三篇了，本來這篇會與第三篇合一，後來發現篇幅越來越長，就拆開了。  
-感謝看到這的讀者。
+這系列文僅這三篇了。
