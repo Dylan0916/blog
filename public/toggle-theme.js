@@ -65,6 +65,19 @@ window.onload = () => {
 
   // Runs on view transitions navigation
   document.addEventListener("astro:after-swap", setThemeFeature);
+
+  // Carry the current theme-color value across View Transitions so the
+  // Android browser chrome doesn't flash white between page swaps.
+  document.addEventListener("astro:before-swap", event => {
+    const color = document
+      .querySelector("meta[name='theme-color']")
+      ?.getAttribute("content");
+    if (color) {
+      event.newDocument
+        .querySelector("meta[name='theme-color']")
+        ?.setAttribute("content", color);
+    }
+  });
 };
 
 // sync with system changes
