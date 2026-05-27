@@ -21,20 +21,20 @@ Based on [satnaing/astro-paper](https://github.com/satnaing/astro-paper) (v4) wi
 ## Requirements
 
 - Node `>=24` (pinned via `.nvmrc` / `.node-version` / `engines`)
-- pnpm `10.33.0` (pinned via `packageManager` field)
+- Bun `1.3.14` (pinned via `packageManager` field)
 
 ## Commands
 
 ```bash
-pnpm install           # install deps
-pnpm run dev           # dev server at http://localhost:4321
-pnpm run build         # astro check + build + jampack
-pnpm run preview       # preview build locally
-pnpm run lint          # eslint .
-pnpm run format        # prettier --write .
-pnpm run format:check  # prettier --check .
-pnpm run sync          # astro sync (generate types)
-pnpm run cz            # commit via commitizen
+bun install           # install deps
+bun run dev           # dev server at http://localhost:4321
+bun run build         # astro check + build + jampack
+bun run preview       # preview build locally
+bun run lint          # eslint .
+bun run format        # prettier --write .
+bun run format:check  # prettier --check .
+bun run sync          # astro sync (generate types)
+bun run cz            # commit via commitizen
 ```
 
 Docker:
