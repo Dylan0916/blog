@@ -13,6 +13,12 @@
   ::file-selector-button {
     border-color: var(--color-gray-200, currentcolor);
   }
+
+  /* v4 removed the preflight `button { cursor: pointer }` rule. Restore. */
+  button:not(:disabled),
+  [role="button"]:not(:disabled) {
+    cursor: pointer;
+  }
 }
 
 /*
@@ -111,13 +117,6 @@
     @apply hidden;
   }
 
-  /* Prevent @tailwindcss/typography from setting code/pre color so
-     skin text color takes over. Replaces v3's `color: false` option. */
-  .prose :where(code):not(:where([class~="not-prose"] *)),
-  .prose :where(pre):not(:where([class~="not-prose"] *)) {
-    color: inherit;
-  }
-
   /* ===== scrollbar ===== */
   html {
     overflow-y: scroll;
@@ -147,4 +146,12 @@
   pre > code {
     white-space: pre;
   }
+}
+
+/* Prevent @tailwindcss/typography from setting code/pre color so
+   skin text color takes over. Replaces v3's `color: false` option.
+   Outside @layer base so it wins over the plugin's component-layer rules. */
+.prose code:not(:where([class~="not-prose"] *)),
+.prose pre:not(:where([class~="not-prose"] *)) {
+  color: inherit;
 }

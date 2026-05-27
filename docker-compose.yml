@@ -1,6 +1,6 @@
 services:
   app:
-    image: node:22
+    image: node:24
     ports:
       - 4321:4321
     working_dir: /app
