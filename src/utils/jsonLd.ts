@@ -39,12 +39,9 @@ export const getPostJsonLd = (post: CollectionEntry<"blog">) => {
   } = post;
   const postUrl = SITE.website + postSlug;
   const personImgUrl = `${SITE.website}avatar.jpg`;
-  const postImgUrl = SITE.website + ogImage;
   const keywords = tags.map(tag => slugifyStr(tag));
-  const datePublished = new Date(pubDatetime).toISOString();
-  const dateModified = modDatetime
-    ? new Date(modDatetime).toISOString()
-    : datePublished;
+  const ogImageUrl =
+    typeof ogImage === "string" ? ogImage : (ogImage?.src ?? null);
 
   return {
     "@context": JSON_LD_CONTEXT,
@@ -53,8 +50,12 @@ export const getPostJsonLd = (post: CollectionEntry<"blog">) => {
     headline: postTitle,
     name: postTitle,
     description,
-    datePublished,
-    dateModified,
+    ...(pubDatetime && {
+      datePublished: new Date(pubDatetime).toISOString(),
+    }),
+    ...(modDatetime && {
+      dateModified: new Date(modDatetime).toISOString(),
+    }),
     author: {
       "@type": "Person" as const,
       name: SITE.author,
@@ -67,13 +68,15 @@ export const getPostJsonLd = (post: CollectionEntry<"blog">) => {
         width: "96",
       },
     },
-    image: {
-      "@type": "ImageObject" as const,
-      "@id": postImgUrl,
-      url: postImgUrl,
-      height: "362",
-      width: "388",
-    },
+    ...(ogImageUrl && {
+      image: {
+        "@type": "ImageObject" as const,
+        "@id": SITE.website + ogImageUrl,
+        url: SITE.website + ogImageUrl,
+        height: "362",
+        width: "388",
+      },
+    }),
     url: postUrl,
     isPartOf: {
       "@type": "Blog" as const,
