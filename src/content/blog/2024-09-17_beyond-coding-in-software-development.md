@@ -13,7 +13,7 @@ ogImage: /blogs/beyond-coding-in-software-development/cover.jpeg
 
 ![cover](/blogs/beyond-coding-in-software-development/cover.jpeg)
 
-講者 [這場 HWDC 議題](https://hwdc.ithome.com.tw/2024/session-page/3202)用詞簡單明瞭、內容清晰好理解、語調不會讓人覺得想睡，是一場很棒的分享，故決定寫成一篇文記錄一下其中內容。
+講者[這場 HWDC 議題](https://hwdc.ithome.com.tw/2024/session-page/3202)用詞簡單明瞭、內容清晰好理解、語調不會讓人覺得想睡，是一場很棒的分享，故決定寫成一篇文記錄一下其中內容。
 
 > 這是講者的 Medium: https://medium.com/@johnliutw
 
