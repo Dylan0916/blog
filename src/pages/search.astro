@@ -11,7 +11,10 @@ import { useTranslations } from "@/i18n/ui";
 const t = useTranslations("zh-TW");
 
 // Retrieve all articles
-const posts = await getCollection("posts", ({ data }) => !data.draft);
+const posts = await getCollection(
+  "posts",
+  ({ data }) => !data.draft && (data.lang ?? "zh-TW") === "zh-TW"
+);
 
 // List of items to search in
 const searchList = posts.map(({ data }) => ({

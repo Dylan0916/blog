@@ -10,7 +10,10 @@ import { useTranslations } from "@/i18n/ui";
 
 const t = useTranslations("en");
 
-const posts = await getCollection("posts", ({ data }) => !data.draft);
+const posts = await getCollection(
+  "posts",
+  ({ data }) => !data.draft && (data.lang ?? "zh-TW") === "zh-TW"
+);
 
 const searchList = posts.map(({ data }) => ({
   title: data.title,

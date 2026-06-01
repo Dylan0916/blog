@@ -9,6 +9,7 @@ import type { Locale } from "@/i18n/ui";
 
 export async function getStaticPaths() {
   const all = await getCollection("posts");
+  const published = all.filter(p => !p.data.draft);
   const sorted = getSortedPosts(all); // default-locale, newest first
 
   const toNav = (
@@ -20,7 +21,7 @@ export async function getStaticPaths() {
   return sorted.map((post, i) => ({
     params: { slug: slugify(post.data) },
     props: {
-      post: resolveEnglishBody(post, all),
+      post: resolveEnglishBody(post, published),
       prevPost: toNav(sorted[i + 1], "en"),
       nextPost: toNav(sorted[i - 1], "en"),
       counterpartUrl: localizedPostUrl(post, "zh-TW"),

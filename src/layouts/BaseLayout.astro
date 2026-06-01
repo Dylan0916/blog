@@ -64,7 +64,7 @@ const socialImageURL = new URL(
         <link
           rel="alternate"
           hreflang={locale === "en" ? "en" : "zh-Hant"}
-          href={new URL(Astro.url.pathname, Astro.site)}
+          href={canonicalURL}
         />
       )
     }
