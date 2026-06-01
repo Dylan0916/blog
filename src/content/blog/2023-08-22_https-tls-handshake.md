@@ -6,7 +6,7 @@ postSlug: 2023-08-22_https-tls-handshake
 tags:
   - SSL Handshake
   - Https
-description: 此篇單純紀錄 HTTPS 的 TLS 4 次揮手過程，因每次讀到相關文章時，總覺得少講了什麼，所以只好自己記錄一篇。
+description: "紀錄 HTTPS 中 TLS 的握手流程。"
 ogImage: /fromMediumImg/1__i__HjA5P3Anoaxmc__Jajp__Q.png
 ---
 

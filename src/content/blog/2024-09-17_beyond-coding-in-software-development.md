@@ -7,7 +7,7 @@ tags:
   - HWDC
   - 心得文
   - 紀錄文
-description: 前幾天參加了 HWDC，裡面有不少厲害的講者，其中最讓我印象深刻的就是「走一遭『寫程式』以外的軟體開發 - 大型軟體公司的工作日誌」
+description: "HWDC 一場講題的心得：寫程式以外，大型軟體公司的軟體開發樣貌。"
 ogImage: /blogs/beyond-coding-in-software-development/cover.jpeg
 ---
 

@@ -6,9 +6,7 @@ postSlug: 2019-04-13_firebase-realtime-database
 tags:
   - Firebase
   - Realtime Database
-description: >-
-  之前寫了一篇 Cloud Firestore 的紀錄，現在來寫另一個我覺得更強大的「Realtime Database」，至於什麼是 Realtime
-  Database，這邊就不多說明了。
+description: "紀錄 Firebase Realtime Database 的啟用設定與即時讀寫資料的用法。"
 ogImage: /fromMediumImg/1__B0Av__NnFrCKsyC7gN94ytg.png
 ---
 

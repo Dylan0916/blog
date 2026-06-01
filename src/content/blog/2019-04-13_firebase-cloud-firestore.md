@@ -6,7 +6,7 @@ postSlug: 2019-04-13_firebase-cloud-firestore
 tags:
   - Firebase
   - Cloud Firestore
-description: "因一些因緣際會下，跑來玩 firebase，玩下來覺得滿強大的一個東西，想說來寫個紀錄文好了\U0001F928"
+description: "紀錄 Firebase Cloud Firestore 的基本用法，包含資料的 set 與 get。"
 ogImage: /fromMediumImg/1__B0Av__NnFrCKsyC7gN94ytg.png
 ---
 

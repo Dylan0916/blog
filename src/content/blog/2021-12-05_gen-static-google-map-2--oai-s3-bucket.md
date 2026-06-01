@@ -9,7 +9,7 @@ tags:
   - Aws Policies
   - Aws Oai
   - Origin Access Identity
-description: "若你還沒看過第一篇的，可透過下方連結抵達:"
+description: "靜態 Google Map 系列第二篇：用 CloudFront OAI 鎖住 S3 bucket 的公開存取。"
 ogImage: /fromMediumImg/0__8TMW9P1HCspWgiFq.jpg
 ---
 

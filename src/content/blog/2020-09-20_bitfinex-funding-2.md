@@ -8,7 +8,7 @@ tags:
   - Bitfinex
   - Nodejs
   - Blockchain
-description: "系列中的第二篇，第一篇放在下方:"
+description: "自製 Bitfinex 放貸機器人系列第二篇：用 API 取得放貸利率與錢包餘額。"
 ogImage: /fromMediumImg/1__tjHdURlqCYjYJS__QWODqug.png
 ---
 

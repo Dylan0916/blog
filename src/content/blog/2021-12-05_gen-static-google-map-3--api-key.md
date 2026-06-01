@@ -9,7 +9,7 @@ tags:
   - Axios
   - Fetch
   - Api Key
-description: "這篇是地圖系列的第三篇，若你還沒看過前兩篇的，可透過下方連結抵達:"
+description: "靜態 Google Map 系列第三篇：保護產圖 API 的 key。"
 ogImage: /fromMediumImg/1__ceb__FiEkHePAqH1k0PZicA.png
 ---
 

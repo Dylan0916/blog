@@ -9,7 +9,7 @@ tags:
   - React Router
   - Udemy
   - Tutorial
-description: 人生第一次寫教學觀後心得，有寫不好的地方還請看官多多包容 QQ
+description: "Udemy 一門 React + Redux 課程的觀後心得，記錄課程特色與內容大綱。"
 ---
 
 ![](/fromMediumImg/1__VNHM__3a5UnDDWMJtEiebXA.jpeg)

@@ -9,7 +9,7 @@ tags:
   - Funding
   - JavaScript
   - Nodejs
-description: 最近真的太多事了，沒想到第三篇拖了一個月才寫…
+description: "自製 Bitfinex 放貸機器人系列第三篇：用 API 做出放貸動作。"
 ogImage: /fromMediumImg/1__zoZASHGYl2PLyZhv0EWqHQ.jpeg
 ---
 

@@ -5,7 +5,7 @@ title: TypeScript | Function Overloading
 postSlug: 2021-03-09_typescript-function-overloading
 tags:
   - Typescript
-description: "一般在寫函式時，可能會有接收不同參數而回傳不同內容的情境，例如這樣:"
+description: "介紹 TypeScript 的 function overloading：同一函式依參數回傳不同型別的寫法。"
 ---
 
 一般在寫函式時，可能會有接收不同參數而回傳不同內容的情境，例如這樣:

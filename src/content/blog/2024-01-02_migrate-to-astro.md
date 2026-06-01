@@ -5,7 +5,7 @@ title: Migrate to Astro
 postSlug: 2024-01-02_migrate-to-astro
 tags:
   - Astro
-description: 還記得大學剛畢業時，為了找工作，在 github page 上建立了自己的網頁，其內容是介紹自己、作品集之類的，後來找到第一份工作後，就沒再維護了。
+description: "從 Medium 搬家到自架 Astro blog 的過程與心得。"
 ogImage: /blogs/migrate.avif
 ---
 

@@ -9,7 +9,7 @@ tags:
   - Opacity
   - Display
   - Visibility
-description: 本篇主要是給我自己做個紀錄的，方便以後回頭查詢。
+description: "比較 display:none、visibility:hidden、opacity:0 在 DOM、事件與效能上的差異。"
 ogImage: /fromMediumImg/1__5nvvoF__U3zTbmhb0pVOhxg.jpeg
 ---
 

@@ -5,9 +5,7 @@ title: 使用 index 來當 React list 的 key 會發生意外的結果
 postSlug: 2021-03-16_react-list-index-key
 tags:
   - React
-description: >-
-  最近一些因緣際會下，與其他工程師談到 react list 中的 key 的作用，若用 index 當 key 會如何?大家都知道他是 react
-  對性能的優化，能在 virtual DOM diff 時去判斷節點的增減，這邊就不贅述這些了，相關的資訊，網路上還挺多的。
+description: "探討 React list 用 index 當 key 會發生什麼問題。"
 ---
 
 最近一些因緣際會下，與其他工程師談到 react list 中的 key 的作用，若用 index 當 key 會如何?  

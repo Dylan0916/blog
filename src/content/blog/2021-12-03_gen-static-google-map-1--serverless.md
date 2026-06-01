@@ -9,9 +9,7 @@ tags:
   - AWS Lambda
   - S3 Bucket
   - Serverless
-description: >-
-  最近在公司專案上完成了一個我認為挺有趣的功能，在公司購物車頁填寫超商取貨資料的地方加上靜態地圖，封面圖就是完成後的樣子。你可能會想問為何是靜態地圖?
-  其他網站的地圖都是可拖動的，為何要靜態的? 主要是靜態地圖相對便宜，就選擇它了。
+description: "用 AWS Lambda（serverless）在購物車頁產生靜態 Google Map，系列第一篇。"
 ogImage: /fromMediumImg/1__6ufHr4gA8clnVPe2EKhNoA.png
 ---
 

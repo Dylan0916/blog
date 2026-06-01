@@ -7,7 +7,7 @@ tags:
   - HTTP1
   - HTTP2
   - HTTP3
-description: 這篇主要是為我自己做紀錄的，每次想到 http 這幾個版本的差異，總是有幾項會忘記…
+description: "整理 HTTP/1、HTTP/1.1、HTTP/2、HTTP/3 各版本的差異。"
 ogImage: /fromMediumImg/0__zZGLqPBnl__dEQh4n.jpg
 ---
 

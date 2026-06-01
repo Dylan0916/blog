@@ -9,7 +9,7 @@ tags:
   - Vuejs
   - Vue
   - Unit Testing
-description: 最近工作開始接觸 Nuxt3，在寫完需求的 code 後，總是希望有單元測試來保護我們的程式，而當前的專案還沒有引入單元測試，所以打算自己建起來。
+description: "紀錄如何在 Nuxt3 專案設定 Vitest 寫單元測試，以及過程踩到的問題與解法。"
 ogImage: /fromMediumImg/1__jFRwb4qlDi44TiTFeH1Xpw.png
 ---
 

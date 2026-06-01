@@ -8,7 +8,7 @@ tags:
   - Bitfinex
   - Websocket
   - Sockets
-description: 前言
+description: "自製 Bitfinex 美元放貸機器人系列第一篇：放貸概念與系列前言。"
 ogImage: /fromMediumImg/1__JZi__bnHGmG79f__MSNghBIw.jpeg
 ---
 
