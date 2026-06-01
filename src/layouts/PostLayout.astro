@@ -113,11 +113,15 @@ const jsonLd = getPostJsonLd(post);
   <Footer />
 </Layout>
 
-<script is:inline>
-  /* When the user clicks on the "Back to Top" button,
-   * scroll to the top of the document */
-  document.querySelector("#back-to-top")?.addEventListener("click", () => {
-    document.body.scrollTop = 0; // For Safari
-    document.documentElement.scrollTop = 0; // For Chrome, Firefox, IE and Opera
+<script>
+  // Wire the "Back to Top" button on every navigation. Bound via
+  // astro:page-load (fires on first load AND after each View Transitions
+  // swap) so the listener survives client-side navigation — e.g. switching
+  // language or moving between posts without a full reload.
+  document.addEventListener("astro:page-load", () => {
+    document.querySelector("#back-to-top")?.addEventListener("click", () => {
+      document.body.scrollTop = 0; // For Safari
+      document.documentElement.scrollTop = 0; // For Chrome, Firefox, IE and Opera
+    });
   });
 </script>
