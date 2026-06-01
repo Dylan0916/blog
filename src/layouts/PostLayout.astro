@@ -91,7 +91,7 @@ const jsonLd = getPostJsonLd(post);
     </article>
 
     <ul class="my-8">
-      {tags.map(tag => <Tag name={slugifyStr(tag)} />)}
+      {tags.map(tag => <Tag name={slugifyStr(tag)} locale={locale} />)}
     </ul>
 
     <AdjacentPostNav prevPost={prevPost} nextPost={nextPost} />

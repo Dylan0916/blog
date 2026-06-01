@@ -1,10 +1,14 @@
 ---
+import type { Locale } from "@/i18n/ui";
+
 export interface Props {
   name: string;
   size?: "sm" | "lg";
+  locale?: Locale;
 }
 
-const { name, size = "sm" } = Astro.props;
+const { name, size = "sm", locale = "zh-TW" } = Astro.props;
+const prefix = locale === "en" ? "/en" : "";
 ---
 
 <li
@@ -13,7 +17,7 @@ const { name, size = "sm" } = Astro.props;
   }`}
 >
   <a
-    href={`/tags/${name.toLowerCase()}`}
+    href={`${prefix}/tags/${name.toLowerCase()}`}
     transition:name={name.toLowerCase()}
     class={`${size === "sm" ? "text-sm" : "text-lg"} group relative pr-2 underline decoration-dashed hover:-top-0.5 hover:text-skin-accent focus-visible:p-1`}
   >
