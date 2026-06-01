@@ -5,6 +5,7 @@
     "jsx": "react-jsx",
     "paths": {
       "@/assets/*": ["assets/*"],
+      "@/i18n/*": ["i18n/*"],
       "@/config": ["config.ts"],
       "@/components/*": ["components/*"],
       "@/content/*": ["content/*"],
