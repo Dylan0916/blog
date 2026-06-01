@@ -7,15 +7,18 @@ import Main from "@/layouts/Main.astro";
 import Tag from "@/components/Tag.astro";
 import getUniqueTags from "@/utils/getUniqueTags";
 import { SITE } from "@/config";
+import { useTranslations } from "@/i18n/ui";
+
+const t = useTranslations("zh-TW");
 
 const posts = await getCollection("posts");
 
 const tags = getUniqueTags(posts);
 ---
 
-<Layout title={`Tags | ${SITE.title}`}>
-  <Header activeNav="tags" />
-  <Main pageTitle="Tags" pageDesc="All the tags used in posts.">
+<Layout title={`${t("tags.title")} | ${SITE.title}`} locale="zh-TW" counterpartUrl="/en/tags/">
+  <Header activeNav="tags" locale="zh-TW" counterpartUrl="/en/tags/" />
+  <Main pageTitle={t("tags.title")} pageDesc="All the tags used in posts.">
     <ul>
       {tags.map(tag => <Tag name={tag} size="lg" />)}
     </ul>

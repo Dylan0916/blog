@@ -59,12 +59,19 @@ const paginatedPosts = sortedPosts.slice(startPost, lastPost);
 
 {
   post ? (
-    <PostLayout post={post} prevPost={prevPost} nextPost={nextPost} />
+    <PostLayout
+      post={post}
+      prevPost={prevPost}
+      nextPost={nextPost}
+      locale="zh-TW"
+      counterpartUrl={`/en/posts/${slug}/`}
+    />
   ) : (
     <Posts
       posts={paginatedPosts}
       pageNum={currentPage}
       totalPages={totalPages.length}
+      locale="zh-TW"
     />
   )
 }

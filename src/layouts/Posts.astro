@@ -8,14 +8,18 @@ import Card from "@/components/Card";
 import LinkButton from "@/components/LinkButton.astro";
 import slugify from "@/utils/slugify";
 import type { CollectionEntry } from "astro:content";
+import { useTranslations, type Locale } from "@/i18n/ui";
 
 export interface Props {
   pageNum: number;
   totalPages: number;
   posts: CollectionEntry<"posts">[];
+  locale?: Locale;
+  counterpartUrl?: string;
 }
 
-const { pageNum, totalPages, posts } = Astro.props;
+const { pageNum, totalPages, posts, locale = "zh-TW", counterpartUrl } = Astro.props;
+const t = useTranslations(locale);
 
 const isPrevDisabled = pageNum <= 1;
 const isNextDisabled = pageNum >= totalPages;
@@ -24,9 +28,9 @@ const disabledButtonClass =
 const disabledSvgClass = "group-hover:fill-skin-base!";
 ---
 
-<Layout title={`Posts | ${SITE.title}`}>
-  <Header activeNav="posts" />
-  <Main pageTitle="Posts" pageDesc="All the articles I've posted.">
+<Layout title={`${t("nav.posts")} | ${SITE.title}`} locale={locale} counterpartUrl={counterpartUrl}>
+  <Header activeNav="posts" locale={locale} counterpartUrl={counterpartUrl} />
+  <Main pageTitle={t("nav.posts")} pageDesc="All the articles I've posted.">
     <ul>
       {
         posts.map(({ data }) => (
