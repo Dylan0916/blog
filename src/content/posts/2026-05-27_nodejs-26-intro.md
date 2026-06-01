@@ -3,6 +3,7 @@ author: Dylan
 pubDatetime: 2026-05-27T00:00:00Z
 title: 升上 Node.js 26 之前該知道的事
 postSlug: 2026-05-27_nodejs-26-intro
+translationKey: nodejs-26-intro
 featured: false
 draft: false
 tags:
