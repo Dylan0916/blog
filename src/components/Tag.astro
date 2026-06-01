@@ -1,14 +1,13 @@
 ---
-import type { Locale } from "@/i18n/ui";
+import { resolveLocale } from "@/utils/getLocale";
 
 export interface Props {
   name: string;
   size?: "sm" | "lg";
-  locale?: Locale;
 }
 
-const { name, size = "sm", locale = "zh-TW" } = Astro.props;
-const prefix = locale === "en" ? "/en" : "";
+const { name, size = "sm" } = Astro.props;
+const prefix = resolveLocale(Astro.currentLocale) === "en" ? "/en" : "";
 ---
 
 <li

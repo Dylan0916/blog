@@ -1,0 +1,45 @@
+---
+import { getCollection, type CollectionEntry } from "astro:content";
+import Posts from "@/layouts/Posts.astro";
+import PostLayout from "@/layouts/PostLayout.astro";
+import type { AdjacentPost } from "@/types";
+import getSortedPosts from "@/utils/getSortedPosts";
+import getPageNumbers from "@/utils/getPageNumbers";
+import { SITE } from "@/config";
+
+export interface Props {
+  slug: string | undefined;
+  post?: CollectionEntry<"posts">;
+  prevPost?: AdjacentPost;
+  nextPost?: AdjacentPost;
+}
+
+const { slug, post, prevPost = null, nextPost = null } = Astro.props;
+
+const posts = await getCollection("posts");
+
+const sortedPosts = getSortedPosts(posts);
+
+const totalPages = getPageNumbers(sortedPosts.length);
+
+const currentPage =
+  slug && !isNaN(Number(slug)) && totalPages.includes(Number(slug))
+    ? Number(slug)
+    : 0;
+const lastPost = currentPage * SITE.postPerPage;
+const startPost = lastPost - SITE.postPerPage;
+
+const paginatedPosts = sortedPosts.slice(startPost, lastPost);
+---
+
+{
+  post ? (
+    <PostLayout post={post} prevPost={prevPost} nextPost={nextPost} />
+  ) : (
+    <Posts
+      posts={paginatedPosts}
+      pageNum={currentPage}
+      totalPages={totalPages.length}
+    />
+  )
+}

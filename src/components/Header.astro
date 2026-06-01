@@ -1,17 +1,19 @@
 ---
 import { LOGO_IMAGE, SITE } from "@/config";
-import { useTranslations, type Locale } from "@/i18n/ui";
+import { useTranslations } from "@/i18n/ui";
+import { resolveLocale } from "@/utils/getLocale";
 import Hr from "./Hr.astro";
 import LanguageToggle from "./LanguageToggle.astro";
 import LinkButton from "./LinkButton.astro";
 
 export interface Props {
   activeNav?: "posts" | "tags" | "about" | "search";
-  locale?: Locale;
-  counterpartUrl?: string;
+  /** Whether to show the language toggle (off for pages with no counterpart, e.g. 404). */
+  langToggle?: boolean;
 }
 
-const { activeNav, locale = "zh-TW", counterpartUrl } = Astro.props;
+const { activeNav, langToggle = true } = Astro.props;
+const locale = resolveLocale(Astro.currentLocale);
 const t = useTranslations(locale);
 const prefix = locale === "en" ? "/en" : "";
 
@@ -26,8 +28,9 @@ const navButtonSvgClass = "h-6 w-6 fill-skin-base hover:fill-skin-accent";
   <a
     id="skip-to-content"
     href="#main-content"
-    class="absolute -top-full left-16 z-50 bg-skin-accent px-3 py-2 text-skin-inverted transition-all focus:top-4"
-  >{t("nav.skipToContent")}</a>
+    class="bg-skin-accent text-skin-inverted absolute -top-full left-16 z-50 px-3 py-2 transition-all focus:top-4"
+    >{t("nav.skipToContent")}</a
+  >
   <div
     class="mx-auto flex max-w-3xl flex-col items-center justify-between sm:flex-row"
   >
@@ -36,7 +39,7 @@ const navButtonSvgClass = "h-6 w-6 fill-skin-base hover:fill-skin-accent";
     >
       <a
         href={prefix + "/"}
-        class="absolute whitespace-nowrap py-1 text-xl font-semibold sm:static sm:text-2xl"
+        class="absolute py-1 text-xl font-semibold whitespace-nowrap sm:static sm:text-2xl"
       >
         {
           LOGO_IMAGE.enable ? (
@@ -71,7 +74,7 @@ const navButtonSvgClass = "h-6 w-6 fill-skin-base hover:fill-skin-accent";
             stroke-width="1.5"
             stroke-linecap="round"
             stroke-linejoin="round"
-            class="menu-icon h-6 w-6 scale-125 fill-skin-base"
+            class="menu-icon fill-skin-base h-6 w-6 scale-125"
           >
             <line x1="7" y1="12" x2="21" y2="12" class="line"></line>
             <line x1="3" y1="6" x2="21" y2="6" class="line"></line>
@@ -153,9 +156,9 @@ const navButtonSvgClass = "h-6 w-6 fill-skin-base hover:fill-skin-accent";
             }
           </li>
           {
-            counterpartUrl && (
+            langToggle && (
               <li class="col-span-1 flex items-center justify-center">
-                <LanguageToggle locale={locale} counterpartUrl={counterpartUrl} />
+                <LanguageToggle />
               </li>
             )
           }

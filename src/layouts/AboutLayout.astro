@@ -4,25 +4,22 @@ import Breadcrumbs from "@/components/Breadcrumbs.astro";
 import Footer from "@/components/Footer.astro";
 import Header from "@/components/Header.astro";
 import Layout from "./BaseLayout.astro";
-import type { Locale } from "@/i18n/ui";
 
 export interface Props {
   frontmatter: {
     title: string;
     description?: string;
   };
-  locale?: Locale;
-  counterpartUrl?: string;
 }
 
-const { frontmatter, locale = "zh-TW", counterpartUrl } = Astro.props;
+const { frontmatter } = Astro.props;
 ---
 
-<Layout title={`${frontmatter.title} | ${SITE.title}`} locale={locale} counterpartUrl={counterpartUrl}>
-  <Header activeNav="about" locale={locale} counterpartUrl={counterpartUrl} />
+<Layout title={`${frontmatter.title} | ${SITE.title}`}>
+  <Header activeNav="about" />
   <Breadcrumbs />
   <main id="main-content">
-    <section id="about" class="prose mb-28 max-w-3xl prose-img:border-0">
+    <section id="about" class="prose prose-img:border-0 mb-28 max-w-3xl">
       <h1 class="text-2xl tracking-wider sm:text-3xl">{frontmatter.title}</h1>
       <slot />
     </section>

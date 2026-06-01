@@ -1,20 +1,16 @@
 ---
-import { useTranslations, type Locale } from "@/i18n/ui";
+import { useTranslations } from "@/i18n/ui";
+import { resolveLocale, getCounterpartUrl } from "@/utils/getLocale";
 
-export interface Props {
-  locale: Locale;
-  /** Path of the counterpart page in the other locale, e.g. "/en/posts/x/". */
-  counterpartUrl: string;
-}
-
-const { locale, counterpartUrl } = Astro.props;
+const locale = resolveLocale(Astro.currentLocale);
 const t = useTranslations(locale);
 const label = locale === "en" ? t("langToggle.toZh") : t("langToggle.toEn");
+const counterpartUrl = getCounterpartUrl(Astro.url.pathname);
 ---
 
 <a
   href={counterpartUrl}
-  class="text-sm hover:text-skin-accent"
+  class="hover:text-skin-accent text-sm"
   aria-label="Switch language"
 >
   {label}

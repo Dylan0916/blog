@@ -8,7 +8,7 @@ import { Font } from "astro:assets";
 import { PUBLIC_GOOGLE_SITE_VERIFICATION } from "astro:env/client";
 
 import { getWebsiteJsonLd } from "@/utils/jsonLd";
-import type { Locale } from "@/i18n/ui";
+import { resolveLocale, getCounterpartUrl } from "@/utils/getLocale";
 
 const googleSiteVerification = PUBLIC_GOOGLE_SITE_VERIFICATION;
 
@@ -20,8 +20,8 @@ export interface Props {
   ogType?: string;
   canonicalURL?: string;
   jsonLd?: Parameters<typeof Schema>[0]["item"];
-  locale?: Locale;
-  counterpartUrl?: string;
+  /** Whether the page has a counterpart in the other locale (off for 404). */
+  langToggle?: boolean;
 }
 
 const {
@@ -32,9 +32,13 @@ const {
   ogType = SITE.ogType,
   canonicalURL = new URL(Astro.url.pathname, Astro.site).href,
   jsonLd = getWebsiteJsonLd(),
-  locale = "zh-TW",
-  counterpartUrl,
+  langToggle = true,
 } = Astro.props;
+
+const locale = resolveLocale(Astro.currentLocale);
+const counterpartUrl = langToggle
+  ? getCounterpartUrl(Astro.url.pathname)
+  : undefined;
 
 const socialImageURL = new URL(
   ogImage ?? SITE.ogImage ?? "og.png",
@@ -48,7 +52,12 @@ const socialImageURL = new URL(
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width" />
     <link rel="icon" type="image/png" href="/favicon.png" />
-    <link rel="alternate" type="application/rss+xml" title="RSS" href="/rss.xml" />
+    <link
+      rel="alternate"
+      type="application/rss+xml"
+      title="RSS"
+      href="/rss.xml"
+    />
     <link rel="canonical" href={canonicalURL} />
     {
       counterpartUrl && (

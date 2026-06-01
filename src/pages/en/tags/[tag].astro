@@ -1,61 +1,14 @@
 ---
-import { type CollectionEntry, getCollection } from "astro:content";
-import Layout from "@/layouts/BaseLayout.astro";
-import Main from "@/layouts/Main.astro";
-import Header from "@/components/Header.astro";
-import Footer from "@/components/Footer.astro";
-import Card from "@/components/Card";
-import getUniqueTags from "@/utils/getUniqueTags";
-import getPostsByTag from "@/utils/getPostsByTag";
-import { SITE } from "@/config";
-import getSortedPosts from "@/utils/getSortedPosts";
-import { useTranslations } from "@/i18n/ui";
-import { localizedPostUrl, localizedCardData } from "@/utils/postLocale";
+import TagPostsPage from "@/components/pages/TagPostsPage.astro";
+import { getTagStaticPaths } from "@/utils/getTagStaticPaths";
 
-const t = useTranslations("en");
+export const getStaticPaths = getTagStaticPaths;
 
-export interface Props {
-  post: CollectionEntry<"posts">;
+interface Props {
   tag: string;
 }
 
-export async function getStaticPaths() {
-  const posts = await getCollection("posts");
-
-  const tags = getUniqueTags(posts);
-
-  return tags.map(tag => {
-    return {
-      params: { tag },
-      props: { tag },
-    };
-  });
-}
-
-const { tag } = Astro.props;
-
-const posts = await getCollection("posts", ({ data }) => !data.draft);
-
-const tagPosts = getPostsByTag(posts, tag);
-
-const sortTagsPost = getSortedPosts(tagPosts);
+const { tag } = Astro.props as Props;
 ---
 
-<Layout title={`${t("tags.label")}${tag} | ${SITE.title}`} locale="en" counterpartUrl={`/tags/${tag}/`}>
-  <Header activeNav="tags" locale="en" counterpartUrl={`/tags/${tag}/`} />
-  <Main
-    pageTitle={[t("tags.label"), `${tag}`]}
-    titleTransition={tag}
-    pageDesc={`${t("tags.allWithTag")} "${tag}"${t("tags.allWithTagSuffix")}`}
-  >
-    <h1 slot="title" transition:name={tag}>{t("tags.label")}{tag}</h1>
-    <ul>
-      {
-        sortTagsPost.map(post => (
-          <Card href={localizedPostUrl(post, "en")} frontmatter={localizedCardData(post, posts, "en")} locale="en" />
-        ))
-      }
-    </ul>
-  </Main>
-  <Footer />
-</Layout>
+<TagPostsPage tag={tag} />

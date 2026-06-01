@@ -1,0 +1,35 @@
+---
+import { getCollection } from "astro:content";
+import { SITE } from "@/config";
+import Layout from "@/layouts/BaseLayout.astro";
+import Main from "@/layouts/Main.astro";
+import Header from "@/components/Header.astro";
+import Footer from "@/components/Footer.astro";
+import SearchBar from "@/components/Search";
+import { useTranslations } from "@/i18n/ui";
+import { DEFAULT_LOCALE } from "@/i18n/config";
+import { resolveLocale } from "@/utils/getLocale";
+import { getPostLocale } from "@/utils/postLocale";
+
+const t = useTranslations(resolveLocale(Astro.currentLocale));
+
+// Default-locale posts only — both locales reuse the one Fuse index.
+const posts = await getCollection(
+  "posts",
+  post => !post.data.draft && getPostLocale(post) === DEFAULT_LOCALE
+);
+
+const searchList = posts.map(({ data }) => ({
+  title: data.title,
+  description: data.description,
+  data,
+}));
+---
+
+<Layout title={`${t("search.title")} | ${SITE.title}`}>
+  <Header activeNav="search" />
+  <Main pageTitle={t("search.title")} pageDesc="Search any article ...">
+    <SearchBar client:load searchList={searchList} />
+  </Main>
+  <Footer />
+</Layout>

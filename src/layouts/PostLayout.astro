@@ -6,21 +6,29 @@ import Tag from "@/components/Tag.astro";
 import Datetime from "@/components/Datetime";
 import AdjacentPostNav from "@/components/AdjacentPostNav.astro";
 import type { AdjacentPost } from "@/types";
-import { render, type CollectionEntry } from "astro:content";
+import { getCollection, render, type CollectionEntry } from "astro:content";
 import { slugifyStr } from "@/utils/slugify";
 import { getPostJsonLd } from "@/utils/jsonLd";
-import { type Locale, useTranslations } from "@/i18n/ui";
+import { useTranslations } from "@/i18n/ui";
+import { resolveLocale } from "@/utils/getLocale";
+import { resolveEnglishBody } from "@/utils/postLocale";
 
 export interface Props {
   post: CollectionEntry<"posts">;
   prevPost?: AdjacentPost;
   nextPost?: AdjacentPost;
-  locale?: Locale;
-  counterpartUrl?: string;
 }
 
-const { post, prevPost = null, nextPost = null, locale = "zh-TW", counterpartUrl } = Astro.props;
+const { post, prevPost = null, nextPost = null } = Astro.props;
+const locale = resolveLocale(Astro.currentLocale);
 const t = useTranslations(locale);
+
+// On the English mirror, render the English twin's body/title when it exists,
+// else fall back to the Chinese post.
+const displayPost =
+  locale === "en"
+    ? resolveEnglishBody(post, await getCollection("posts"))
+    : post;
 
 const {
   title,
@@ -31,9 +39,9 @@ const {
   pubDatetime,
   modDatetime,
   tags,
-} = post.data;
+} = displayPost.data;
 
-const { Content } = await render(post);
+const { Content } = await render(displayPost);
 
 const ogImageUrl = typeof ogImage === "string" ? ogImage : ogImage?.src;
 const ogUrl = new URL(
@@ -41,7 +49,7 @@ const ogUrl = new URL(
   Astro.url.origin
 ).href;
 const ogType = "article";
-const jsonLd = getPostJsonLd(post);
+const jsonLd = getPostJsonLd(displayPost);
 ---
 
 <Layout
@@ -52,22 +60,26 @@ const jsonLd = getPostJsonLd(post);
   ogType={ogType}
   canonicalURL={canonicalURL}
   jsonLd={jsonLd}
-  locale={locale}
-  counterpartUrl={counterpartUrl}
 >
   <Fragment slot="head">
-    <meta property="article:published_time" content={new Date(pubDatetime).toISOString()} />
-    {modDatetime && (
-      <meta property="article:modified_time" content={new Date(modDatetime).toISOString()} />
-    )}
-    {tags && tags.map(tag => (
-      <meta property="article:tag" content={tag} />
-    ))}
+    <meta
+      property="article:published_time"
+      content={new Date(pubDatetime).toISOString()}
+    />
+    {
+      modDatetime && (
+        <meta
+          property="article:modified_time"
+          content={new Date(modDatetime).toISOString()}
+        />
+      )
+    }
+    {tags && tags.map(tag => <meta property="article:tag" content={tag} />)}
   </Fragment>
-  <Header locale={locale} counterpartUrl={counterpartUrl} />
+  <Header />
   <div class="mx-auto flex w-full max-w-3xl justify-start px-2">
     <button
-      class="focus-outline mb-2 mt-8 flex hover:opacity-75"
+      class="focus-outline mt-8 mb-2 flex hover:opacity-75"
       onclick="history.back()"
     >
       <svg xmlns="http://www.w3.org/2000/svg"
@@ -77,21 +89,25 @@ const jsonLd = getPostJsonLd(post);
       </svg><span>{t("post.goBack")}</span>
     </button>
   </div>
-  <main
-    id="main-content"
-    class="mx-auto w-full max-w-3xl px-4 pb-12"
-  >
+  <main id="main-content" class="mx-auto w-full max-w-3xl px-4 pb-12">
     <h1
       transition:name={slugifyStr(title)}
-      class="text-2xl font-semibold text-skin-accent"
-    >{title}</h1>
-    <Datetime datetime={pubDatetime} size="lg" className="my-2" />
+      class="text-skin-accent text-2xl font-semibold"
+    >
+      {title}
+    </h1>
+    <Datetime
+      datetime={pubDatetime}
+      size="lg"
+      className="my-2"
+      locale={locale}
+    />
     <article id="article" role="article" class="prose mx-auto mt-8 max-w-3xl">
       <Content />
     </article>
 
     <ul class="my-8">
-      {tags.map(tag => <Tag name={slugifyStr(tag)} locale={locale} />)}
+      {tags.map(tag => <Tag name={slugifyStr(tag)} />)}
     </ul>
 
     <AdjacentPostNav prevPost={prevPost} nextPost={nextPost} />

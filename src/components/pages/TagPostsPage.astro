@@ -1,0 +1,51 @@
+---
+import { getCollection } from "astro:content";
+import Layout from "@/layouts/BaseLayout.astro";
+import Main from "@/layouts/Main.astro";
+import Header from "@/components/Header.astro";
+import Footer from "@/components/Footer.astro";
+import Card from "@/components/Card";
+import getPostsByTag from "@/utils/getPostsByTag";
+import getSortedPosts from "@/utils/getSortedPosts";
+import { SITE } from "@/config";
+import { useTranslations } from "@/i18n/ui";
+import { resolveLocale } from "@/utils/getLocale";
+import { localizedPostUrl, localizedCardData } from "@/utils/postLocale";
+
+export interface Props {
+  tag: string;
+}
+
+const { tag } = Astro.props;
+const locale = resolveLocale(Astro.currentLocale);
+const t = useTranslations(locale);
+
+const posts = await getCollection("posts", ({ data }) => !data.draft);
+
+const tagPosts = getPostsByTag(posts, tag);
+
+const sortTagsPost = getSortedPosts(tagPosts);
+---
+
+<Layout title={`${t("tags.label")}${tag} | ${SITE.title}`}>
+  <Header activeNav="tags" />
+  <Main
+    pageTitle={[t("tags.label"), `${tag}`]}
+    titleTransition={tag}
+    pageDesc={`${t("tags.allWithTag")} "${tag}"${t("tags.allWithTagSuffix")}`}
+  >
+    <h1 slot="title" transition:name={tag}>{t("tags.label")}{tag}</h1>
+    <ul>
+      {
+        sortTagsPost.map(post => (
+          <Card
+            href={localizedPostUrl(post, locale)}
+            frontmatter={localizedCardData(post, posts, locale)}
+            locale={locale}
+          />
+        ))
+      }
+    </ul>
+  </Main>
+  <Footer />
+</Layout>

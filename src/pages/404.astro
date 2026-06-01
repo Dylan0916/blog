@@ -6,8 +6,8 @@ import Footer from "@/components/Footer.astro";
 import LinkButton from "@/components/LinkButton.astro";
 ---
 
-<Layout title={`404 Not Found | ${SITE.title}`}>
-  <Header />
+<Layout title={`404 Not Found | ${SITE.title}`} langToggle={false}>
+  <Header langToggle={false} />
 
   <main
     id="main-content"
@@ -15,9 +15,11 @@ import LinkButton from "@/components/LinkButton.astro";
   >
     <div class="mb-14 flex flex-col items-center justify-center">
       <h1
-        class="text-9xl font-bold text-skin-accent"
+        class="text-skin-accent text-9xl font-bold"
         aria-label="404 Not Found"
-      >404</h1>
+      >
+        404
+      </h1>
       <span aria-hidden="true">¯\_(ツ)_/¯</span>
       <p class="mt-4 text-2xl sm:text-3xl">Page Not Found</p>
       <LinkButton

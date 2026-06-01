@@ -1,77 +1,19 @@
 ---
-import { getCollection, type CollectionEntry } from "astro:content";
-import Posts from "@/layouts/Posts.astro";
-import PostLayout from "@/layouts/PostLayout.astro";
-import getSortedPosts from "@/utils/getSortedPosts";
-import getPageNumbers from "@/utils/getPageNumbers";
-import { resolveEnglishBody, localizedPostUrl } from "@/utils/postLocale";
-import slugify from "@/utils/slugify";
-import { SITE } from "@/config";
+import { type CollectionEntry } from "astro:content";
+import PostPage from "@/components/pages/PostPage.astro";
+import { getPostStaticPaths } from "@/utils/getPostStaticPaths";
 import type { AdjacentPost } from "@/types";
-import type { Locale } from "@/i18n/ui";
 
-export async function getStaticPaths() {
-  const all = await getCollection("posts");
-  const published = all.filter(p => !p.data.draft);
-  const sorted = getSortedPosts(all); // default-locale, newest first
+export const getStaticPaths = getPostStaticPaths;
 
-  const toNav = (
-    p: CollectionEntry<"posts"> | undefined,
-    locale: Locale
-  ): AdjacentPost =>
-    p ? { title: p.data.title, url: localizedPostUrl(p, locale) } : null;
-
-  const postResult = sorted.map((post, i) => ({
-    params: { slug: slugify(post.data) },
-    props: {
-      post: resolveEnglishBody(post, published),
-      prevPost: toNav(sorted[i + 1], "en"),
-      nextPost: toNav(sorted[i - 1], "en"),
-      counterpartUrl: localizedPostUrl(post, "zh-TW"),
-    },
-  }));
-
-  const pagePaths = getPageNumbers(sorted.length).map(pageNum => ({
-    params: { slug: String(pageNum) },
-  }));
-
-  return [...postResult, ...pagePaths];
+interface Props {
+  post?: CollectionEntry<"posts">;
+  prevPost?: AdjacentPost;
+  nextPost?: AdjacentPost;
 }
 
 const { slug } = Astro.params;
-const { post, prevPost, nextPost, counterpartUrl } = Astro.props;
-
-const all = await getCollection("posts");
-
-const sortedPosts = getSortedPosts(all);
-
-const totalPages = getPageNumbers(sortedPosts.length);
-
-const currentPage =
-  slug && !isNaN(Number(slug)) && totalPages.includes(Number(slug))
-    ? Number(slug)
-    : 0;
-const lastPost = currentPage * SITE.postPerPage;
-const startPost = lastPost - SITE.postPerPage;
-
-const paginatedPosts = sortedPosts.slice(startPost, lastPost);
+const { post, prevPost, nextPost } = Astro.props as Props;
 ---
 
-{
-  post ? (
-    <PostLayout
-      post={post}
-      prevPost={prevPost}
-      nextPost={nextPost}
-      locale="en"
-      counterpartUrl={counterpartUrl}
-    />
-  ) : (
-    <Posts
-      posts={paginatedPosts}
-      pageNum={currentPage}
-      totalPages={totalPages.length}
-      locale="en"
-    />
-  )
-}
+<PostPage slug={slug} post={post} prevPost={prevPost} nextPost={nextPost} />

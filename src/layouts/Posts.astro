@@ -8,17 +8,17 @@ import Card from "@/components/Card";
 import LinkButton from "@/components/LinkButton.astro";
 import { localizedPostUrl, localizedCardData } from "@/utils/postLocale";
 import { getCollection, type CollectionEntry } from "astro:content";
-import { useTranslations, type Locale } from "@/i18n/ui";
+import { useTranslations } from "@/i18n/ui";
+import { resolveLocale } from "@/utils/getLocale";
 
 export interface Props {
   pageNum: number;
   totalPages: number;
   posts: CollectionEntry<"posts">[];
-  locale?: Locale;
-  counterpartUrl?: string;
 }
 
-const { pageNum, totalPages, posts, locale = "zh-TW", counterpartUrl } = Astro.props;
+const { pageNum, totalPages, posts } = Astro.props;
+const locale = resolveLocale(Astro.currentLocale);
 const t = useTranslations(locale);
 const prefix = locale === "en" ? "/en" : "";
 
@@ -33,8 +33,8 @@ const disabledButtonClass =
 const disabledSvgClass = "group-hover:fill-skin-base!";
 ---
 
-<Layout title={`${t("nav.posts")} | ${SITE.title}`} locale={locale} counterpartUrl={counterpartUrl}>
-  <Header activeNav="posts" locale={locale} counterpartUrl={counterpartUrl} />
+<Layout title={`${t("nav.posts")} | ${SITE.title}`}>
+  <Header activeNav="posts" />
   <Main pageTitle={t("nav.posts")} pageDesc="All the articles I've posted.">
     <ul>
       {
@@ -51,10 +51,7 @@ const disabledSvgClass = "group-hover:fill-skin-base!";
 
   {
     totalPages > 1 && (
-      <nav
-        class="mt-auto mb-8 flex justify-center"
-        aria-label="Pagination"
-      >
+      <nav class="mt-auto mb-8 flex justify-center" aria-label="Pagination">
         <LinkButton
           disabled={isPrevDisabled}
           href={`${prefix}/posts${pageNum - 1 !== 1 ? "/" + (pageNum - 1) : ""}`}

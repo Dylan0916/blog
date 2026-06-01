@@ -1,4 +1,4 @@
-export type AdjacentPost = { title: string; url: string } | null;
+export type AdjacentPost = { title: string; slug: string } | null;
 
 export type Site = {
   website: string;
