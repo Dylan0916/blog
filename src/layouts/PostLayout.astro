@@ -9,7 +9,7 @@ import type { AdjacentPost } from "@/types";
 import { render, type CollectionEntry } from "astro:content";
 import { slugifyStr } from "@/utils/slugify";
 import { getPostJsonLd } from "@/utils/jsonLd";
-import type { Locale } from "@/i18n/ui";
+import { type Locale, useTranslations } from "@/i18n/ui";
 
 export interface Props {
   post: CollectionEntry<"posts">;
@@ -20,6 +20,7 @@ export interface Props {
 }
 
 const { post, prevPost = null, nextPost = null, locale = "zh-TW", counterpartUrl } = Astro.props;
+const t = useTranslations(locale);
 
 const {
   title,
@@ -73,7 +74,7 @@ const jsonLd = getPostJsonLd(post);
         ><path
           d="M13.293 6.293 7.586 12l5.707 5.707 1.414-1.414L10.414 12l4.293-4.293z"
         ></path>
-      </svg><span>Go back</span>
+      </svg><span>{t("post.goBack")}</span>
     </button>
   </div>
   <main
@@ -105,7 +106,7 @@ const jsonLd = getPostJsonLd(post);
             d="M13.293 6.293 7.586 12l5.707 5.707 1.414-1.414L10.414 12l4.293-4.293z"
           ></path>
         </svg>
-        <span>Back to Top</span>
+        <span>{t("post.backToTop")}</span>
       </button>
     </div>
   </main>
