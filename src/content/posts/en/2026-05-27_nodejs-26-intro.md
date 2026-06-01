@@ -3,8 +3,6 @@ author: Dylan
 pubDatetime: 2026-05-27T00:00:00Z
 title: What to Know Before Upgrading to Node.js 26
 postSlug: 2026-05-27_nodejs-26-intro
-lang: en
-translationKey: nodejs-26-intro
 featured: false
 draft: false
 tags:

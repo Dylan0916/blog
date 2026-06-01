@@ -1,0 +1,23 @@
+{
+  "nav.posts": "Posts",
+  "nav.tags": "Tags",
+  "nav.about": "About",
+  "nav.search": "Search",
+  "nav.skipToContent": "Skip to content",
+  "breadcrumb.home": "Home",
+  "home.bio": "一名前端工程師，隨便記錄一下自己覺得有趣的事情，方便自己回顧。",
+  "home.recentPosts": "Recent Posts",
+  "home.allPosts": "All Posts",
+  "post.goBack": "Go back",
+  "post.backToTop": "Back to Top",
+  "post.prev": "上一篇",
+  "post.next": "下一篇",
+  "tags.title": "Tags",
+  "tags.label": "Tag:",
+  "tags.allWithTag": "所有標籤為",
+  "tags.allWithTagSuffix": "的文章",
+  "search.title": "Search",
+  "search.placeholder": "搜尋文章...",
+  "langToggle.toEn": "EN",
+  "langToggle.toZh": "中文"
+}

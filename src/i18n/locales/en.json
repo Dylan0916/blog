@@ -1,0 +1,23 @@
+{
+  "nav.posts": "Posts",
+  "nav.tags": "Tags",
+  "nav.about": "About",
+  "nav.search": "Search",
+  "nav.skipToContent": "Skip to content",
+  "breadcrumb.home": "Home",
+  "home.bio": "A front-end engineer jotting down things I find interesting, for my own future reference.",
+  "home.recentPosts": "Recent Posts",
+  "home.allPosts": "All Posts",
+  "post.goBack": "Go back",
+  "post.backToTop": "Back to Top",
+  "post.prev": "Previous",
+  "post.next": "Next",
+  "tags.title": "Tags",
+  "tags.label": "Tag:",
+  "tags.allWithTag": "All the articles with the tag",
+  "tags.allWithTagSuffix": "",
+  "search.title": "Search",
+  "search.placeholder": "Search for anything...",
+  "langToggle.toEn": "EN",
+  "langToggle.toZh": "中文"
+}

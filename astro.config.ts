@@ -11,13 +11,14 @@ import remarkToc from "remark-toc";
 import remarkCollapse from "remark-collapse";
 import sitemap from "@astrojs/sitemap";
 import { SITE } from "./src/config";
+import { LOCALES, DEFAULT_LOCALE } from "./src/i18n/config";
 
 // https://astro.build/config
 export default defineConfig({
   site: SITE.website,
   i18n: {
-    locales: ["zh-TW", "en"],
-    defaultLocale: "zh-TW",
+    locales: [...LOCALES],
+    defaultLocale: DEFAULT_LOCALE,
     routing: { prefixDefaultLocale: false },
   },
   integrations: [react(), mdx(), sitemap()],
