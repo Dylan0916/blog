@@ -10,7 +10,7 @@ import getPostsByTag from "@/utils/getPostsByTag";
 import { SITE } from "@/config";
 import getSortedPosts from "@/utils/getSortedPosts";
 import { useTranslations } from "@/i18n/ui";
-import { localizedPostUrl } from "@/utils/postLocale";
+import { localizedPostUrl, localizedCardData } from "@/utils/postLocale";
 
 const t = useTranslations("en");
 
@@ -52,7 +52,7 @@ const sortTagsPost = getSortedPosts(tagPosts);
     <ul>
       {
         sortTagsPost.map(post => (
-          <Card href={localizedPostUrl(post, "en")} frontmatter={post.data} locale="en" />
+          <Card href={localizedPostUrl(post, "en")} frontmatter={localizedCardData(post, posts, "en")} locale="en" />
         ))
       }
     </ul>

@@ -1,12 +1,10 @@
 import type { CollectionEntry } from "astro:content";
-import { DEFAULT_LOCALE } from "@/i18n/ui";
+import { getPostLocale } from "@/utils/postLocale";
+import { DEFAULT_LOCALE } from "@/i18n/config";
 
 const getSortedPosts = (posts: CollectionEntry<"posts">[]) =>
   posts
-    .filter(
-      ({ data }) =>
-        !data.draft && (data.lang ?? DEFAULT_LOCALE) === DEFAULT_LOCALE
-    )
+    .filter(post => !post.data.draft && getPostLocale(post) === DEFAULT_LOCALE)
     .sort(
       (a, b) =>
         Math.floor(new Date(b.data.pubDatetime).getTime() / 1000) -

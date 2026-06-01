@@ -1,11 +1,11 @@
 import { slugifyStr } from "./slugify";
 import type { CollectionEntry } from "astro:content";
-import { DEFAULT_LOCALE } from "@/i18n/ui";
+import { getPostLocale } from "@/utils/postLocale";
+import { DEFAULT_LOCALE } from "@/i18n/config";
 
 const getUniqueTags = (posts: CollectionEntry<"posts">[]) => {
   const filteredPosts = posts.filter(
-    ({ data }) =>
-      !data.draft && (data.lang ?? DEFAULT_LOCALE) === DEFAULT_LOCALE
+    post => !post.data.draft && getPostLocale(post) === DEFAULT_LOCALE
   );
   const tags: string[] = filteredPosts
     .flatMap(post => post.data.tags)

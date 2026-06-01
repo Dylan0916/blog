@@ -7,12 +7,15 @@ import Header from "@/components/Header.astro";
 import Footer from "@/components/Footer.astro";
 import SearchBar from "@/components/Search";
 import { useTranslations } from "@/i18n/ui";
+import { DEFAULT_LOCALE } from "@/i18n/config";
+import { getPostLocale } from "@/utils/postLocale";
 
 const t = useTranslations("en");
 
+// Default-locale posts only — the English mirror reuses the one Fuse index.
 const posts = await getCollection(
   "posts",
-  ({ data }) => !data.draft && (data.lang ?? "zh-TW") === "zh-TW"
+  post => !post.data.draft && getPostLocale(post) === DEFAULT_LOCALE
 );
 
 const searchList = posts.map(({ data }) => ({

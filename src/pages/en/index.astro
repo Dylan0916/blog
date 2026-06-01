@@ -10,7 +10,7 @@ import Socials from "@/components/Socials.astro";
 import getSortedPosts from "@/utils/getSortedPosts";
 import { SITE, SOCIALS } from "@/config";
 import { useTranslations } from "@/i18n/ui";
-import { localizedPostUrl } from "@/utils/postLocale";
+import { localizedPostUrl, localizedCardData } from "@/utils/postLocale";
 
 const t = useTranslations("en");
 
@@ -72,7 +72,7 @@ const showRss = false;
             .map(post => (
               <Card
                 href={localizedPostUrl(post, "en")}
-                frontmatter={post.data}
+                frontmatter={localizedCardData(post, posts, "en")}
                 secHeading={false}
                 locale="en"
               />

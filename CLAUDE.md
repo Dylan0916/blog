@@ -4,7 +4,7 @@ Agent-specific notes for working in this repo. Read [README.md](./README.md) fir
 
 ## Content workflow
 
-Posts live in `src/content/posts/*.{md,mdx}` (collection name `posts`). Filename convention: `YYYY-MM-DD_kebab-slug.md`. `.mdx` is supported when a post needs to import components.
+Posts live under `src/content/posts/<locale>/*.{md,mdx}` (collection name `posts`), one folder per locale: `zh-TW/` (default) and `en/`. Filename convention: `YYYY-MM-DD_kebab-slug.md`. `.mdx` is supported when a post needs to import components. The locale a post belongs to is **derived from its folder** — there is no `lang` frontmatter field.
 
 Frontmatter schema is defined in `src/content.config.ts`. Required: `author`, `pubDatetime` (ISO 8601), `title`, `postSlug`, `tags`, `description`. Optional: `modDatetime`, `featured`, `draft`, `ogImage`, `canonicalURL`.
 
@@ -22,11 +22,12 @@ Default new posts to `draft: true` so the user reviews before they go live.
 
 ## i18n
 
-Default locale is `zh-TW` (unprefixed, at root). English is a mirror under `/en` (Astro i18n, `prefixDefaultLocale: false`). UI chrome is translated via a string table; post bodies are translated per-post and fall back to Chinese.
+Default locale is `zh-TW` (unprefixed, at root). English is a mirror under `/en` (Astro i18n, `prefixDefaultLocale: false`). UI chrome is translated via JSON string tables; post bodies are translated per-post and fall back to Chinese.
 
-- **UI strings**: `src/i18n/ui.ts` — bilingual table + `useTranslations(locale)`. Components/pages take a `locale` prop (default `"zh-TW"`) and pull chrome strings from `t(key)`.
-- **English post**: create `<name>.en.md` next to the Chinese `<name>.md`, with `lang: en`, the **same `postSlug`** as the Chinese twin, and a shared `translationKey`. The Chinese twin also needs that `translationKey`. The two are paired by `translationKey`.
-- **Listings stay Chinese-authored**: `getSortedPosts` filters to the default locale, so `.en.md` posts never appear as duplicates in home/tags/RSS/search. The `/en` listing pages reuse that same set (English chrome, Chinese-authored titles/descriptions); only the post-detail body switches when an `.en.md` exists, else it falls back to the Chinese body.
+- **Locale constants**: `src/i18n/config.ts` is the single source of truth (`LOCALES`, `DEFAULT_LOCALE`, `type Locale`), dependency-free so `astro.config.ts` can import it. `src/i18n/ui.ts` re-exports them.
+- **UI strings**: `src/i18n/locales/{zh-TW,en}.json` hold the bilingual tables; `src/i18n/ui.ts` imports both and exposes `useTranslations(locale)`. `en.json` is `satisfies`-checked against the zh-TW key set, so a missing key is a compile error. Components/pages take a `locale` prop (default `"zh-TW"`) and pull chrome strings from `t(key)`.
+- **English post**: create `en/<name>.md` with the **same filename and `postSlug`** as the Chinese `zh-TW/<name>.md`. The two are paired by their shared base id (filename minus the locale folder) via `findEnglishTwin` in `src/utils/postLocale.ts` — no `lang`/`translationKey` frontmatter needed. Locale is read from the folder by `getPostLocale`.
+- **Listings stay Chinese-authored, swap title/desc when an en twin exists**: `getSortedPosts`/`getUniqueTags` filter to the default locale (via `getPostLocale`), so `en/` posts never appear as duplicates in home/tags/RSS/search. The `/en` listing pages reuse that same Chinese-authored set but pass each card through `localizedCardData` — if an English twin exists, the card shows the twin's title/description, else it falls back to Chinese. The post-detail body likewise switches via `resolveEnglishBody`.
 - **Routes**: root pages are the Chinese site; `src/pages/en/**` mirrors them with `locale="en"`. Each page passes a `counterpartUrl` to `Header`/`BaseLayout` so the language toggle + `hreflang` work.
 - **Tags**: tag *values* are NOT translated (raw strings shown in both locales); only the surrounding UI labels are.
 - **Out of scope** (don't add without being asked): English RSS, per-post English OG image, localized 404, a per-locale search index. `/en/search` reuses the one Fuse index.
