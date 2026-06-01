@@ -9,6 +9,8 @@ const posts = defineCollection({
     z.object({
       author: z.string().default(SITE.author),
       pubDatetime: z.date(),
+      lang: z.enum(["zh-TW", "en"]).default("zh-TW"),
+      translationKey: z.string().optional(),
       modDatetime: z.date().optional().nullable(),
       title: z.string(),
       postSlug: z.string(),

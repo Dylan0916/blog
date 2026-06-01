@@ -15,6 +15,11 @@ import { SITE } from "./src/config";
 // https://astro.build/config
 export default defineConfig({
   site: SITE.website,
+  i18n: {
+    locales: ["zh-TW", "en"],
+    defaultLocale: "zh-TW",
+    routing: { prefixDefaultLocale: false },
+  },
   integrations: [react(), mdx(), sitemap()],
   markdown: {
     remarkPlugins: [
