@@ -214,8 +214,8 @@ const navButtonSvgClass = "h-6 w-6 fill-skin-base hover:fill-skin-accent";
     });
   }
 
-  toggleNav();
-
-  // Runs on view transitions navigation
-  document.addEventListener("astro:after-swap", toggleNav);
+  // astro:page-load fires on the initial load and after every View
+  // Transitions swap, so the menu handler is (re)bound to the current DOM
+  // without a separate initial call.
+  document.addEventListener("astro:page-load", toggleNav);
 </script>

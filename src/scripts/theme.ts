@@ -57,7 +57,11 @@ function setup(): void {
 
 setup();
 
-// Re-run after View Transitions navigation.
+// Re-run after View Transitions navigation. This uses astro:after-swap
+// (not astro:page-load) on purpose: reflect() must restore data-theme and
+// the theme-color meta on the swapped-in document *before* it paints, to
+// avoid a light/dark flash. Purely interactive handlers (header menu,
+// back-to-top) bind on astro:page-load instead.
 document.addEventListener("astro:after-swap", setup);
 
 // Carry the current theme-color value across View Transitions so the
