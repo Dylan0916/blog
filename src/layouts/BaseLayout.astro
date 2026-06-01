@@ -8,6 +8,7 @@ import { Font } from "astro:assets";
 import { PUBLIC_GOOGLE_SITE_VERIFICATION } from "astro:env/client";
 
 import { getWebsiteJsonLd } from "@/utils/jsonLd";
+import type { Locale } from "@/i18n/ui";
 
 const googleSiteVerification = PUBLIC_GOOGLE_SITE_VERIFICATION;
 
@@ -19,6 +20,8 @@ export interface Props {
   ogType?: string;
   canonicalURL?: string;
   jsonLd?: Parameters<typeof Schema>[0]["item"];
+  locale?: Locale;
+  counterpartUrl?: string;
 }
 
 const {
@@ -29,6 +32,8 @@ const {
   ogType = SITE.ogType,
   canonicalURL = new URL(Astro.url.pathname, Astro.site).href,
   jsonLd = getWebsiteJsonLd(),
+  locale = "zh-TW",
+  counterpartUrl,
 } = Astro.props;
 
 const socialImageURL = new URL(
@@ -38,13 +43,31 @@ const socialImageURL = new URL(
 ---
 
 <!doctype html>
-<html lang={LOCALE.lang ?? "en"}>
+<html lang={locale === "en" ? "en" : "zh-TW"}>
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width" />
     <link rel="icon" type="image/png" href="/favicon.png" />
     <link rel="alternate" type="application/rss+xml" title="RSS" href="/rss.xml" />
     <link rel="canonical" href={canonicalURL} />
+    {
+      counterpartUrl && (
+        <link
+          rel="alternate"
+          hreflang={locale === "en" ? "zh-Hant" : "en"}
+          href={new URL(counterpartUrl, Astro.site)}
+        />
+      )
+    }
+    {
+      counterpartUrl && (
+        <link
+          rel="alternate"
+          hreflang={locale === "en" ? "en" : "zh-Hant"}
+          href={new URL(Astro.url.pathname, Astro.site)}
+        />
+      )
+    }
     <meta name="generator" content={Astro.generator} />
 
     <!-- General Meta Tags -->
