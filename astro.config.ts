@@ -12,6 +12,7 @@ import remarkCollapse from "remark-collapse";
 import sitemap from "@astrojs/sitemap";
 import { SITE } from "./src/config";
 import { LOCALES, DEFAULT_LOCALE } from "./src/i18n/config";
+import i18nEnMirror from "./src/integrations/i18n-en-mirror";
 
 // https://astro.build/config
 export default defineConfig({
@@ -21,7 +22,7 @@ export default defineConfig({
     defaultLocale: DEFAULT_LOCALE,
     routing: { prefixDefaultLocale: false },
   },
-  integrations: [react(), mdx(), sitemap()],
+  integrations: [react(), mdx(), sitemap(), i18nEnMirror()],
   markdown: {
     remarkPlugins: [
       remarkToc,
