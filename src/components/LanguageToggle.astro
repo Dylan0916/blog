@@ -1,0 +1,21 @@
+---
+import { useTranslations, type Locale } from "@/i18n/ui";
+
+export interface Props {
+  locale: Locale;
+  /** Path of the counterpart page in the other locale, e.g. "/en/posts/x/". */
+  counterpartUrl: string;
+}
+
+const { locale, counterpartUrl } = Astro.props;
+const t = useTranslations(locale);
+const label = locale === "en" ? t("langToggle.toZh") : t("langToggle.toEn");
+---
+
+<a
+  href={counterpartUrl}
+  class="text-sm hover:text-skin-accent"
+  aria-label="Switch language"
+>
+  {label}
+</a>

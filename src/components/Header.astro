@@ -2,14 +2,16 @@
 import { LOGO_IMAGE, SITE } from "@/config";
 import { useTranslations, type Locale } from "@/i18n/ui";
 import Hr from "./Hr.astro";
+import LanguageToggle from "./LanguageToggle.astro";
 import LinkButton from "./LinkButton.astro";
 
 export interface Props {
   activeNav?: "posts" | "tags" | "about" | "search";
   locale?: Locale;
+  counterpartUrl?: string;
 }
 
-const { activeNav, locale = "zh-TW" } = Astro.props;
+const { activeNav, locale = "zh-TW", counterpartUrl } = Astro.props;
 const t = useTranslations(locale);
 const prefix = locale === "en" ? "/en" : "";
 
@@ -150,6 +152,13 @@ const navButtonSvgClass = "h-6 w-6 fill-skin-base hover:fill-skin-accent";
               )
             }
           </li>
+          {
+            counterpartUrl && (
+              <li class="col-span-1 flex items-center justify-center">
+                <LanguageToggle locale={locale} counterpartUrl={counterpartUrl} />
+              </li>
+            )
+          }
         </ul>
       </nav>
     </div>
