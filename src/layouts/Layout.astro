@@ -5,9 +5,11 @@ import { Schema } from "astro-seo-schema";
 import { ClientRouter } from "astro:transitions";
 import { Font } from "astro:assets";
 
+import { PUBLIC_GOOGLE_SITE_VERIFICATION } from "astro:env/client";
+
 import { getWebsiteJsonLd } from "@/utils/jsonLd";
 
-const googleSiteVerification = import.meta.env.PUBLIC_GOOGLE_SITE_VERIFICATION;
+const googleSiteVerification = PUBLIC_GOOGLE_SITE_VERIFICATION;
 
 export interface Props {
   title?: string;

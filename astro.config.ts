@@ -1,4 +1,9 @@
-import { defineConfig, fontProviders, svgoOptimizer } from "astro/config";
+import {
+  defineConfig,
+  envField,
+  fontProviders,
+  svgoOptimizer,
+} from "astro/config";
 import tailwindcss from "@tailwindcss/vite";
 import react from "@astrojs/react";
 import remarkToc from "remark-toc";
@@ -45,5 +50,14 @@ export default defineConfig({
   ],
   experimental: {
     svgOptimizer: svgoOptimizer(),
+  },
+  env: {
+    schema: {
+      PUBLIC_GOOGLE_SITE_VERIFICATION: envField.string({
+        access: "public",
+        context: "client",
+        optional: true,
+      }),
+    },
   },
 });
