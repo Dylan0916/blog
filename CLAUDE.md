@@ -20,6 +20,17 @@ To preview a draft, temporarily flip `draft: false` and run dev.
 
 Default new posts to `draft: true` so the user reviews before they go live.
 
+## i18n
+
+Default locale is `zh-TW` (unprefixed, at root). English is a mirror under `/en` (Astro i18n, `prefixDefaultLocale: false`). UI chrome is translated via a string table; post bodies are translated per-post and fall back to Chinese.
+
+- **UI strings**: `src/i18n/ui.ts` — bilingual table + `useTranslations(locale)`. Components/pages take a `locale` prop (default `"zh-TW"`) and pull chrome strings from `t(key)`.
+- **English post**: create `<name>.en.md` next to the Chinese `<name>.md`, with `lang: en`, the **same `postSlug`** as the Chinese twin, and a shared `translationKey`. The Chinese twin also needs that `translationKey`. The two are paired by `translationKey`.
+- **Listings stay Chinese-authored**: `getSortedPosts` filters to the default locale, so `.en.md` posts never appear as duplicates in home/tags/RSS/search. The `/en` listing pages reuse that same set (English chrome, Chinese-authored titles/descriptions); only the post-detail body switches when an `.en.md` exists, else it falls back to the Chinese body.
+- **Routes**: root pages are the Chinese site; `src/pages/en/**` mirrors them with `locale="en"`. Each page passes a `counterpartUrl` to `Header`/`BaseLayout` so the language toggle + `hreflang` work.
+- **Tags**: tag *values* are NOT translated (raw strings shown in both locales); only the surrounding UI labels are.
+- **Out of scope** (don't add without being asked): English RSS, per-post English OG image, localized 404, a per-locale search index. `/en/search` reuses the one Fuse index.
+
 ## Writing style guide
 
 The post archive has 6+ years of content. A recent cleanup pass trimmed filler and consolidated voice. Match what survived; do NOT drift toward generic technical-blog prose.

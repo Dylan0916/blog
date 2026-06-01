@@ -93,7 +93,7 @@ If unset, the `google-site-verification` meta tag is omitted.
 
 ## Adding a Post
 
-Create a `.md` file under `src/content/blog/` with frontmatter matching the schema in `src/content.config.ts`:
+Create a `.md` (or `.mdx`) file under `src/content/posts/` with frontmatter matching the schema in `src/content.config.ts`:
 
 ```yaml
 ---
@@ -110,6 +110,14 @@ ogImage: optional-image-path-or-url
 canonicalURL: optional
 ---
 ```
+
+## Internationalization
+
+The site is Traditional Chinese by default (at the root) with an English mirror under `/en`. UI chrome is translated; post bodies are translated per-post and fall back to Chinese when no English version exists.
+
+To add an English version of a post, create `<name>.en.md` next to `<name>.md` with `lang: en`, the same `postSlug`, and a shared `translationKey` on both files. See `CLAUDE.md` for details.
+
+Intentionally out of scope: English RSS, per-post English OG images, and a localized 404 — `/rss.xml` and OG generation stay Chinese-only, and `/en/search` reuses the single Fuse.js index.
 
 ## Notes on Upgrades from Upstream v4 → Astro 6 / Tailwind v4
 
