@@ -83,7 +83,8 @@ When deleting filler from an existing post:
 
 ## Local conventions you'll trip over when editing
 
-- **Tailwind v4 cascade**: scoped Astro `<style>` blocks need `@reference "../styles/base.css"`. Custom utilities (`bg-skin-*`, `text-skin-*`) come from `@theme inline` mapped to runtime CSS vars; theme switching flows through `[data-theme="dark"]` overrides.
+- **Styling preference order: inline class > `@apply` > plain CSS.** Put utilities directly in the element's `class` attribute (deduped once in the global stylesheet, smaller payload). Only when a style can't be a static class — state/structural selectors like `.menu-icon.is-active .line` (child reacting to an ancestor's runtime class) or `.prose` overrides on markdown-rendered content — fall back to a scoped `<style>`, and inside it prefer `@apply <utility>` over hand-written CSS where a utility exists. Hand-written CSS is the last resort (no utility maps).
+- **Tailwind v4 cascade**: scoped Astro `<style>` blocks that use `@apply` need `@reference "../styles/base.css"`. Custom utilities (`bg-skin-*`, `text-skin-*`) come from `@theme inline` mapped to runtime CSS vars; theme switching flows through `[data-theme="dark"]` overrides.
 - **Layout slot wiring**: `src/layouts/BaseLayout.astro` has `<slot name="head" />`. Per-page head injections (article meta, JSON-LD overrides) belong inside `<Fragment slot="head">` in the child layout (`PostLayout.astro`, etc.). Lowercase `<fragment>` silently does nothing — it's not a known Astro element.
 - **FOUC + theme**: small inline IIFE in `BaseLayout.astro` sets `data-theme` before paint and exposes `window.__theme.value`. The rest of theme logic lives in `src/scripts/theme.ts`. Don't move FOUC detection out of the inline script — that's load-blocking on purpose.
 - **Fonts**: declared in `astro.config.ts` via `fontProviders.google()`. CSS var is `--font-ibm-plex-mono`. Don't add manual `<link>` to fonts.gstatic.com.

@@ -162,15 +162,17 @@ const navButtonSvgClass = "h-6 w-6 fill-skin-base hover:fill-skin-accent";
      sit alongside .display-none + .sm:flex as a static class because
      the three would fight for the `display` property in the cascade. */
   nav ul:not(.display-none) {
-    display: grid;
+    @apply grid;
   }
 
-  /* Hamburger icon line/X crossfade — state toggled by JS via .is-active */
+  /* Hamburger icon line/X crossfade — state toggled by JS via .is-active
+     on the parent, so these must be selector-based; an inline class can't
+     react to an ancestor's state. */
   .menu-icon line {
     @apply transition-opacity duration-75 ease-in-out;
   }
   .menu-icon .close {
-    opacity: 0;
+    @apply opacity-0;
   }
   .menu-icon.is-active .line {
     @apply opacity-0;
