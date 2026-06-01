@@ -1,7 +1,7 @@
-import { slugifyStr } from "./slugify";
 import type { CollectionEntry } from "astro:content";
 import { getPostLocale } from "@/utils/postLocale";
 import { DEFAULT_LOCALE } from "@/i18n/config";
+import { tagToSlug } from "@/i18n/tags";
 
 const getUniqueTags = (posts: CollectionEntry<"posts">[]) => {
   const filteredPosts = posts.filter(
@@ -9,7 +9,7 @@ const getUniqueTags = (posts: CollectionEntry<"posts">[]) => {
   );
   const tags: string[] = filteredPosts
     .flatMap(post => post.data.tags)
-    .map(tag => slugifyStr(tag))
+    .map(tag => tagToSlug(tag))
     .filter(
       (value: string, index: number, self: string[]) =>
         self.indexOf(value) === index

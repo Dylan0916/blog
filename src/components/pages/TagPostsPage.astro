@@ -10,6 +10,7 @@ import getSortedPosts from "@/utils/getSortedPosts";
 import { SITE } from "@/config";
 import { useTranslations } from "@/i18n/ui";
 import { resolveLocale } from "@/utils/getLocale";
+import { tagDisplay } from "@/i18n/tags";
 import { localizedPostUrl, localizedCardData } from "@/utils/postLocale";
 
 export interface Props {
@@ -19,6 +20,7 @@ export interface Props {
 const { tag } = Astro.props;
 const locale = resolveLocale(Astro.currentLocale);
 const t = useTranslations(locale);
+const label = tagDisplay(tag, locale);
 
 const posts = await getCollection("posts", ({ data }) => !data.draft);
 
@@ -27,14 +29,14 @@ const tagPosts = getPostsByTag(posts, tag);
 const sortTagsPost = getSortedPosts(tagPosts);
 ---
 
-<Layout title={`${t("tags.label")}${tag} | ${SITE.title}`}>
+<Layout title={`${t("tags.label")}${label} | ${SITE.title}`}>
   <Header activeNav="tags" />
   <Main
-    pageTitle={[t("tags.label"), `${tag}`]}
+    pageTitle={[t("tags.label"), `${label}`]}
     titleTransition={tag}
-    pageDesc={`${t("tags.allWithTag")} "${tag}"${t("tags.allWithTagSuffix")}`}
+    pageDesc={`${t("tags.allWithTag")} "${label}"${t("tags.allWithTagSuffix")}`}
   >
-    <h1 slot="title" transition:name={tag}>{t("tags.label")}{tag}</h1>
+    <h1 slot="title" transition:name={tag}>{t("tags.label")}{label}</h1>
     <ul>
       {
         sortTagsPost.map(post => (

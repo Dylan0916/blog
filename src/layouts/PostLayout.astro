@@ -12,6 +12,7 @@ import { getPostJsonLd } from "@/utils/jsonLd";
 import { useTranslations } from "@/i18n/ui";
 import { resolveLocale } from "@/utils/getLocale";
 import { resolveEnglishBody } from "@/utils/postLocale";
+import { tagToSlug } from "@/i18n/tags";
 
 export interface Props {
   post: CollectionEntry<"posts">;
@@ -107,7 +108,7 @@ const jsonLd = getPostJsonLd(displayPost);
     </article>
 
     <ul class="my-8">
-      {tags.map(tag => <Tag name={slugifyStr(tag)} />)}
+      {tags.map(tag => <Tag name={tagToSlug(tag)} />)}
     </ul>
 
     <AdjacentPostNav prevPost={prevPost} nextPost={nextPost} />
