@@ -1,0 +1,56 @@
+---
+import type { AdjacentPost } from "@/types";
+
+export interface Props {
+  prevPost: AdjacentPost;
+  nextPost: AdjacentPost;
+}
+
+const { prevPost, nextPost } = Astro.props;
+
+const hasNav = Boolean(prevPost) || Boolean(nextPost);
+---
+
+{
+  hasNav && (
+    <nav class="adjacent-nav" aria-label="文章導覽">
+      {prevPost ? (
+        <a href={prevPost.url} class="adjacent-link">
+          <span class="label">← 上一篇</span>
+          <span class="title">{prevPost.title}</span>
+        </a>
+      ) : (
+        <span />
+      )}
+      {nextPost ? (
+        <a href={nextPost.url} class="adjacent-link next">
+          <span class="label">下一篇 →</span>
+          <span class="title">{nextPost.title}</span>
+        </a>
+      ) : (
+        <span />
+      )}
+    </nav>
+  )
+}
+
+<style>
+  @reference "../styles/base.css";
+  @layer components {
+    .adjacent-nav {
+      @apply my-8 grid grid-cols-1 gap-4 sm:grid-cols-2;
+    }
+    .adjacent-link {
+      @apply flex flex-col gap-1 hover:opacity-75;
+    }
+    .adjacent-link.next {
+      @apply sm:col-start-2 sm:text-right;
+    }
+    .adjacent-link .label {
+      @apply text-sm;
+    }
+    .adjacent-link .title {
+      @apply font-medium text-skin-accent;
+    }
+  }
+</style>

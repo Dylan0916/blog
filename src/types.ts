@@ -1,3 +1,5 @@
+export type AdjacentPost = { title: string; url: string } | null;
+
 export type Site = {
   website: string;
   author: string;

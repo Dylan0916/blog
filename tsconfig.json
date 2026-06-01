@@ -12,6 +12,7 @@
       "@/pages/*": ["pages/*"],
       "@/scripts/*": ["scripts/*"],
       "@/styles/*": ["styles/*"],
+      "@/types": ["types.ts"],
       "@/utils/*": ["utils/*"]
     }
   }
