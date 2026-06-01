@@ -22,8 +22,12 @@ pnpm-debug.log*
 # ignore .astro directory
 .astro
 
-# ignore Jampack cache files
-.jampack/
+# Jampack cache is committed on purpose: Cloudflare Pages does a fresh clone
+# each build and offers no custom build-cache dir, so committing the cache
+# keeps `jampack` warm (~14s saved). It is content-hashed + self-invalidating.
+
+# OG-image runtime cache — local only (regenerated cheaply, not worth tracking)
+.cache/
 
 # yarn
 .yarn/*

@@ -9,6 +9,7 @@
     "dev": "astro dev",
     "start": "astro dev",
     "build": "astro check && astro build && jampack ./dist",
+    "build:ci": "astro build && jampack ./dist",
     "preview": "astro preview",
     "sync": "astro sync",
     "astro": "astro",
