@@ -76,7 +76,7 @@ function svgBufferToPngBuffer(svg: string) {
 // ---------------------------------------------------------------------------
 // Public API
 // ---------------------------------------------------------------------------
-export async function generateOgImageForPost(post: CollectionEntry<"blog">) {
+export async function generateOgImageForPost(post: CollectionEntry<"posts">) {
   const key = cacheKey(`post:${post.data.title}:${post.data.author}`);
 
   const cached = getCached(key);

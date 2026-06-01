@@ -24,7 +24,7 @@ export const getWebsiteJsonLd = () => {
   };
 };
 
-export const getPostJsonLd = (post: CollectionEntry<"blog">) => {
+export const getPostJsonLd = (post: CollectionEntry<"posts">) => {
   const {
     body,
     data: {

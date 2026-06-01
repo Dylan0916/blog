@@ -4,7 +4,7 @@ Agent-specific notes for working in this repo. Read [README.md](./README.md) fir
 
 ## Content workflow
 
-Posts live in `src/content/blog/*.md`. Filename convention: `YYYY-MM-DD_kebab-slug.md`.
+Posts live in `src/content/posts/*.{md,mdx}` (collection name `posts`). Filename convention: `YYYY-MM-DD_kebab-slug.md`. `.mdx` is supported when a post needs to import components.
 
 Frontmatter schema is defined in `src/content.config.ts`. Required: `author`, `pubDatetime` (ISO 8601), `title`, `postSlug`, `tags`, `description`. Optional: `modDatetime`, `featured`, `draft`, `ogImage`, `canonicalURL`.
 
@@ -84,8 +84,8 @@ When deleting filler from an existing post:
 ## Local conventions you'll trip over when editing
 
 - **Tailwind v4 cascade**: scoped Astro `<style>` blocks need `@reference "../styles/base.css"`. Custom utilities (`bg-skin-*`, `text-skin-*`) come from `@theme inline` mapped to runtime CSS vars; theme switching flows through `[data-theme="dark"]` overrides.
-- **Layout slot wiring**: `src/layouts/Layout.astro` has `<slot name="head" />`. Per-page head injections (article meta, JSON-LD overrides) belong inside `<Fragment slot="head">` in the child layout. Lowercase `<fragment>` silently does nothing — it's not a known Astro element.
-- **FOUC + theme**: small inline IIFE in `Layout.astro` sets `data-theme` before paint and exposes `window.__theme.value`. The rest of theme logic lives in `src/scripts/theme.ts`. Don't move FOUC detection out of the inline script — that's load-blocking on purpose.
+- **Layout slot wiring**: `src/layouts/BaseLayout.astro` has `<slot name="head" />`. Per-page head injections (article meta, JSON-LD overrides) belong inside `<Fragment slot="head">` in the child layout (`PostLayout.astro`, etc.). Lowercase `<fragment>` silently does nothing — it's not a known Astro element.
+- **FOUC + theme**: small inline IIFE in `BaseLayout.astro` sets `data-theme` before paint and exposes `window.__theme.value`. The rest of theme logic lives in `src/scripts/theme.ts`. Don't move FOUC detection out of the inline script — that's load-blocking on purpose.
 - **Fonts**: declared in `astro.config.ts` via `fontProviders.google()`. CSS var is `--font-ibm-plex-mono`. Don't add manual `<link>` to fonts.gstatic.com.
 
 ## Git

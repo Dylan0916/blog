@@ -58,7 +58,7 @@ export const blogSchema = z.object({
 Here is the sample frontmatter for a post.
 
 ```yaml
-# src/content/blog/sample-post.md
+# src/content/posts/sample-post.md
 ---
 title: The title of the post
 author: your name

@@ -3,7 +3,7 @@
  *
  * FOUC prevention (the synchronous `data-theme` attribute setting that
  * must run before first paint) lives as an inline IIFE in
- * `src/layouts/Layout.astro`. That script exposes the resolved theme on
+ * `src/layouts/BaseLayout.astro`. That script exposes the resolved theme on
  * `window.__theme.value`, which this module reuses to avoid running the
  * detection logic twice.
  */
