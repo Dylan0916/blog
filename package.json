@@ -20,9 +20,10 @@
   },
   "dependencies": {
     "@astrojs/check": "^0.9.9",
+    "@astrojs/mdx": "^6.0.1",
     "@astrojs/rss": "^4.0.18",
     "@resvg/resvg-js": "^2.6.2",
-    "astro": "^6.3.8",
+    "astro": "^6.4.2",
     "astro-seo-schema": "^6.0.0",
     "fuse.js": "^7.3.0",
     "github-slugger": "^2.0.0",
@@ -34,7 +35,7 @@
     "typescript": "^6.0.3"
   },
   "devDependencies": {
-    "@astrojs/react": "^5.0.5",
+    "@astrojs/react": "^5.0.6",
     "@astrojs/sitemap": "^3.7.3",
     "@divriots/jampack": "^0.34.1",
     "@tailwindcss/typography": "^0.5.19",
