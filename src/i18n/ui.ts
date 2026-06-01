@@ -10,6 +10,8 @@ const ui = {
     "nav.search": "Search",
     "nav.skipToContent": "Skip to content",
     "breadcrumb.home": "Home",
+    "home.bio":
+      "一名前端工程師，隨便記錄一下自己覺得有趣的事情，方便自己回顧。",
     "home.recentPosts": "Recent Posts",
     "home.allPosts": "All Posts",
     "post.goBack": "Go back",
@@ -32,6 +34,8 @@ const ui = {
     "nav.search": "Search",
     "nav.skipToContent": "Skip to content",
     "breadcrumb.home": "Home",
+    "home.bio":
+      "A front-end engineer jotting down things I find interesting, for my own future reference.",
     "home.recentPosts": "Recent Posts",
     "home.allPosts": "All Posts",
     "post.goBack": "Go back",
