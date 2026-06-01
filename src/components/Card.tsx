@@ -6,9 +6,15 @@ export interface Props {
   href?: string;
   frontmatter: CollectionEntry<"posts">["data"];
   secHeading?: boolean;
+  locale?: string;
 }
 
-export default function Card({ href, frontmatter, secHeading = true }: Props) {
+export default function Card({
+  href,
+  frontmatter,
+  secHeading = true,
+  locale = "zh-TW",
+}: Props) {
   const { title, pubDatetime, description } = frontmatter;
 
   const headerProps = {
@@ -28,7 +34,7 @@ export default function Card({ href, frontmatter, secHeading = true }: Props) {
           <h3 {...headerProps}>{title}</h3>
         )}
       </a>
-      <Datetime datetime={pubDatetime} />
+      <Datetime datetime={pubDatetime} locale={locale} />
       <p>{description}</p>
     </li>
   );

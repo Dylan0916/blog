@@ -1,4 +1,5 @@
 ---
+import { useTranslations, type Locale } from "@/i18n/ui";
 import Hr from "./Hr.astro";
 import Socials from "./Socials.astro";
 
@@ -6,9 +7,11 @@ const currentYear = new Date().getFullYear();
 
 export interface Props {
   noMarginTop?: boolean;
+  locale?: Locale;
 }
 
-const { noMarginTop = false } = Astro.props;
+const { noMarginTop = false, locale = "zh-TW" } = Astro.props;
+const t = useTranslations(locale);
 ---
 
 <footer class={`w-full ${noMarginTop ? "" : "mt-auto"}`}>

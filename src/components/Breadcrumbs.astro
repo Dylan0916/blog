@@ -1,4 +1,13 @@
 ---
+import { useTranslations, type Locale } from "@/i18n/ui";
+
+export interface Props {
+  locale?: Locale;
+}
+
+const { locale = "zh-TW" } = Astro.props;
+const t = useTranslations(locale);
+
 // Remove current url path and remove trailing slash if exists
 const currentUrlPath = Astro.url.pathname.replace(/\/+$/, "");
 
@@ -18,7 +27,7 @@ breadcrumbList[0] === "posts" &&
 >
   <ul>
     <li class="inline">
-      <a href="/" class="capitalize opacity-70 hover:opacity-100">Home</a>
+      <a href="/" class="capitalize opacity-70 hover:opacity-100">{t("breadcrumb.home")}</a>
       <span class="opacity-70" aria-hidden="true">&nbsp;&gt;&nbsp;</span>
     </li>
     {

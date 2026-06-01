@@ -1,13 +1,17 @@
 ---
 import { LOGO_IMAGE, SITE } from "@/config";
+import { useTranslations, type Locale } from "@/i18n/ui";
 import Hr from "./Hr.astro";
 import LinkButton from "./LinkButton.astro";
 
 export interface Props {
   activeNav?: "posts" | "tags" | "about" | "search";
+  locale?: Locale;
 }
 
-const { activeNav } = Astro.props;
+const { activeNav, locale = "zh-TW" } = Astro.props;
+const t = useTranslations(locale);
+const prefix = locale === "en" ? "/en" : "";
 
 const navLinkClass =
   "w-full px-4 py-3 text-center font-medium hover:text-skin-accent sm:my-0 sm:px-2 sm:py-1";
@@ -21,7 +25,7 @@ const navButtonSvgClass = "h-6 w-6 fill-skin-base hover:fill-skin-accent";
     id="skip-to-content"
     href="#main-content"
     class="absolute -top-full left-16 z-50 bg-skin-accent px-3 py-2 text-skin-inverted transition-all focus:top-4"
-  >Skip to content</a>
+  >{t("nav.skipToContent")}</a>
   <div
     class="mx-auto flex max-w-3xl flex-col items-center justify-between sm:flex-row"
   >
@@ -29,7 +33,7 @@ const navButtonSvgClass = "h-6 w-6 fill-skin-base hover:fill-skin-accent";
       class="relative flex w-full items-start justify-between p-4 sm:items-center sm:py-8"
     >
       <a
-        href="/"
+        href={prefix + "/"}
         class="absolute whitespace-nowrap py-1 text-xl font-semibold sm:static sm:text-2xl"
       >
         {
@@ -80,34 +84,34 @@ const navButtonSvgClass = "h-6 w-6 fill-skin-base hover:fill-skin-accent";
         >
           <li class="col-span-2 flex items-center justify-center">
             <a
-              href="/posts"
+              href={`${prefix}/posts`}
               class={`${navLinkClass} ${activeNav === "posts" ? activeLinkClass : ""}`}
             >
-              Posts
+              {t("nav.posts")}
             </a>
           </li>
           <li class="col-span-2 flex items-center justify-center">
             <a
-              href="/tags"
+              href={`${prefix}/tags`}
               class={`${navLinkClass} ${activeNav === "tags" ? activeLinkClass : ""}`}
             >
-              Tags
+              {t("nav.tags")}
             </a>
           </li>
           <li class="col-span-2 flex items-center justify-center">
             <a
-              href="/about"
+              href={`${prefix}/about`}
               class={`${navLinkClass} ${activeNav === "about" ? activeLinkClass : ""}`}
             >
-              About
+              {t("nav.about")}
             </a>
           </li>
           <li class="col-span-1 flex items-center justify-center">
             <LinkButton
-              href="/search"
+              href={`${prefix}/search`}
               className={`focus-outline flex w-auto p-3 sm:p-1 ${activeNav === "search" ? activeLinkClass : ""}`}
-              ariaLabel="search"
-              title="Search"
+              ariaLabel={t("nav.search")}
+              title={t("nav.search")}
             >
               <svg
                 xmlns="http://www.w3.org/2000/svg"

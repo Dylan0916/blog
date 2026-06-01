@@ -1,12 +1,15 @@
 ---
+import { useTranslations, type Locale } from "@/i18n/ui";
 import type { AdjacentPost } from "@/types";
 
 export interface Props {
   prevPost: AdjacentPost;
   nextPost: AdjacentPost;
+  locale?: Locale;
 }
 
-const { prevPost, nextPost } = Astro.props;
+const { prevPost, nextPost, locale = "zh-TW" } = Astro.props;
+const t = useTranslations(locale);
 
 const hasNav = Boolean(prevPost) || Boolean(nextPost);
 ---
@@ -22,7 +25,7 @@ const hasNav = Boolean(prevPost) || Boolean(nextPost);
           href={prevPost.url}
           class="flex flex-col gap-1 hover:opacity-75"
         >
-          <span class="text-sm">← 上一篇</span>
+          <span class="text-sm">{`← ${t("post.prev")}`}</span>
           <span class="font-medium text-skin-accent">{prevPost.title}</span>
         </a>
       ) : (
@@ -33,7 +36,7 @@ const hasNav = Boolean(prevPost) || Boolean(nextPost);
           href={nextPost.url}
           class="flex flex-col gap-1 hover:opacity-75 sm:col-start-2 sm:text-right"
         >
-          <span class="text-sm">下一篇 →</span>
+          <span class="text-sm">{`${t("post.next")} →`}</span>
           <span class="font-medium text-skin-accent">{nextPost.title}</span>
         </a>
       ) : (
