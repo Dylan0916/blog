@@ -52,7 +52,7 @@ const sortTagsPost = getSortedPosts(tagPosts);
     <ul>
       {
         sortTagsPost.map(post => (
-          <Card href={localizedPostUrl(post, "en")} frontmatter={post.data} />
+          <Card href={localizedPostUrl(post, "en")} frontmatter={post.data} locale="en" />
         ))
       }
     </ul>

@@ -36,7 +36,7 @@ const disabledSvgClass = "group-hover:fill-skin-base!";
     <ul>
       {
         paginatedPosts.map(post => (
-          <Card href={localizedPostUrl(post, "en")} frontmatter={post.data} />
+          <Card href={localizedPostUrl(post, "en")} frontmatter={post.data} locale="en" />
         ))
       }
     </ul>
