@@ -1,0 +1,8 @@
+---
+import AboutLayout from "@/layouts/AboutLayout.astro";
+import { Content } from "../about.md";
+---
+
+<AboutLayout frontmatter={{ title: "About" }} locale="en" counterpartUrl="/about/">
+  <Content />
+</AboutLayout>

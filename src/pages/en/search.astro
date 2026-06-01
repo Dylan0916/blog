@@ -1,0 +1,28 @@
+---
+import { getCollection } from "astro:content";
+import { SITE } from "@/config";
+import Layout from "@/layouts/BaseLayout.astro";
+import Main from "@/layouts/Main.astro";
+import Header from "@/components/Header.astro";
+import Footer from "@/components/Footer.astro";
+import SearchBar from "@/components/Search";
+import { useTranslations } from "@/i18n/ui";
+
+const t = useTranslations("en");
+
+const posts = await getCollection("posts", ({ data }) => !data.draft);
+
+const searchList = posts.map(({ data }) => ({
+  title: data.title,
+  description: data.description,
+  data,
+}));
+---
+
+<Layout title={`${t("search.title")} | ${SITE.title}`} locale="en" counterpartUrl="/search/">
+  <Header activeNav="search" locale="en" counterpartUrl="/search/" />
+  <Main pageTitle={t("search.title")} pageDesc="Search any article ...">
+    <SearchBar client:load searchList={searchList} />
+  </Main>
+  <Footer />
+</Layout>
