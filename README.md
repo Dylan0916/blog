@@ -20,7 +20,6 @@ Based on [satnaing/astro-paper](https://github.com/satnaing/astro-paper) (v4) wi
 
 ## Requirements
 
-- Node `>=24` (pinned via `.node-version` / `engines`)
 - Bun `1.3.14` (pinned via `packageManager` field)
 
 ## Commands
