@@ -36,12 +36,6 @@ bun run sync          # astro sync (generate types)
 bun run cz            # commit via commitizen
 ```
 
-Docker:
-
-```bash
-docker compose up -d
-```
-
 ## Project Structure
 
 ```
@@ -69,8 +63,7 @@ docker compose up -d
 │   ├── types.ts
 │   └── env.d.ts
 ├── astro.config.ts
-├── eslint.config.mjs
-└── docker-compose.yml
+└── eslint.config.mjs
 ```
 
 ## Configuration

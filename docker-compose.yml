@@ -1,9 +1,0 @@
-services:
-  app:
-    image: node:24-alpine
-    ports:
-      - 4321:4321
-    working_dir: /app
-    command: npm run dev -- --host 0.0.0.0
-    volumes:
-      - ./:/app
