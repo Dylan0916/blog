@@ -102,7 +102,7 @@ When deleting filler from an existing post:
 
 ## Git
 
-- Husky + lint-staged runs prettier on staged JS/TS/MD/JSON before commit.
+- Husky + lint-staged runs `oxfmt` on staged JS/TS/CSS/MD/JSON and `prettier` on staged `.astro` (oxfmt does not support `.astro`) before commit.
 - **Do NOT auto-push without explicit user instruction.** Commits alone are fine; pushes need a clear "push" from the user.
 - **Do NOT lump unrelated changes into one commit.** The upgrade work was deliberately split into ~6 thematic commits; keep that pattern.
 - Don't use `git rebase -i` (banned by user rules) — for sequence cleanup, do new commits on top instead.

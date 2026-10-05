@@ -15,7 +15,7 @@ Based on [satnaing/astro-paper](https://github.com/satnaing/astro-paper) (v4) wi
 - **OG images**: [satori](https://github.com/vercel/satori) + [@resvg/resvg-js](https://github.com/yisibl/resvg-js)
 - **SEO**: [astro-seo-schema](https://github.com/elfrank/astro-seo-schema), [schema-dts](https://github.com/google/schema-dts)
 - **Image optimization**: [@divriots/jampack](https://jampack.divriots.com/)
-- **Linting / Formatting**: ESLint v10, Prettier
+- **Linting / Formatting**: oxlint, oxfmt (Prettier for `.astro` only)
 - **Deployment**: Cloudflare Pages
 
 ## Requirements
@@ -29,9 +29,9 @@ bun install           # install deps
 bun run dev           # dev server at http://localhost:4321
 bun run build         # astro check + build + jampack
 bun run preview       # preview build locally
-bun run lint          # eslint .
-bun run format        # prettier --write .
-bun run format:check  # prettier --check .
+bun run lint          # oxlint
+bun run format        # oxfmt + prettier (.astro)
+bun run format:check  # oxfmt --check + prettier --check (.astro)
 bun run sync          # astro sync (generate types)
 bun run cz            # commit via commitizen
 ```
@@ -63,7 +63,8 @@ bun run cz            # commit via commitizen
 │   ├── types.ts
 │   └── env.d.ts
 ├── astro.config.ts
-└── eslint.config.mjs
+├── .oxlintrc.json
+└── .oxfmtrc.json
 ```
 
 ## Configuration

@@ -10,11 +10,11 @@
     "preview": "bunx --bun astro preview",
     "sync": "bunx --bun astro sync",
     "astro": "bunx --bun astro",
-    "format:check": "prettier --check .",
-    "format": "prettier --write .",
+    "format:check": "oxfmt --check --ignore-path=.gitignore && prettier --check \"src/**/*.astro\"",
+    "format": "oxfmt --ignore-path=.gitignore && prettier --write \"src/**/*.astro\"",
     "cz": "cz",
     "prepare": "husky",
-    "lint": "eslint ."
+    "lint": "oxlint"
   },
   "dependencies": {
     "@astrojs/check": "^0.9.9",
@@ -39,14 +39,12 @@
     "@tailwindcss/typography": "^0.5.19",
     "@tailwindcss/vite": "^4.3.0",
     "@types/react": "^19.2.15",
-    "@typescript-eslint/parser": "^8.60.0",
-    "astro-eslint-parser": "^1.4.0",
     "commitizen": "^4.3.1",
     "cz-conventional-changelog": "^3.3.0",
-    "eslint": "^10.4.0",
-    "eslint-plugin-astro": "^1.7.0",
     "husky": "^9.1.7",
     "lint-staged": "^17.0.5",
+    "oxfmt": "^0.72.0",
+    "oxlint": "^1.87.0",
     "prettier": "^3.8.3",
     "prettier-plugin-astro": "^0.14.1",
     "prettier-plugin-tailwindcss": "^0.8.0",
@@ -59,7 +57,10 @@
     }
   },
   "lint-staged": {
-    "*.{js,jsx,ts,tsx,md,mdx,json}": [
+    "*.{js,jsx,ts,tsx,css,md,mdx,json}": [
+      "oxfmt --ignore-path=.gitignore --no-error-on-unmatched-pattern"
+    ],
+    "*.astro": [
       "prettier --write"
     ]
   },

@@ -1,0 +1,7 @@
+{
+  "$schema": "./node_modules/oxlint/configuration_schema.json",
+  "env": { "browser": true, "es2026": true },
+  "rules": { "prefer-const": "error" },
+  "options": { "reportUnusedDisableDirectives": "error" },
+  "ignorePatterns": [".husky", ".vscode", "public", "dist", "node_modules"]
+}
