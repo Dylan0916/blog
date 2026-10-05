@@ -7,6 +7,7 @@ import {
 import tailwindcss from "@tailwindcss/vite";
 import react from "@astrojs/react";
 import mdx from "@astrojs/mdx";
+import { unified } from "@astrojs/markdown-remark";
 import remarkToc from "remark-toc";
 import remarkCollapse from "remark-collapse";
 import sitemap from "@astrojs/sitemap";
@@ -24,15 +25,17 @@ export default defineConfig({
   },
   integrations: [react(), mdx(), sitemap(), i18nEnMirror()],
   markdown: {
-    remarkPlugins: [
-      remarkToc,
-      [
-        remarkCollapse,
-        {
-          test: "Table of contents",
-        },
+    processor: unified({
+      remarkPlugins: [
+        remarkToc,
+        [
+          remarkCollapse,
+          {
+            test: "Table of contents",
+          },
+        ],
       ],
-    ],
+    }),
     shikiConfig: {
       theme: "one-dark-pro",
       wrap: true,
@@ -45,6 +48,9 @@ export default defineConfig({
     },
   },
   scopedStyleStrategy: "where",
+  // Astro 7 defaults to "jsx", which drops whitespace between inline siblings
+  // (e.g. "Tag: foo" renders as "Tag:foo"). `true` keeps the pre-v7 behavior.
+  compressHTML: true,
   fonts: [
     {
       name: "IBM Plex Mono",
