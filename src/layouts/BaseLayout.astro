@@ -103,7 +103,12 @@ const socialImageURL = new URL(
 
     <Font
       cssVariable="--font-ibm-plex-mono"
-      preload={[{ subset: "latin", weight: 400, style: "normal" }]}
+      preload={[
+        { subset: "latin", weight: 400, style: "normal" },
+        { subset: "latin", weight: 400, style: "italic" },
+        { subset: "latin", weight: 500, style: "normal" },
+        { subset: "latin", weight: 600, style: "normal" },
+      ]}
     />
 
     <meta name="theme-color" content="" />
