@@ -37,51 +37,47 @@ const disabledSvgClass = "group-hover:fill-skin-base!";
   <Header activeNav="posts" />
   <Main pageTitle={t("nav.posts")} pageDesc="All the articles I've posted.">
     <ul>
-      {
-        posts.map(post => (
-          <Card
-            href={localizedPostUrl(post, locale)}
-            frontmatter={localizedCardData(post, allPosts, locale)}
-            locale={locale}
-          />
-        ))
-      }
+      {posts.map(post => (
+        <Card
+          href={localizedPostUrl(post, locale)}
+          frontmatter={localizedCardData(post, allPosts, locale)}
+          locale={locale}
+        />
+      ))}
     </ul>
   </Main>
 
-  {
-    totalPages > 1 && (
-      <nav class="mt-auto mb-8 flex justify-center" aria-label="Pagination">
-        <LinkButton
-          disabled={isPrevDisabled}
-          href={`${prefix}/posts${pageNum - 1 !== 1 ? "/" + (pageNum - 1) : ""}`}
-          className={`mr-4 select-none ${isPrevDisabled ? disabledButtonClass : ""}`}
-          ariaLabel="Previous"
+  {totalPages > 1 && (
+    <nav class="mt-auto mb-8 flex justify-center" aria-label="Pagination">
+      <LinkButton
+        disabled={isPrevDisabled}
+        href={`${prefix}/posts${pageNum - 1 !== 1 ? "/" + (pageNum - 1) : ""}`}
+        className={`mr-4 select-none ${isPrevDisabled ? disabledButtonClass : ""}`}
+        ariaLabel="Previous"
+      >
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          class={isPrevDisabled ? disabledSvgClass : ""}
         >
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            class={isPrevDisabled ? disabledSvgClass : ""}
-          >
-            <path d="M12.707 17.293 8.414 13H18v-2H8.414l4.293-4.293-1.414-1.414L4.586 12l6.707 6.707z" />
-          </svg>
-          Prev
-        </LinkButton>
-        <LinkButton
-          disabled={isNextDisabled}
-          href={`${prefix}/posts/${pageNum + 1}`}
-          className={`ml-4 select-none ${isNextDisabled ? disabledButtonClass : ""}`}
-          ariaLabel="Next"
+          <path d="M12.707 17.293 8.414 13H18v-2H8.414l4.293-4.293-1.414-1.414L4.586 12l6.707 6.707z" />
+        </svg>
+        Prev
+      </LinkButton>
+      <LinkButton
+        disabled={isNextDisabled}
+        href={`${prefix}/posts/${pageNum + 1}`}
+        className={`ml-4 select-none ${isNextDisabled ? disabledButtonClass : ""}`}
+        ariaLabel="Next"
+      >
+        Next
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          class={isNextDisabled ? disabledSvgClass : ""}
         >
-          Next
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            class={isNextDisabled ? disabledSvgClass : ""}
-          >
-            <path d="m11.293 17.293 1.414 1.414L19.414 12l-6.707-6.707-1.414 1.414L15.586 11H6v2h9.586z" />
-          </svg>
-        </LinkButton>
-      </nav>
-    )
-  }
+          <path d="m11.293 17.293 1.414 1.414L19.414 12l-6.707-6.707-1.414 1.414L15.586 11H6v2h9.586z" />
+        </svg>
+      </LinkButton>
+    </nav>
+  )}
   <Footer noMarginTop={totalPages > 1} />
 </Layout>

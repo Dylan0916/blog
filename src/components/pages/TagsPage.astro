@@ -21,7 +21,9 @@ const tags = getUniqueTags(posts);
   <Header activeNav="tags" />
   <Main pageTitle={t("tags.title")} pageDesc="All the tags used in posts.">
     <ul>
-      {tags.map(tag => <Tag name={tag} size="lg" />)}
+      {tags.map(tag => (
+        <Tag name={tag} size="lg" />
+      ))}
     </ul>
   </Main>
   <Footer />

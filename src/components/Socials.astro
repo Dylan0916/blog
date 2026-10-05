@@ -10,18 +10,14 @@ export interface Props {
 const { centered = false } = Astro.props;
 ---
 
-<div
-  class={`flex-wrap justify-center gap-1 ${centered ? "flex" : ""}`}
->
-  {
-    SOCIALS.filter(social => social.active).map(social => (
-      <LinkButton
-        href={social.href}
-        className="p-2 hover:rotate-6 sm:p-1"
-        title={social.linkTitle}
-      >
-        <Fragment set:html={socialIcons[social.name]} />
-      </LinkButton>
-    ))
-  }
+<div class={`flex-wrap justify-center gap-1 ${centered ? "flex" : ""}`}>
+  {SOCIALS.filter(social => social.active).map(social => (
+    <LinkButton
+      href={social.href}
+      className="p-2 hover:rotate-6 sm:p-1"
+      title={social.linkTitle}
+    >
+      <Fragment set:html={socialIcons[social.name]} />
+    </LinkButton>
+  ))}
 </div>

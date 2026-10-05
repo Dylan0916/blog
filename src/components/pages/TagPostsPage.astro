@@ -36,17 +36,18 @@ const sortTagsPost = getSortedPosts(tagPosts);
     titleTransition={tag}
     pageDesc={`${t("tags.allWithTag")} "${label}"${t("tags.allWithTagSuffix")}`}
   >
-    <h1 slot="title" transition:name={tag}>{t("tags.label")}{label}</h1>
+    <h1 slot="title" transition:name={tag}>
+      {t("tags.label")}
+      {label}
+    </h1>
     <ul>
-      {
-        sortTagsPost.map(post => (
-          <Card
-            href={localizedPostUrl(post, locale)}
-            frontmatter={localizedCardData(post, posts, locale)}
-            locale={locale}
-          />
-        ))
-      }
+      {sortTagsPost.map(post => (
+        <Card
+          href={localizedPostUrl(post, locale)}
+          frontmatter={localizedCardData(post, posts, locale)}
+          locale={locale}
+        />
+      ))}
     </ul>
   </Main>
   <Footer />

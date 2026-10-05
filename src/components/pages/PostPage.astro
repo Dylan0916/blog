@@ -32,14 +32,12 @@ const startPost = lastPost - SITE.postPerPage;
 const paginatedPosts = sortedPosts.slice(startPost, lastPost);
 ---
 
-{
-  post ? (
-    <PostLayout post={post} prevPost={prevPost} nextPost={nextPost} />
-  ) : (
-    <Posts
-      posts={paginatedPosts}
-      pageNum={currentPage}
-      totalPages={totalPages.length}
-    />
-  )
-}
+{post ? (
+  <PostLayout post={post} prevPost={prevPost} nextPost={nextPost} />
+) : (
+  <Posts
+    posts={paginatedPosts}
+    pageNum={currentPage}
+    totalPages={totalPages.length}
+  />
+)}

@@ -16,34 +16,29 @@ const prefix = locale === "en" ? "/en" : "";
 const hasNav = Boolean(prevPost) || Boolean(nextPost);
 ---
 
-{
-  hasNav && (
-    <nav
-      class="my-8 grid grid-cols-1 gap-4 sm:grid-cols-2"
-      aria-label="文章導覽"
-    >
-      {prevPost ? (
-        <a
-          href={`${prefix}/posts/${prevPost.slug}/`}
-          class="flex flex-col gap-1 hover:opacity-75"
-        >
-          <span class="text-sm">{`← ${t("post.prev")}`}</span>
-          <span class="text-skin-accent font-medium">{prevPost.title}</span>
-        </a>
-      ) : (
-        <span />
-      )}
-      {nextPost ? (
-        <a
-          href={`${prefix}/posts/${nextPost.slug}/`}
-          class="flex flex-col gap-1 hover:opacity-75 sm:col-start-2 sm:text-right"
-        >
-          <span class="text-sm">{`${t("post.next")} →`}</span>
-          <span class="text-skin-accent font-medium">{nextPost.title}</span>
-        </a>
-      ) : (
-        <span />
-      )}
-    </nav>
-  )
-}
+{hasNav && (
+  <nav class="my-8 grid grid-cols-1 gap-4 sm:grid-cols-2" aria-label="文章導覽">
+    {prevPost ? (
+      <a
+        href={`${prefix}/posts/${prevPost.slug}/`}
+        class="flex flex-col gap-1 hover:opacity-75"
+      >
+        <span class="text-sm">{`← ${t("post.prev")}`}</span>
+        <span class="text-skin-accent font-medium">{prevPost.title}</span>
+      </a>
+    ) : (
+      <span />
+    )}
+    {nextPost ? (
+      <a
+        href={`${prefix}/posts/${nextPost.slug}/`}
+        class="flex flex-col gap-1 hover:opacity-75 sm:col-start-2 sm:text-right"
+      >
+        <span class="text-sm">{`${t("post.next")} →`}</span>
+        <span class="text-skin-accent font-medium">{nextPost.title}</span>
+      </a>
+    ) : (
+      <span />
+    )}
+  </nav>
+)}

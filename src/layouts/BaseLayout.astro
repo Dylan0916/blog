@@ -59,24 +59,20 @@ const socialImageURL = new URL(
       href="/rss.xml"
     />
     <link rel="canonical" href={canonicalURL} />
-    {
-      counterpartUrl && (
-        <link
-          rel="alternate"
-          hreflang={locale === "en" ? "zh-Hant" : "en"}
-          href={new URL(counterpartUrl, Astro.site)}
-        />
-      )
-    }
-    {
-      counterpartUrl && (
-        <link
-          rel="alternate"
-          hreflang={locale === "en" ? "en" : "zh-Hant"}
-          href={canonicalURL}
-        />
-      )
-    }
+    {counterpartUrl && (
+      <link
+        rel="alternate"
+        hreflang={locale === "en" ? "zh-Hant" : "en"}
+        href={new URL(counterpartUrl, Astro.site)}
+      />
+    )}
+    {counterpartUrl && (
+      <link
+        rel="alternate"
+        hreflang={locale === "en" ? "en" : "zh-Hant"}
+        href={canonicalURL}
+      />
+    )}
     <meta name="generator" content={Astro.generator} />
 
     <!-- General Meta Tags -->
@@ -150,11 +146,9 @@ const socialImageURL = new URL(
         window.__theme = { value: theme };
       })();
     </script>
-
     <script>
       import "@/scripts/theme";
     </script>
-
     <!-- Google Tag Manager -->
     <script is:inline>
       (function (w, d, s, l, i) {
