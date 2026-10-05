@@ -20,7 +20,7 @@ Based on [satnaing/astro-paper](https://github.com/satnaing/astro-paper) (v4) wi
 
 ## Requirements
 
-- Bun `1.3.14` (pinned via `packageManager` field)
+- Bun `1.4.2` (pinned via `packageManager` field)
 
 ## Commands
 
